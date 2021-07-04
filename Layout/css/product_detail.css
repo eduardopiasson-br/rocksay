@@ -79,6 +79,12 @@
     margin-top: 30px;
 }
 
+.product-div-request-price {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 .product-div-request {
     display: flex;
     width: 100%;
@@ -95,15 +101,23 @@
 .product-discount {
     font-size: 45px;
     color: orangered;
+    margin-bottom: 0px;
     width: 25%;
 }
 
 .product-price-p {
     width: 25%;
-    margin-left: 25px;
+    margin-left: 70px;
+    margin-bottom: 0px;
     font-size: 30px;
     color: #646464ab;
     text-decoration: line-through;
+}
+
+.product-price-prazo {
+    width: 100%;
+    font-size: 23px;
+    color: #646464ab;
 }
 
 .caracteres {
@@ -465,67 +479,6 @@
     background-image: linear-gradient(to bottom right, #ffffff, #ffbaba);
 }
 
-.div-contact {
-    text-align: center;
-}
-
-.h2-contact {
-    font-size: 40px;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px #ffbaba;
-}
-
-.p-contact {
-    font-size: 18px;
-    margin-bottom: 0px;
-}
-
-.social-contacts {
-    width: 100%;
-    margin-top: 30px;
-    display: flex;
-}
-
-.social-item {
-    width: 100%;
-    margin: 0px 10px;
-    padding: 10px 30px;
-    transition: all 0.3s;
-}
-
-.social-item:hover {
-    transform: scale(1.2);
-}
-
-.social-item a {
-    text-decoration: none;
-}
-
-.whatsapp a {
-    color: #128C7E;
-}
-
-.telegram a {
-    color: #0088cc;
-}
-
-.instagram a {
-    color: #E1306C;
-}
-
-.facebook a {
-    color: #3b5998;
-}
-
-.email a {
-    color: #4285F4;
-}
-
-.telefone a {
-    color: #34A853;
-}
-
-
 /* Responsive */
 @media only screen and (max-width: 991px) {
 
@@ -681,19 +634,6 @@
 
     .div-shipping {
         display: block;
-    }
-    
-    .section-contact {
-        padding: 40px 15px;
-    }
-
-    .social-contacts {
-        flex-wrap: wrap;
-    }
-
-    .social-item {
-        width: 50%;
-        margin: 0px;
     }
 
 }

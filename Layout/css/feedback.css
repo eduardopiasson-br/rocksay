@@ -1,7 +1,7 @@
 /* Titulo */
 
 .feedback-section {
-    margin: 30px 50px 80px;
+    margin: 30px 50px 40px;
     text-align: center;
 }
 
@@ -33,13 +33,12 @@
 }
 
 .feedback-item {
-    max-width: 31.6%;
-    margin: 10px;
+    margin: 10px 20px;
     height: 300px;
     display: flex;
     flex-wrap: wrap;
     border-radius: 4px;
-    box-shadow: 5px 5px #000000;
+    border: 1px solid;
     background-color: #ffbaba;
 }
 
@@ -49,12 +48,14 @@
 }
 
 .feedback-conteudo img {
-    max-width: 85%;
-    margin-top: 10px;
+    max-width: 100%;
+    border-radius: 4px;
+    border: 1px solid #000;
 }
 
 .feedback-conteudo p {
     font-size: 18px;
+    white-space: initial;
 }
 
 .feedback-conteudo hr {
@@ -62,15 +63,37 @@
     margin: 20px auto 30px;
 }
 
+/* Glide Config */
+.glide__arrow {
+    margin: 0 -68px!important;
+    color: #000000!important;
+    background-color: #ffbaba;
+    border: 1px solid #000000!important;
+}
+
+.hr-feedback {
+    max-width: 100%;
+    margin-bottom: 50px;
+}
+
 /* Responsive */
 @media only screen and (max-width: 991px) {
 
     .feedback-section {
-        margin: 30px 5px 80px;
+        margin: 30px 5px 20px;
     }
     
     .feedback-item {
         max-width: 100%;
+    }
+
+    .feedback-conteudo img {
+        margin-top: 10px;
+    }
+
+    /* Glide Config */
+    .glide__arrow {
+        margin: 0 -36px!important;
     }
 
 }

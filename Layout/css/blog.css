@@ -1,0 +1,316 @@
+.blog-section {
+    width: 100%;
+}
+
+.blog-title {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.blog-title h2 {
+    font-size: 45px;
+    text-shadow: 2px 2px #ffbaba;
+}
+
+.blog-title p {
+    font-size: 19px;
+}
+
+.conteudo {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* start banners */
+
+.banner-lateral {
+    width: 22%;
+    margin: 20px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #ffbaba;
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.banner-lateral-i {
+    color: #ffffff;
+    font-size: 40px;
+    width: 25%;
+    margin-top: 35px;
+}
+
+.banner-lateral h4 {
+    margin-bottom: 0px;
+    width: 50%;
+    margin-top: 20px;
+}
+
+.banner-lateral span {
+    margin-bottom: 0px;
+    text-shadow: 2px 2px #ffffff;
+    width: 100%;
+    font-size: 30px;
+}
+
+.banner-img {
+    margin: 30px auto;
+}
+
+.banner-img img {
+    border-radius: 10px;
+    border: 5px solid #ffffff;
+}
+
+.banner-button-div {
+    margin-top: -62px;
+    margin-bottom: 5px;
+}
+
+.banner-button {
+    width: 25%;
+    margin: 0 5px;
+    font-size: 38px;
+}
+
+.button-wpp {
+    color: #128C7E;
+}
+
+.button-wpp:hover {
+    color: #0c645a;
+}
+
+.button-insta {
+    color: #E1306C;
+}
+
+.button-insta:hover {
+    color: #a1244e;
+}
+
+.button-face {
+    color: #3b5998;
+}
+
+.button-face:hover {
+    color: #294070;
+}
+
+.button-site {
+    color: #4285F4;
+}
+
+.button-site:hover {
+    color: #264f91;
+}
+
+.img-hr {
+    max-width: 100%;
+}
+
+.parceiro-p {
+    padding: 0 30px;
+    font-size: 19px;
+}
+
+/* end banners */
+
+/* start blogs */
+
+.news {
+    width: 50%;
+    margin-top: 10px;
+    margin-bottom: 100px;
+}
+
+.img img {
+    opacity: 0.7;
+    max-width: 100%;
+    transition: transform .3s;
+}
+
+.img img:hover {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.new-title-p {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.new-title-p span {
+    margin: 10px 5px;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.new-title-p a {
+    margin: 5px;
+    color: #000000;
+    text-decoration: none;
+    text-shadow: 2px 2px #ffbaba;
+}
+
+.new-title-p a:hover {
+    color: #313131;
+    text-shadow: 2px 2px #ffd4d4;
+}
+
+.new-title-p p {
+    margin: 0 5px 15px;
+    font-size: 19px;
+}
+
+.a-button {
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 2px;
+    padding: 5px 10px;
+    color: #000000;
+    background-color: #ffbaba;
+    border: 1px solid #000000;
+    transition: transform .3s;
+    margin: 0 5px;
+    height: 35px;
+}
+
+.a-button i {
+    margin-left: 4px;
+}
+
+.a-button:hover {
+    color: #ffbaba;
+    background-color: #000000;
+    transform: scale(1.1);
+}
+
+.a-button-contact {
+    text-decoration: none;
+    font-size: 23px;
+    border-radius: 2px;
+    padding: 0px 14px 1px;
+    color: #ffffff;
+    background-color: #128C7E;
+    border: 1px solid #ffffff;
+    transition: transform .3s;
+    margin: 0 auto 25px;
+    height: 35px;
+}
+
+.a-button-contact i {
+    margin-left: 4px;
+}
+
+.a-button-contact:hover {
+    color: #ffffff;
+    background-color: #0c5850;
+}
+
+.to-mobile {
+    display: none;
+}
+
+.hr-new {
+    margin: 25px 0px;
+}
+
+/* end blogs */
+
+/* Responsive */
+@media only screen and (max-width: 991px) {
+
+    .news {
+        width: 90%;
+        margin: 40px 20px 100px;
+    }
+
+    .new {
+        text-align: center;
+    }
+
+    .hr-new {
+        margin: 30px 0px;
+    }
+
+    .new-title-p h3 {
+        font-size: 30px;
+        text-align: left;
+    }
+
+    .new-title-p p {
+        text-align: left;
+    }
+
+    .new-title-p span {
+        margin: -28px 5px;
+    }
+    
+    .conteudo {
+        display: block;
+    }
+
+    .banner-lateral {
+        width: 90%;
+        margin-top: 25px;
+    }
+
+    .banner-img {
+        display: none;
+    }
+
+    .slide {
+        max-width: 100%;
+    }
+
+    .slide img {
+        max-width: 102%;
+    }
+
+    .banner-button-div {
+        margin-top: -25px;
+    }
+
+    .img-hr {
+        display: none;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+    .to-mobile {
+        display: block;
+    }    
+
+    .img-hr-mobile {
+        max-width: 100%;
+        margin-top: -10px;
+        margin-bottom: 15px;
+    }
+
+    .a-button {
+        font-size: 20px;
+    }
+
+    .a-button-contact {
+        font-size: 28px;
+        height: 43px;
+    }
+
+    /* Glide Config */
+    .glide__arrow {
+        margin: -38px -45px 0px!important;
+        color: #000000!important;
+        background-color: #ffbaba;
+        border: 1px solid #000000!important;
+    }
+
+    .hr-feedback {
+        max-width: 100%;
+        margin-bottom: 50px;
+    }
+}
