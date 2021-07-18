@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,20 +20,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
-Auth::routes();
-
 Route::get('/home', 'App\Http\Controllers\Admin\HomeController@index')->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function () {
-	// Configurações geradas pela Light Bootstrap
-	Route::resource('user', 'App\Http\Controllers\Admin\UserController', ['except' => ['show']]);
-	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\Admin\ProfileController@edit']);
-	Route::patch('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\Admin\ProfileController@update']);
-	Route::patch('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\Admin\ProfileController@password']);
+    // Rotas de usuários
+    Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios');
+    Route::post('/usuarios/cadastro', [UserController::class, 'store'])->name('usuarios.cadastro');
+    Route::get('/usuarios/edicao/{id}', [UserController::class, 'edit'])->name('usuarios.edicao');
+    Route::put('/usuarios/atualizacao', [UserController::class, 'update'])->name('usuarios.atualizacao');
+    Route::get('/usuarios/alternar/{id}', [UserController::class, 'toggle'])->name('usuarios.alternar');
+    Route::get('/usuarios/deletar/{id}', [UserController::class, 'destroy'])->name('usuarios.deletar');
 });
-
-Route::group(['middleware' => 'auth'], function () {
-	Route::get('{page}', ['as' => 'page.index', 'uses' => 'App\Http\Controllers\Admin\PageController@index']);
-});
-

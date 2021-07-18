@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg " color-on-scroll="500">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"> {{ $navName }} </a>
+        <a class="navbar-brand" disabled> {{ $navName }} </a>
         {{-- <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar burger-lines"></span>
             <span class="navbar-toggler-bar burger-lines"></span>
@@ -37,7 +37,7 @@
             </ul> --}}
             <ul class="navbar-nav   d-flex align-items-center">
                 <li class="nav-item">
-                    <a class="nav-link" href=" {{route('profile.edit') }} ">
+                    <a class="nav-link" href=" {{ route('usuarios.edicao', auth()->user()->id) }} ">
                         <span class="no-icon">{{ __('Editar Conta') }}</span>
                     </a>
                 </li>
