@@ -18,6 +18,7 @@ class CreateProductGalleriesTable extends Migration
             $table->string('name', 150);
             $table->text('image');
             $table->integer('status')->default(1);
+            $table->integer('position');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->bigInteger('product_id')->unsigned();

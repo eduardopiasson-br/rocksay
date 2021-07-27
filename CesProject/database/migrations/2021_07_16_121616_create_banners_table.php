@@ -16,15 +16,16 @@ class CreateBannersTable extends Migration
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
             $table->string('name', 150);
-            $table->text('image_desktop');
-            $table->text('image_mobile');
+            $table->text('image_desktop')->nullable();
+            $table->text('image_mobile')->nullable();
             $table->string('whatsapp', 14)->nullable();
             $table->text('facebook')->nullable();
             $table->text('instagram')->nullable();
             $table->text('site')->nullable();
             $table->date('start_date');
             $table->date('end_date')->nullable();
-            $table->integer('status')->default(1);
+            $table->integer('status')->default(0);
+            $table->integer('position');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

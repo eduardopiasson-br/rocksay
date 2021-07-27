@@ -17,6 +17,8 @@ class CreateAboutGalleriesTable extends Migration
             $table->id();
             $table->string('name', 150);
             $table->text('image');
+            $table->integer('position');
+            $table->integer('status')->default(1);
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

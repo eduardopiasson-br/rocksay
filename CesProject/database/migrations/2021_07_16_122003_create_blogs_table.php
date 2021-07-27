@@ -17,11 +17,10 @@ class CreateBlogsTable extends Migration
             $table->id();
             $table->string('title', 150);
             $table->text('text');
-            $table->date('date');
             $table->text('video')->nullable();
-            $table->text('image');
-            $table->dateTime('start_post');
-            $table->dateTime('end_post')->nullable();
+            $table->text('image')->nullable();
+            $table->date('start_post');
+            $table->date('end_post')->nullable();
             $table->string('autor', 150)->nullable();
             $table->string('font', 150)->nullable();
             $table->text('font_link')->nullable();

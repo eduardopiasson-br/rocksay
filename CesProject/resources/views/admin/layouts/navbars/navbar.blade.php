@@ -7,40 +7,28 @@
             <span class="navbar-toggler-bar burger-lines"></span>
         </button> --}}
         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            {{-- <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a href="#" class="nav-link" data-toggle="dropdown">
-                        <i class="nc-icon nc-palette"></i>
-                        <span class="d-lg-none">{{ __('Dashboard') }}</span>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle user-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user-cog"></i> {{ auth()->user()->name }}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="nav-link text-warning" href=" {{ route('usuarios.edicao', auth()->user()->id) }} ">
+                        <i class="fas fa-pen-square"></i> {{ __('Editar Dados') }}
                     </a>
-                </li>
-                <li class="dropdown nav-item">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <i class="nc-icon nc-planet"></i>
-                        <span class="notification">5</span>
-                        <span class="d-lg-none">{{ __('Notification') }}</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <a class="dropdown-item" href="#">{{ __('Notification 1') }}</a>
-                        <a class="dropdown-item" href="#">{{ __('Notification 2') }}</a>
-                        <a class="dropdown-item" href="#">{{ __('Notification 3') }}3</a>
-                        <a class="dropdown-item" href="#">{{ __('Notification 4') }}</a>
-                        <a class="dropdown-item" href="#">{{ __('Another notification') }}</a>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nc-icon nc-zoom-split"></i>
-                        <span class="d-lg-block">&nbsp;{{ __('Search') }}</span>
-                    </a>
-                </li>
-            </ul> --}}
-            <ul class="navbar-nav   d-flex align-items-center">
+                    <form class="nav-link" id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <a class="text-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt"></i> {{ __('Desconectar') }} 
+                        </a>
+                    </form>
+                </div>
+            </div>
+            {{-- <ul class="navbar-nav   d-flex align-items-center">
                 <li class="nav-item">
                     <a class="nav-link" href=" {{ route('usuarios.edicao', auth()->user()->id) }} ">
                         <span class="no-icon">{{ __('Editar Conta') }}</span>
                     </a>
-                </li>
+                </li> --}}
                 {{-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="no-icon">{{ __('Dropdown') }}</span>
@@ -54,13 +42,13 @@
                         <a class="dropdown-item" href="#">{{ __('Separated link') }}</a>
                     </div>
                 </li> --}}
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
                         <a class="text-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Desconectar') }} </a>
                     </form>
                 </li>
-            </ul>
+            </ul> --}}
         </div>
     </div>
 </nav>

@@ -16,6 +16,9 @@ class CreateDeliverysTable extends Migration
         Schema::create('deliverys', function (Blueprint $table) {
             $table->id();
             $table->text('text');
+            $table->text('icon');
+            $table->integer('position');
+            $table->integer('status')->default(1);
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

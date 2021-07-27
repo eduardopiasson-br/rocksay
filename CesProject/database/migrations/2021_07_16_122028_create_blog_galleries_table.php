@@ -19,6 +19,7 @@ class CreateBlogGalleriesTable extends Migration
             $table->text('text_top')->nullable();
             $table->text('text_bottom')->nullable();
             $table->text('image');
+            $table->integer('position');
             $table->integer('in_text')->default(0);
             $table->integer('status')->default(1);
             $table->bigInteger('user_id')->unsigned();

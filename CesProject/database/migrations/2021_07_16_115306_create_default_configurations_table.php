@@ -28,7 +28,7 @@ class CreateDefaultConfigurationsTable extends Migration
             $table->string('email', 100);
             $table->string('email_two', 100)->nullable();
             $table->text('wellcome_message')->nullable();
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

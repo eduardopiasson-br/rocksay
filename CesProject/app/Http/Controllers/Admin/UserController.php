@@ -28,10 +28,10 @@ class UserController extends Controller
     public function store(UsersRequest $request)
     {
         if(User::create($request->validated())){
-            session()->flash('message', 'Usuário cadastrado com sucesso!');
+            toast('Usuário cadastrado com sucesso!', 'success');
             return back();
         }
-        session()->flash('error', 'Usuário não pode ser cadastrado!');
+        toast('Usuário não pode ser cadastrado!', 'error');
         return back();
     }
 
@@ -57,16 +57,16 @@ class UserController extends Controller
     {
         $user = User::find($request->input('id'));
         if(!$user) {
-            session()->flash('error', 'Usuário não encontrado!');
+            toast('Usuário não encontrado!', 'error');
             return back();
         }
 
         if($user->update($request->validated())){
-            session()->flash('message', 'Usuário atualizado com sucesso!');
+            toast('Usuário atualizado com sucesso!', 'success');
             return back();
         }
 
-        session()->flash('error', 'Usuário não pode ser atualizado!');
+        toast('Usuário não pode ser atualizado!', 'error');
         return back();
     }
 
@@ -81,14 +81,14 @@ class UserController extends Controller
         $user = User::find($id);
 
         if(empty($user)) {
-            session()->flash('error', 'Usuário não encontrado!');
+            toast('Usuário não encontrado!', 'error');
             return back();
         }
 
         $user->status = !$user->status;
         $user->save();
 
-        session()->flash('message', 'Status do usuário alterado!');
+        toast('Status do usuário alterado!', 'success');
         return back();
     }
 
@@ -102,18 +102,18 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if(empty($user)) {
-            session()->flash('error', 'Usuário não encontrado!');
+            toast('Usuário não encontrado!', 'error');
             return back();
         }
 
         // Apagar dependências do cliente assim que estas forem desenvolvidas.
 
         if(!$user->delete()) {
-            session()->flash('error', 'Usuário não pode ser deletado!');
+            toast('Usuário não pode ser deletado!', 'error');
             return back();
         }
 
-        session()->flash('message', 'Usuário deletado com sucesso!');
+        toast('Usuário deletado com sucesso!', 'success');
         return back();
     }
 }

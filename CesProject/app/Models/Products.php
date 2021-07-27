@@ -8,6 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Products extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'title',
+        'price',
+        'price_promo',
+        'prazo',
+        'abstract',
+        'sizes',
+        'image',
+        'photo_name',
+        'highlight',
+        'user_id'
+    ];
 
     /**
      * As categorias associadas a este produto.

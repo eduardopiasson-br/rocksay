@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('prazo', 50)->nullable();
             $table->string('abstract', 250)->nullable();
             $table->text('sizes')->nullable();
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->string('photo_name', 150)->nullable();
             $table->integer('highlight')->default(0);
             $table->integer('status')->default(1);
