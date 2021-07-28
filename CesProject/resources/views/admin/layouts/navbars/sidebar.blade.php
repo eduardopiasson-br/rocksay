@@ -35,28 +35,10 @@ Tip 2: you can also add an image using data-image tag
                     <p>{{ __("Sobre a C&S") }}</p>
                 </a>
             </li>
-            <li class="nav-item @if($activePage == 'feedback') active @endif">
-                <a class="nav-link" href="{{ route('feedback') }}">
-                    <i class="fas fa-comments"></i>
-                    <p>{{ __("Feedback's") }}</p>
-                </a>
-            </li>
-            <li class="nav-item @if($activePage == 'deliverys') active @endif">
-                <a class="nav-link" href="{{ route('entregas') }}">
-                    <i class="fas fa-truck"></i>
-                    <p>{{ __("Entregas e Envios") }}</p>
-                </a>
-            </li>
-            <li class="nav-item @if($activePage == 'payments') active @endif">
-                <a class="nav-link" href="{{ route('pagamentos') }}">
-                    <i class="fas fa-hand-holding-usd"></i>
-                    <p>{{ __("Pagamentos") }}</p>
-                </a>
-            </li>
-            <li class="nav-item @if($activePage == 'banners') active @endif">
-                <a class="nav-link" href="{{ route('banners') }}">
-                    <i class="fas fa-handshake"></i>
-                    <p>{{ __("Banners Parceiros") }}</p>
+            <li class="nav-item @if($activePage == 'products') active @endif">
+                <a class="nav-link nav-product" href="{{ route('produtos') }}">
+                    <i class="fas fa-tshirt"></i>
+                    <p>{{ __("Produtos") }}</p>
                 </a>
             </li>
             <li class="nav-item @if($activePage == 'blogs') active @endif">
@@ -65,10 +47,28 @@ Tip 2: you can also add an image using data-image tag
                     <p>{{ __("Blog da C&S") }}</p>
                 </a>
             </li>
-            <li class="nav-item @if($activePage == 'products') active @endif">
-                <a class="nav-link" href="{{ route('produtos') }}">
-                    <i class="fas fa-tshirt"></i>
-                    <p>{{ __("Produtos") }}</p>
+            <li class="nav-item @if($activePage == 'banners') active @endif">
+                <a class="nav-link" href="{{ route('banners') }}">
+                    <i class="fas fa-handshake"></i>
+                    <p>{{ __("Banners Parceiros") }}</p>
+                </a>
+            </li>
+            <li class="nav-item @if($activePage == 'feedback') active @endif">
+                <a class="nav-link" href="{{ route('feedback') }}">
+                    <i class="fas fa-comments"></i>
+                    <p>{{ __("Feedback's") }}</p>
+                </a>
+            </li>
+            <li class="nav-item @if($activePage == 'payments') active @endif">
+                <a class="nav-link" href="{{ route('pagamentos') }}">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <p>{{ __("Pagamentos") }}</p>
+                </a>
+            </li>
+            <li class="nav-item @if($activePage == 'deliverys') active @endif">
+                <a class="nav-link" href="{{ route('entregas') }}">
+                    <i class="fas fa-truck"></i>
+                    <p>{{ __("Entregas e Envios") }}</p>
                 </a>
             </li>
         </ul>

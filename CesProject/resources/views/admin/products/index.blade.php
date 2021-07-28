@@ -85,7 +85,7 @@
                                 <label class="form-control-label" for="input-abstract">
                                     {{ __('Resumo sobre o Produto') }}
                                 </label>
-                                <input value="{{ $item->abstract ?? old('abstract') }}" maxlength="250" type="text" name="abstract" class="form-control" placeholder="Ex: Este lindo modelo pode ser combinado com...">
+                                <input value="{{ $item->abstract ?? old('abstract') }}" maxlength="250" type="text" id="summary-ckeditor" name="abstract" class="form-control" placeholder="Ex: Este lindo modelo pode ser combinado com...">
                             </div>
                         </div>
 
@@ -131,7 +131,8 @@
                         <table class="table table-hover table-stripeds">
                             <thead>
                                 <tr class="col-md-12">
-                                    <td class="col-md-8"><b>Título</b></td>
+                                    <td class="col-md-5"><b>Título</b></td>
+                                    <td class="col-md-3"><b>Imagem</b></td>
                                     <td style="display: block">
                                     </td>
                                 </tr>
@@ -140,14 +141,16 @@
                                 @foreach ($itens as $item)
                                     <tr class="row1" data-id="{{ $item->id }}">
                                         @if (!$item->image)
+                                            <td>{{$item->title}}</td>
                                             <td class="table-center" title="{{ $item->title }}">
                                                 Imagem : <input type="file" data-id="{{ $item->id }}" id="productimage" name="productimage" class="form-control">
                                                 @php $item_id = $item->id @endphp
                                             </td>
                                         @else
-                                            <td>{{ $item->title }}</td>
+                                            <td>{{$item->title}}</td>
+                                            <td title="{{ $item->name }}" ><img src="/images/products/product/{{ $item->image }}" width="80px"></td>
                                         @endif
-                                        <td class="d-flex justify-content-end">                                            
+                                        <td style="display: block">                                            
                                             @if($item->highlight == 1)                                            
                                                 <a href="{{ route('produtos.destaque', $item->id) }}" title="Remover Destaque" class="btn btn-sm button-admin-highlight-true"><i class="fas fa-star"></i></a>
                                             @else
@@ -159,6 +162,7 @@
                                                 <a href="{{ route('produtos.alternar', $item->id) }}" title="Ativar Produto" class="btn btn-sm button-admin-toggle-danger"><i class="fas fa-user-times"></i></a>
                                             @endif
                                             <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+                                            <a href="{{ route('produtos.cores', $item->id) }}" title="Cadastrar Cores para este Produto" class="btn btn-sm button-admin-colors"><i class="fas fa-palette"></i></a><br>
                                             <a href="{{ route('produtos.galeria', $item->id) }}" title="Cadastrar Galeria para este Produto" class="btn btn-sm button-admin-gallery"><i class="fas fa-image"></i></a>
                                             <a href="{{ route('produtos.edicao', $item->id) }}" title="Editar Produto" class="btn btn-sm button-admin-edit"><i class="fas fa-marker"></i></a>
                                             <a href="{{ route('produtos.deletar', $item->id) }}" title="Deletar Produto" class="btn btn-sm delete-confirm button-admin-delete"><i class="fas fa-trash-alt"></i></a>

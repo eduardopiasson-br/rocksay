@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\DeliverysController;
 use App\Http\Controllers\Admin\FeedbacksController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\ProductColorController;
 use App\Http\Controllers\Admin\ProductGalleryController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\UserController;
@@ -142,4 +143,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('gerenciar/produtos/{product_id}/galeria/alternar/{image_id}', [ProductGalleryController::class, 'toggle'])->name('produtos.galeria.alternar');
     Route::post('gerenciar/produtos/{product_id}/galeria/cortar/{image_id}', [ProductGalleryController::class, 'crop'])->name('produtos.galeria.cortar');
     Route::get('gerenciar/produtos/{product_id}/galeria/deletar/{image_id}', [ProductGalleryController::class, 'destroy'])->name('produtos.galeria.deletar');
+
+    // Rotas de Cores do Produtos
+    Route::get('gerenciar/produtos/{product_id}/cores', [ProductColorController::class, 'index'])->name('produtos.cores');
+    Route::post('gerenciar/produtos/{product_id}/cores/cadastro', [ProductColorController::class, 'store'])->name('produtos.cores.cadastro');
+    Route::get('gerenciar/produtos/{product_id}/cores/edicao/{image_id}', [ProductColorController::class, 'edit'])->name('produtos.cores.edicao');
+    Route::put('gerenciar/produtos/{product_id}/cores/atualizacao', [ProductColorController::class, 'update'])->name('produtos.cores.atualizacao');
+    Route::get('gerenciar/produtos/{product_id}/cores/alternar/{image_id}', [ProductColorController::class, 'toggle'])->name('produtos.cores.alternar');
+    Route::get('gerenciar/produtos/{product_id}/cores/deletar/{image_id}', [ProductColorController::class, 'destroy'])->name('produtos.cores.deletar');
 });

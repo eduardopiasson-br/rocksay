@@ -95,6 +95,16 @@
     background-color: #000;
     border: 1px solid #007194;
 }
+.button-admin-colors {
+    margin: 1px;
+    color:#880094;
+    border: 1px solid #880094;
+}
+.button-admin-colors:hover {
+    color:#880094;
+    background-color: #000;
+    border: 1px solid #880094;
+}
 .dashboard-content {
     background-image: url('../img/moda123.png');
 }
@@ -162,4 +172,10 @@ tbody {
 }
 .table-center {
     text-align: center;
+}
+.btn-sm{
+    width: 37px!important;
+}
+.nav-product {
+    border: 1px solid;
 }
