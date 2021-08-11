@@ -8,28 +8,16 @@
                 <div class="col-md-12">
                     <div class="card data-tables" style="flex-direction: inherit; flex-wrap: wrap">
 
-                        <div class="card-header col-md-12">
-                            <div class="row align-items-center">
-                                <div class="col-6">
-                                    @if (!empty($payment))
-                                        <h3 class="mt-0 top-title"><i class="fas fa-hand-holding-usd"></i> Editar Pagamento <a
-                                                href="{{ route('pagamentos') }}" title="Voltar para cadastros"
-                                                class="btn btn-ces"><i class="fas fa-hand-holding-usd"></i></a></h3>
-                                    @else
-                                        <h3 class="mt-0 top-title"><i class="fas fa-hand-holding-usd"></i> Cadastrar Pagamento</h3>
-                                    @endif
-                                </div>
-                                <div class="col-6">
-                                    <h3 class="mt-0 top-title"><i class="fas fa-clipboard-list"></i>
-                                        Tipos de Pagamentos
-                                        <a href="{{ route('pagamentos') }}" title="Recarregar Pagamentos"
-                                            class="btn btn-ces"><i class="fas fa-sync"></i></a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="col-md-6">
+                            <div class="col-12 card-body">
+                                @if (!empty($payment))
+                                    <h3 class="mt-0 top-title"><i class="fas fa-hand-holding-usd"></i> Editar Pagamento <a
+                                            href="{{ route('pagamentos') }}" title="Voltar para cadastros"
+                                            class="btn btn-ces"><i class="fas fa-hand-holding-usd"></i></a></h3>
+                                @else
+                                    <h3 class="mt-0 top-title"><i class="fas fa-hand-holding-usd"></i> Cadastrar Pagamento</h3>
+                                @endif
+                            </div>
                             <form method="post" @if (!empty($payment)) action="{{ route('pagamentos.atualizacao') }}" @else action="{{ route('pagamentos.cadastro') }}" @endif autocomplete="off" enctype="multipart/form-data">
                                 @csrf
 
@@ -91,7 +79,14 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-6 card-body table-full-width table-responsive table-ces">
+                        <div class="col-md-6 table-full-width table-responsive table-ces">
+                            <div class="col-12 card-body">
+                                <h3 class="mt-0 top-title"><i class="fas fa-clipboard-list"></i>
+                                    Tipos de Pagamentos
+                                    <a href="{{ route('pagamentos') }}" title="Recarregar Pagamentos"
+                                        class="btn btn-ces"><i class="fas fa-sync"></i></a>
+                                </h3>
+                            </div>
                             <table class="table table-hover table-stripeds">
                                 <thead>
                                     <tr class="col-md-12">

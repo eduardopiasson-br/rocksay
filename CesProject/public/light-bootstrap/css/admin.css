@@ -16,7 +16,7 @@
     margin-bottom: 0px
 }
 .button-admin-delete {
-    margin: 1px;
+    margin: 4px 1px 1px;
     color:rgb(138, 0, 0);
     border: 1px solid rgb(138, 0, 0);
 }
@@ -26,7 +26,7 @@
     border: 1px solid rgb(138, 0, 0);
 }
 .button-admin-edit {
-    margin: 1px;
+    margin: 4px 1px 1px;
     color:rgb(177, 177, 0);
     border: 1px solid rgb(177, 177, 0);
 }
@@ -36,7 +36,7 @@
     border: 1px solid rgb(177, 177, 0);
 }
 .button-admin-info {
-    margin: 1px;
+    margin: 4px 1px 1px;
     color:rgb(0, 71, 177);
     border: 1px solid rgb(0, 71, 177);
 }
@@ -46,7 +46,7 @@
     border: 1px solid rgb(0, 71, 177);
 }
 .button-admin-toggle-danger {
-    margin: 1px;
+    margin: 4px 1px 1px;
     color:rgb(196, 0, 0);
     border: 1px solid rgb(196, 0, 0);
 }
@@ -56,7 +56,7 @@
     border: 1px solid rgb(196, 0, 0);
 }
 .button-admin-toggle-success {
-    margin: 1px;
+    margin: 4px 1px 1px;
     color:rgb(0, 109, 0);
     border: 1px solid rgb(0, 109, 0);
 }
@@ -66,7 +66,7 @@
     border: 1px solid rgb(0, 109, 0);
 }
 .button-admin-highlight-true {
-    margin: 1px;
+    margin: 4px 1px 1px;
     color:#ff8585;
     border: 1px solid #ff8585;
 }
@@ -76,7 +76,7 @@
     border: 1px solid #ff8585;
 }
 .button-admin-highlight-false {
-    margin: 1px;
+    margin: 4px 1px 1px;
     color:#747474;
     border: 1px solid #747474;
 }
@@ -86,7 +86,7 @@
     border: 1px solid #747474;
 }
 .button-admin-gallery {
-    margin: 1px;
+    margin: 4px 1px 1px;
     color:#007194;
     border: 1px solid #007194;
 }
@@ -96,7 +96,7 @@
     border: 1px solid #007194;
 }
 .button-admin-colors {
-    margin: 1px;
+    margin: 4px 1px 1px;
     color:#880094;
     border: 1px solid #880094;
 }
@@ -105,12 +105,9 @@
     background-color: #000;
     border: 1px solid #880094;
 }
-.dashboard-content {
+/* .dashboard-content {
     background-image: url('../img/moda123.png');
-}
-.container-notes {
-    opacity: 0.8;
-}
+} */
 table {
     border: 5px double #ffbaba;
 }
@@ -178,4 +175,128 @@ tbody {
 }
 .nav-product {
     border: 1px solid;
+}
+.user-mobile {
+    display: none;
+}
+
+/* start datatable custom css */
+
+.dataTables_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dataTables_wrapper select {
+    padding: 8px;
+    background-color: #ffbaba;
+}
+
+.dataTables_length {
+    max-width: 50%;
+}
+
+.dataTables_filter {
+    max-width: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dataTables_filter input {
+    padding: 6px;
+    margin-left: 1px;
+    background-color: #ffbaba;
+}
+
+.dataTables_info {
+    width: 100%;
+    text-align: center;
+    margin-top: -10px;
+}
+
+.paginate_button {
+    border: 1px solid #000000;
+    background-color: #ffbaba;
+    padding: 5px 7px;
+    cursor: pointer;
+    color: #000000;
+}
+
+.paginate_button:hover {
+    border: 1px solid #ffbaba;
+    background-color: #000000;
+    padding: 5px 7px;
+    cursor: pointer;
+    color: #ffbaba;
+}
+
+.paging_simple_numbers {
+    margin: 5px auto 25px;
+}
+
+.div-checkbox {
+    display: inline-block;
+}
+
+.checkbox-admin {
+    height: 20px;
+    width: 25px;
+}
+
+.checkbox-name-admin {
+    margin-right: 20px;
+    color: #000000!important;
+    vertical-align: middle;
+    margin-left: -6px;
+    margin-top: -5px;
+}
+
+.show-multiple-image-preview img {
+    max-width: 27%;
+    margin: 5px;
+    padding: 5px;
+    box-shadow: 0px 0px 5px -2px #000000;
+}
+
+td img {
+    display: flex;
+    padding: 4px;
+    margin: 0 auto;
+    max-width: 80px;
+    box-shadow: 0px 0px 5px -2px #000000;
+}
+
+/* end datatable custom css */
+
+/* Responsive */
+@media only screen and (max-width: 991px) {
+    .user-mobile {
+        display: block;
+    }
+    .user-button {
+        color: #ffffff; 
+        border-color: #ffffff;
+        margin: 20px auto -20px!important;
+        display: flex;
+    }
+    .user-button:hover {
+        color: #ffffff; 
+        background-color: #000;
+        border-color: #ffffff
+    }
+    .container-fluid {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .card-header {
+        margin-bottom: 20px;
+    }
+    .navbar {
+        max-height: 90px;
+        color: #ff8585;
+    }
+    .dataTables_length {
+        max-width: 100%;
+    }
 }

@@ -94,7 +94,7 @@
                             <tbody id="tablecontents">
                                 @foreach ($gallery as $image)
                                     <tr class="row1" data-id="{{ $image->id }}" style="cursor: n-resize" title="Clique e arraste para reordenar...">
-                                        <td>{{ $image->name }}</td>
+                                        <td>@if(!empty($image->name)){{ $image->name }}@else <i>* Sem Nome</i> @endif</td>
                                         <td title="{{ $image->name }}" ><img src="/images/about/{{ $image->image }}" width="100px"></td>
                                         <td class="d-flex justify-content-end">
                                             @if($image->status == 1)                                            

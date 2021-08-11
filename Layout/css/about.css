@@ -14,7 +14,7 @@
     color: #ffffff;
     margin-top: -74px;
     margin-right: 2px;
-    font-size: 41px;
+    font-size: 41px!important;
 }
 
 .about-h2 {
@@ -23,7 +23,7 @@
     margin: 30px;
 }
 
-.about-p {
+.text-about p {
     font-size: 19px;
 }
 

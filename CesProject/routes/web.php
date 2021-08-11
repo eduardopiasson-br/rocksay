@@ -10,10 +10,12 @@ use App\Http\Controllers\Admin\DeliverysController;
 use App\Http\Controllers\Admin\FeedbacksController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\ProductCategoriesController;
 use App\Http\Controllers\Admin\ProductColorController;
 use App\Http\Controllers\Admin\ProductGalleryController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,15 +29,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [SiteController::class, 'index']);
+Route::get('/sobre-a-loja', [SiteController::class, 'about']);
+Route::get('/produtos', [SiteController::class, 'products']);
+Route::get('/produto/{product_id}/{product_name}', [SiteController::class, 'product_selected']);
+Route::get('/post/{post_id}/{post_name}', [SiteController::class, 'post_selected']);
+Route::get('/blog-c&s', [SiteController::class, 'blog']);
+Route::get('/feedback', [SiteController::class, 'feedback']);
+Route::get('/contatos', [SiteController::class, 'contact']);
 
 Auth::routes();
-Route::get('gerenciar/painel-de-controle', [HomeController::class, 'index'])->name('painel-de-controle');
-
 Route::group(['middleware' => 'auth'], function () {
     // Rotas iniciais
+    Route::get('gerenciar/painel-de-controle', [HomeController::class, 'index'])->name('painel-de-controle');
     Route::post('gerenciar/anotacoes/salvar', [HomeController::class, 'store_notes'])->name('anotacoes.salvar');
 
     // Rotas de usuários
@@ -116,12 +122,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Rotas de Galeria de Blogs
     Route::get('gerenciar/blog/{blog_id}/galeria', [BlogGalleryController::class, 'index'])->name('blog.galeria');
-    Route::post('gerenciar/blog/{blog_id}/galeria/cadastro', [BlogGalleryController::class, 'store'])->name('blog.galeria.cadastro');
+    Route::post('gerenciar/blog/{blog_id}/galeria/cadastro', [BlogGalleryController::class, 'saveUpload'])->name('blog.galeria.cadastro');
     Route::get('gerenciar/blog/{blog_id}/galeria/edicao/{image_id}', [BlogGalleryController::class, 'edit'])->name('blog.galeria.edicao');
     Route::put('gerenciar/blog/{blog_id}/galeria/atualizacao', [BlogGalleryController::class, 'update'])->name('blog.galeria.atualizacao');
     Route::post('gerenciar/blog/{blog_id}/galeria/reposicionar', [BlogGalleryController::class, 'reorder'])->name('blog.galeria.reposicionar');
     Route::get('gerenciar/blog/{blog_id}/galeria/alternar/{image_id}', [BlogGalleryController::class, 'toggle'])->name('blog.galeria.alternar');
-    Route::post('gerenciar/blog/{blog_id}/galeria/cortar/{image_id}', [BlogGalleryController::class, 'crop'])->name('blog.galeria.cortar');
     Route::get('gerenciar/blog/{blog_id}/galeria/deletar/{image_id}', [BlogGalleryController::class, 'destroy'])->name('blog.galeria.deletar');
 
     // Rotas de Produtos
@@ -130,18 +135,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('gerenciar/produtos/edicao/{id}', [ProductsController::class, 'edit'])->name('produtos.edicao');
     Route::put('gerenciar/produtos/atualizacao', [ProductsController::class, 'update'])->name('produtos.atualizacao');
     Route::get('gerenciar/produtos/alternar/{id}', [ProductsController::class, 'toggle'])->name('produtos.alternar');
-    Route::get('gerenciar/produtos/destaque/{id}', [ProductsController::class, 'highlight'])->name('produtos.destaque');
+    Route::get('gerenciar/produtos/estoque/{id}', [ProductsController::class, 'stock'])->name('produtos.estoque');
     Route::post('gerenciar/produtos/cortar/{id}', [ProductsController::class, 'crop'])->name('produtos.cortar');
     Route::get('gerenciar/produtos/deletar/{id}', [ProductsController::class, 'destroy'])->name('produtos.deletar');
 
     // Rotas de Galeria de Produtos
     Route::get('gerenciar/produtos/{product_id}/galeria', [ProductGalleryController::class, 'index'])->name('produtos.galeria');
-    Route::post('gerenciar/produtos/{product_id}/galeria/cadastro', [ProductGalleryController::class, 'store'])->name('produtos.galeria.cadastro');
-    Route::get('gerenciar/produtos/{product_id}/galeria/edicao/{image_id}', [ProductGalleryController::class, 'edit'])->name('produtos.galeria.edicao');
-    Route::put('gerenciar/produtos/{product_id}/galeria/atualizacao', [ProductGalleryController::class, 'update'])->name('produtos.galeria.atualizacao');
+    Route::post('gerenciar/produtos/{product_id}/galeria/cadastro', [ProductGalleryController::class, 'saveUpload'])->name('produtos.galeria.cadastro');
     Route::post('gerenciar/produtos/{product_id}/galeria/reposicionar', [ProductGalleryController::class, 'reorder'])->name('produtos.galeria.reposicionar');
     Route::get('gerenciar/produtos/{product_id}/galeria/alternar/{image_id}', [ProductGalleryController::class, 'toggle'])->name('produtos.galeria.alternar');
-    Route::post('gerenciar/produtos/{product_id}/galeria/cortar/{image_id}', [ProductGalleryController::class, 'crop'])->name('produtos.galeria.cortar');
     Route::get('gerenciar/produtos/{product_id}/galeria/deletar/{image_id}', [ProductGalleryController::class, 'destroy'])->name('produtos.galeria.deletar');
 
     // Rotas de Cores do Produtos
@@ -151,4 +153,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('gerenciar/produtos/{product_id}/cores/atualizacao', [ProductColorController::class, 'update'])->name('produtos.cores.atualizacao');
     Route::get('gerenciar/produtos/{product_id}/cores/alternar/{image_id}', [ProductColorController::class, 'toggle'])->name('produtos.cores.alternar');
     Route::get('gerenciar/produtos/{product_id}/cores/deletar/{image_id}', [ProductColorController::class, 'destroy'])->name('produtos.cores.deletar');
+
+    // Rotas de Categorias
+    Route::get('gerenciar/categorias', [ProductCategoriesController::class, 'index'])->name('categorias');
+    Route::post('gerenciar/categorias/cadastro', [ProductCategoriesController::class, 'store'])->name('categorias.cadastro');
+    Route::get('gerenciar/categorias/edicao/{id}', [ProductCategoriesController::class, 'edit'])->name('categorias.edicao');
+    Route::put('gerenciar/categorias/atualizacao', [ProductCategoriesController::class, 'update'])->name('categorias.atualizacao');
+    Route::post('gerenciar/categorias/reposicionar', [ProductCategoriesController::class, 'reorder'])->name('categorias.reposicionar');
+    Route::get('gerenciar/categorias/alternar/{id}', [ProductCategoriesController::class, 'toggle'])->name('categorias.alternar');
+    Route::post('gerenciar/categorias/cortar/{id}', [ProductCategoriesController::class, 'crop'])->name('categorias.cortar');
+    Route::get('gerenciar/categorias/deletar/{id}', [ProductCategoriesController::class, 'destroy'])->name('categorias.deletar');
 });

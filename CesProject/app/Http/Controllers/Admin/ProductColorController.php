@@ -60,16 +60,16 @@ class ProductColorController extends Controller
         $img = ProductColor::find($request->input('id'));
         if(!$img) {
             toast('Cor não encontrada!', 'error');
-            return redirect()->route('produtos.colors', $product_id);
+            return redirect()->route('produtos.cores', $product_id);
         }
 
         if($img->update($request->validated())){
             toast('Cor atualizada com sucesso!', 'success');
-            return redirect()->route('produtos.colors', $product_id);
+            return redirect()->route('produtos.cores', $product_id);
         }
 
         toast('Cor não pode ser atualizada!', 'error');
-        return redirect()->route('produtos.colors', $product_id);
+        return redirect()->route('produtos.cores', $product_id);
     }
 
     /**
@@ -105,15 +105,15 @@ class ProductColorController extends Controller
         $color = ProductColor::find($id);
         if(empty($color)) {
             toast('Cor não encontrada!', 'error');
-            return back();
+            return redirect()->route('produtos.cores', $product_id);
         }
 
         if(!$color->delete()) {
             toast('Cor não pode ser deletada!', 'error');
-            return back();
+            return redirect()->route('produtos.cores', $product_id);
         }
 
         toast('Cor deletada com sucesso!', 'success');
-        return back();
+        return redirect()->route('produtos.cores', $product_id);
     }
 }

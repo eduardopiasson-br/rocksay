@@ -7,27 +7,15 @@
             <div class="col-md-12">
                 <div class="card data-tables" style="flex-direction: inherit; flex-wrap: wrap">
 
-                    {{-- Títulos para os campos da página --}}
-                    <div class="card-header col-md-12">
-                        <div class="row align-items-center">
-                            <div class="col-6">
-                                @if(!empty($item->title))
-                                    <h3 class="mt-0 top-title"><i class="fas fa-blog"></i> Editar Post <a href="{{ route('blog') }}" title="Voltar para cadastros" class="btn btn-ces"><i class="fas fa-undo"></i></a></h3>
-                                @else
-                                    <h3 class="mt-0 top-title"><i class="fas fa-blog"></i> Cadastrar Post</h3>
-                                @endif
-                            </div>
-                            <div class="col-6">
-                                <h3 class="mt-0 top-title"><i class="fas fa-clipboard-list"></i> 
-                                    Posts Cadastrados
-                                    <a href="{{ route('blog') }}" title="Recarregar Posts" class="btn btn-ces"><i class="fas fa-sync"></i></a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-
                     {{-- Formulário de Cadastro/Atualização --}}
                     <div class="col-md-6">
+                        <div class="col-12 card-body">
+                            @if(!empty($item->title))
+                                <h3 class="mt-0 top-title"><i class="fas fa-blog"></i> Editar Post <a href="{{ route('blog') }}" title="Voltar para cadastros" class="btn btn-ces"><i class="fas fa-undo"></i></a></h3>
+                            @else
+                                <h3 class="mt-0 top-title"><i class="fas fa-blog"></i> Cadastrar Post</h3>
+                            @endif
+                        </div>
                         <form method="post" @if(!empty($item->title)) action="{{ route('blog.atualizacao') }}" @else action="{{ route('blog.cadastro') }}" @endif autocomplete="off" enctype="multipart/form-data">
                         @csrf
 
@@ -161,18 +149,27 @@
                         </form>
                     </div>
                     
-                    <div class="col-md-6 card-body table-full-width table-responsive table-ces">
-                        <table class="table table-hover table-stripeds">
+                    <div class="col-md-6 table-full-width table-responsive table-ces">
+                        <div class="col-12 card-body">
+                            <h3 class="mt-0 top-title"><i class="fas fa-clipboard-list"></i> 
+                                Posts Cadastrados
+                                <a href="{{ route('blog') }}" title="Recarregar Posts" class="btn btn-ces"><i class="fas fa-sync"></i></a>
+                            </h3>
+                        </div>
+
+                        <table id="blogtable" class="table table-hover table-stripeds">
                             <thead>
                                 <tr class="col-md-12">
+                                    <td class="col-md-1"><b>#</b></td>
                                     <td class="col-md-8"><b>Título</b></td>
                                     <td style="display: block">
                                     </td>
                                 </tr>
                             </thead>
                             <tbody id="tablecontents">
-                                @foreach ($itens as $item)
+                                @foreach ($itens as $k => $item)
                                     <tr class="row1" data-id="{{ $item->id }}">
+                                        <td>{{ $k }}</td>
                                         @if (!$item->image)
                                             <td class="table-center" title="{{ $item->title }}">
                                                 Imagem : <input type="file" data-id="{{ $item->id }}" id="blogimage" name="blogimage" class="form-control">
@@ -281,5 +278,18 @@
             $("#video")[0].src = "https://www.youtube.com/embed/" + url;
             $("#video").show();
         });
+    </script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#blogtable').DataTable( {
+            "order": [[ 0, "desc" ]],
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json"
+            }
+        } );
+    } );
     </script>
 @endpush

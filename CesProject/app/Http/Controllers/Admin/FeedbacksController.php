@@ -133,16 +133,20 @@ class FeedbacksController extends Controller
         $feedback = Feedbacks::find($id);
         if(empty($feedback)) {
             toast('Feedback não encontrado!', 'error');
-            return back();
+            return redirect()->route('feedback');
         }
 
         if(!$feedback->delete()) {
             toast('Feedback não pode ser deletado!', 'error');
-            return back();
+            return redirect()->route('feedback');
         }
 
+        $config_image = $feedback->image;
+        if(!empty($config_image)) {
+            unlink('images/feedback/' . $config_image);
+        }
         toast('Feedback deletado com sucesso!', 'success');
-        return back();
+        return redirect()->route('feedback');
     }
 
     /**
@@ -165,7 +169,7 @@ class FeedbacksController extends Controller
         if($move) {
             $config = Feedbacks::find($id);
             $config_image = $config->image;
-            if($config_image != '') {
+            if(!empty($config_image)) {
                 unlink($destination . $config_image);
             }
             Feedbacks::find($id)->update(['image' => $name_image]);

@@ -7,22 +7,14 @@
             <div class="col-md-12">
                 <div class="card data-tables" style="flex-direction: inherit; flex-wrap: wrap">
 
-                    <div class="card-header col-md-12">
-                        <div class="row align-items-center">
-                            <div class="col-6">
-                                @if(!empty($user))
-                                    <h3 class="mt-0 top-title"><i class="fas fa-users"></i> Editar Usuário <a href="{{ route('usuarios') }}" title="Voltar para cadastros" class="btn btn-info">Voltar</a></h3>
-                                @else
-                                    <h3 class="mt-0 top-title"><i class="fas fa-users"></i> Cadastrar Usuários</h3>
-                                @endif
-                            </div>
-                            <div class="col-6">
-                                <h3 class="mt-0 top-title"><i class="fas fa-clipboard-list"></i> Listagem de Usuários</h3>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="col-md-6">
+                        <div class="col-12 card-body">
+                            @if(!empty($user))
+                                <h3 class="mt-0 top-title"><i class="fas fa-users"></i> Editar Usuário <a href="{{ route('usuarios') }}" title="Voltar para cadastros" class="btn btn-info">Voltar</a></h3>
+                            @else
+                                <h3 class="mt-0 top-title"><i class="fas fa-users"></i> Cadastrar Usuários</h3>
+                            @endif
+                        </div>
                         <form method="post" @if(!empty($user)) action="{{ route('usuarios.atualizacao') }}" @else action="{{ route('usuarios.cadastro') }}" @endif autocomplete="off" enctype="multipart/form-data">
                         @csrf
 
@@ -70,7 +62,10 @@
                         </form>
                     </div>
                     
-                    <div class="col-md-6 card-body table-full-width table-responsive">
+                    <div class="col-md-6 table-full-width table-responsive">
+                        <div class="col-12 card-body">
+                            <h3 class="mt-0 top-title"><i class="fas fa-clipboard-list"></i> Listagem de Usuários</h3>
+                        </div>
                         <table class="table table-hover table-stripeds">
                             <thead>
                                 <tr class="col-md-12">

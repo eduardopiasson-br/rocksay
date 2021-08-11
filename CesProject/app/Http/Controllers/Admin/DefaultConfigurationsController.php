@@ -77,7 +77,7 @@ class DefaultConfigurationsController extends Controller
         if($move) {
             $config = DefaultConfiguration::find(1);
             $config_image = $config->image;
-            if($config_image != '') {
+            if(!empty($config_image)) {
                 unlink($destination . $config_image);
             }
             DefaultConfiguration::find(1)->update(['image' => $name_image]);

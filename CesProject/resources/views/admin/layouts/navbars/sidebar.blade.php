@@ -6,9 +6,25 @@ Tip 2: you can also add an image using data-image tag
 -->
     <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="" class="simple-text">
+            <a href="{{ url('/') }}" class="simple-text">
                 {{ __("Cutie & Sweet") }}
             </a>
+        </div>
+        <div class="dropdown user-mobile">
+            <button class="btn dropdown-toggle user-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-cog"></i> {{ auth()->user()->name }}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="nav-link text-warning" href=" {{ route('usuarios.edicao', auth()->user()->id) }} ">
+                    <i class="fas fa-pen-square"></i> {{ __('Editar Dados') }}
+                </a>
+                <form class="nav-link" id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <a class="text-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-sign-out-alt"></i> {{ __('Desconectar') }} 
+                    </a>
+                </form>
+            </div>
         </div>
         <ul class="nav">
             <li class="nav-item @if($activePage == 'dashboard') active @endif">
@@ -33,6 +49,12 @@ Tip 2: you can also add an image using data-image tag
                 <a class="nav-link" href="{{ route('sobre') }}">
                     <i class="fas fa-heart"></i>
                     <p>{{ __("Sobre a C&S") }}</p>
+                </a>
+            </li>
+            <li class="nav-item @if($activePage == 'categories') active @endif">
+                <a class="nav-link" href="{{ route('categorias') }}">
+                    <i class="fab fa-pied-piper-hat"></i>
+                    <p>{{ __("Categorias") }}</p>
                 </a>
             </li>
             <li class="nav-item @if($activePage == 'products') active @endif">

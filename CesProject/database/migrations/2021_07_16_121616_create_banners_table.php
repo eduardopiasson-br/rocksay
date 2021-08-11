@@ -18,7 +18,7 @@ class CreateBannersTable extends Migration
             $table->string('name', 150);
             $table->text('image_desktop')->nullable();
             $table->text('image_mobile')->nullable();
-            $table->string('whatsapp', 14)->nullable();
+            $table->string('whatsapp', 15)->nullable();
             $table->text('facebook')->nullable();
             $table->text('instagram')->nullable();
             $table->text('site')->nullable();

@@ -130,15 +130,15 @@ class DeliverysController extends Controller
         $delivery = Deliverys::find($id);
         if(empty($delivery)) {
             toast('Entrega não encontrada!', 'error');
-            return back();
+            return redirect()->route('entregas');
         }
 
         if(!$delivery->delete()) {
             toast('Entrega não pode ser deletada!', 'error');
-            return back();
+            return redirect()->route('entregas');
         }
 
         toast('Entrega deletada com sucesso!', 'success');
-        return back();
+        return redirect()->route('entregas');
     }
 }

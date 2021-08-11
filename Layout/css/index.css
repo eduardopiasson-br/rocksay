@@ -259,7 +259,12 @@
     color: #ffbaba;
 }
 
-.new-p {
+.new-div p {
+    line-height: 2;
+    padding: 0px 10px;
+}
+
+.new-div-2 p {
     line-height: 2;
     padding: 0px 10px;
 }
@@ -375,7 +380,11 @@
         display: block;
     }
 
-    .new-p {
+    .new-div p {
+        text-align: center;
+    }
+
+    .new-div-2 p {
         text-align: center;
     }
 

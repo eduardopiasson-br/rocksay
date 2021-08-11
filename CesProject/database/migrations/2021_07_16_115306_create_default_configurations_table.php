@@ -20,9 +20,9 @@ class CreateDefaultConfigurationsTable extends Migration
             $table->string('address', 250);
             $table->text('link_address')->nullable();
             $table->text('footer_text');
-            $table->string('phone', 14)->nullable();
-            $table->string('whatsapp', 14)->nullable();
-            $table->string('telegram', 14)->nullable();
+            $table->string('phone', 15)->nullable();
+            $table->string('whatsapp', 15)->nullable();
+            $table->string('telegram', 15)->nullable();
             $table->text('instagram')->nullable();
             $table->text('facebook')->nullable();
             $table->string('email', 100);

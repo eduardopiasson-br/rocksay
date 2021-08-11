@@ -27,7 +27,7 @@ class BannersRequest extends FormRequest
             'name' => ['required', 'max:150'],
             'image_desktop' => [''],
             'image_mobile' => [''],
-            'whatsapp' => ['max:14'],
+            'whatsapp' => ['max:15'],
             'facebook' => [''],
             'instagram' => [''],
             'site' => [''],

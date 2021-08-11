@@ -1,7 +1,7 @@
-@extends('layouts.app', ['activePage' => 'login', 'title' => 'Light Bootstrap Dashboard Laravel by Creative Tim & UPDIVISION'])
+@extends('auth.layouts.app', ['activePage' => 'login', 'title' => 'Cutie And Sweet - Moda Fashion'])
 
 @section('content')
-    <div class="full-page section-image" data-color="black" data-image="{{asset('light-bootstrap/img/full-screen-image-2.jpg')}}">
+    <div class="full-page section-image" data-color="black" data-image="{{asset('light-bootstrap/img/cutie-and-sweet-moda-fashion.png')}}">
         <div class="content">
             <div class="container">
                 <div class="row justify-content-center">
@@ -9,7 +9,7 @@
                         <form method="POST" action="{{ route('password.email') }}">
                             @csrf
                             <div class="card card-login card-hidden">
-                                <div class="card-header">{{ __('Reset Password') }}</div>
+                                <div class="card-header">{{ __('Redefinir senha') }}</div>
 
                                 <div class="card-body">
                                     @include('alerts.success')

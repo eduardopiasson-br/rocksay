@@ -41,27 +41,31 @@
                         <input type="text" hidden id="position" name="position" value="{{ $max_position ?? 1 }}">
                         <input type="text" name="user_id" value="{{ auth()->user()->id }}" hidden>
                         <div class="row">
-                            <div class="col-md-3 form-group">
+                            <div class="col-md-12 form-group">
                                 <label class="form-control-label" for="input-name">
                                     {{ __('Nome') }} <i class="text-danger">*</i>
                                 </label>
                                 <input type="text" name="name" id="input-name" class="form-control" value="{{ $feed->name ?? old('name') }}"  placeholder="Nome da pessoa que mandou o feedback...">
-                            </div>
-                            @if(empty($feed->image))
-                                <div class="col-md-9 form-group">
+                            </div>                            
+                        </div>
+                        @if(empty($feed->image))
+                            <div class="row">
+                                <div class="col-md-12 form-group">
                                     <label class="form-control-label" for="input-text">
                                         {{ __('Feedback Texto') }}
                                     </label>
-                                    <textarea type="text" id="text" name="text" class="form-control" maxlength="300" placeholder="Feedback descritivo...">{{ $feed->text ?? old('text') }}</textarea>
+                                    <textarea type="text" id="summary-ckeditor" name="text" class="form-control" maxlength="300" placeholder="Feedback descritivo...">{{ $feed->text ?? old('text') }}</textarea>
                                 </div>
-                            @endif
-                            @if(!empty($feed->image))
-                                <div class="col-md-9 form-group div-image-about">
-                                    <label>Imagem Cadastrada:</label>
-                                    <img src="/images/feedback/{{ $feed->image }}" width="400px">
+                            </div>
+                        @endif
+                        @if(!empty($feed->image))
+                            <div class="row">
+                                <div class="col-md-12 form-group div-image-about">
+                                    <label class="form-control-label" for="input-text">Imagem Cadastrada:</label>
+                                    <img style="max-width: 100%;" src="/images/feedback/{{ $feed->image }}" width="400px">
                                 </div>
-                            @endif
-                        </div>         
+                            </div>
+                        @endif     
                         <div class="form-group d-flex justify-content-center">
                             <button type="submit" class="btn btn-success mr-1" title="Salvar Dados">Salvar</button>
                             <button type="reset" class="btn btn-warning ml-1" title="Restaurar Dados">Restaurar</button>
@@ -99,7 +103,7 @@
                                         @if($feed->image != NULL)
                                             <td title="{{ $feed->name }}"class="table-center"><img src="/images/feedback/{{ $feed->image }}" width="100px"></td>
                                         @elseif ($feed->text != NULL)
-                                            <td class="limit-text">{{$feed->text}}</td>
+                                            <td class="limit-text"><?= $feed->text ?></td>
                                         @else
                                             <td class="table-center">
                                                 <input type="file" data-id="{{ $feed->id }}" id="feedbackimage" name="feedbackimage" class="form-control" placeholder="Imagem Padrão">
@@ -233,4 +237,8 @@
         }
       });
     </script>
+        <script>
+            // Script TextArea
+            CKEDITOR.replace( 'summary-ckeditor' );
+        </script>
 @endpush

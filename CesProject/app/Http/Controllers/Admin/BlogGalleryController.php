@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\BlogGalleryRequest;
 use App\Models\BlogGalleries;
+use App\Models\Blogs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BlogGalleryController extends Controller
 {
@@ -28,24 +30,52 @@ class BlogGalleryController extends Controller
      * @param  \App\Http\Requests\Admin\BlogGalleryRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(BlogGalleryRequest $request, $blog_id)
+    public function saveUpload(Request $request, $blog_id)
     {
-        $input = $request->validated();
-  
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/blogs/gallery/';
-            $profileImage = $blog_id . '-' . date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        }
+         
+        $max_position = BlogGalleries::max('position') + 1;
+        $blog = Blogs::find($blog_id);
+        $validatedData = $request->validate([
+            'images' => 'required',
+            'images.*' => 'mimes:jpg,png,jpeg,gif,svg',
+            'name' => ['max:150'],
+        ]);
+ 
+        if($request->TotalImages > 0)
+        {
+                
+            for ($x = 0; $x < $request->TotalImages; $x++) 
+            {
+    
+                if ($request->hasFile('images'.$x)) 
+                    {
+                        $file      = $request->file('images'.$x);
+    
+                        $outro = $request->input('name') ? Str::of($request->input('name'))->slug('-') : Str::of($blog->title)->slug('-');
+                        $name = $outro . '-' . date('YmdHis') . "-" .  $file->getClientOriginalName();
+                        $file->move('images/blogs/gallery/', $name);
 
-        if(BlogGalleries::create($input)){
-            toast('Imagem cadastrada com sucesso!', 'success');
-            return back();
+                        $insert[$x]['image'] = $name;
+                        $insert[$x]['name'] = $request->input('name') ? $request->input('name') : NULL;
+                        $insert[$x]['blog_id'] = $blog_id;
+                        $insert[$x]['user_id'] = auth()->user()->id;
+                        $insert[$x]['position'] = $max_position + ($x + 1);
+
+                    }
+            }
+ 
+            BlogGalleries::insert($insert);
+ 
+            toast('Imagens cadastradas com sucesso!', 'success');
+            return response()->json(['success'=>'Imagens cadastradas com sucesso!']);
         }
-        toast('Imagem não pode ser cadastrada!', 'error');
-        return back();
-    }
+        else
+        {
+            toast('Erro, tente novamente!', 'error');
+            return response()->json(["message" => "Tente Novamente!"]);
+        }
+ 
+    }  
 
     /**
      * Show the form for editing the image gallery.
@@ -70,6 +100,7 @@ class BlogGalleryController extends Controller
     public function update(BlogGalleryRequest $request, $blog_id)
     {
         $img = BlogGalleries::find($request->input('id'));
+        $blog = Blogs::find($blog_id);
         if(!$img) {
             toast('Imagem não encontrada!', 'error');
             return redirect()->route('blog.galeria', $blog_id);
@@ -79,9 +110,11 @@ class BlogGalleryController extends Controller
   
         if ($image = $request->file('image')) {
             $destinationPath = 'images/blogs/gallery/';
-            $profileImage = $blog_id . '-' . date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
+            unlink($destinationPath . $img->image);
+            $outro = $request->input('name') ? Str::of($request->input('name'))->slug('-') : Str::of($blog->title)->slug('-');
+            $name = $outro . '-' . date('YmdHis') . "-" .  $image->getClientOriginalName();
+            $image->move($destinationPath, $name);
+            $input['image'] = "$name";
         }else{
             unset($input['image']);
         }
@@ -149,15 +182,15 @@ class BlogGalleryController extends Controller
         $image = BlogGalleries::find($id);
         if(empty($image)) {
             toast('Imagem não encontrada!', 'error');
-            return back();
+            return redirect()->route('blog.galeria', $blog_id);
         }
 
         if(!$image->delete()) {
             toast('Imagem não pode ser deletada!', 'error');
-            return back();
+            return redirect()->route('blog.galeria', $blog_id);
         }
 
         toast('Imagem deletada com sucesso!', 'success');
-        return back();
+        return redirect()->route('blog.galeria', $blog_id);
     }
 }

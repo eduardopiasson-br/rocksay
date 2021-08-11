@@ -79,6 +79,7 @@ class AboutGalleriesController extends Controller
   
         if ($image = $request->file('image')) {
             $destinationPath = 'images/about/';
+            unlink($destinationPath . $img->image);
             $profileImage = $request->input('name') . '-' .date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['image'] = "$profileImage";
@@ -150,15 +151,15 @@ class AboutGalleriesController extends Controller
         $image = AboutGallery::find($id);
         if(empty($image)) {
             toast('Imagem não encontrada!', 'error');
-            return back();
+            return redirect()->route('sobre.galeria');
         }
 
         if(!$image->delete()) {
             toast('Imagem não pode ser deletada!', 'error');
-            return back();
+            return redirect()->route('sobre.galeria');
         }
 
         toast('Imagem deletada com sucesso!', 'success');
-        return back();
+        return redirect()->route('sobre.galeria');
     }
 }

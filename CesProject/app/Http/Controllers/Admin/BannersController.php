@@ -133,16 +133,24 @@ class BannersController extends Controller
         $banner = Banners::find($id);
         if(empty($banner)) {
             toast('Banner não encontrado!', 'error');
-            return back();
+            return redirect()->route('banners');
         }
 
         if(!$banner->delete()) {
             toast('Banner não pode ser deletado!', 'error');
-            return back();
+            return redirect()->route('banners');
         }
 
+        $config_image = $banner->image_desktop;
+        if(!empty($config_image)) {
+            unlink('images/banners/desktop/' . $config_image);
+        }
+        $config_image = $banner->image_mobile;
+        if(!empty($config_image)) {
+            unlink('images/banners/mobile/' . $config_image);
+        }
         toast('Banner deletado com sucesso!', 'success');
-        return back();
+        return redirect()->route('banners');
     }
 
     /**
@@ -164,8 +172,8 @@ class BannersController extends Controller
         }
         if($move) {
             $config = Banners::find($id);
-            $config_image = $config->image;
-            if($config_image != '') {
+            $config_image = $config->image_desktop;
+            if(!empty($config_image)) {
                 unlink($destination . $config_image);
             }
             Banners::find($id)->update(['image_desktop' => $name_image]);
@@ -193,8 +201,8 @@ class BannersController extends Controller
         }
         if($move) {
             $config = Banners::find($id);
-            $config_image = $config->image;
-            if($config_image != '') {
+            $config_image = $config->image_mobile;
+            if(!empty($config_image)) {
                 unlink($destination . $config_image);
             }
             Banners::find($id)->update(['image_mobile' => $name_image]);

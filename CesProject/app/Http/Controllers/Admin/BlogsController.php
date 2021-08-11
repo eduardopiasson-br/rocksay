@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\BlogRequest;
+use App\Models\BlogGalleries;
 use App\Models\Blogs;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class BlogsController extends Controller
     public function index(Blogs $model)
     {
         $item_id = 1;
-        $itens = $model->orderBy('start_post', 'asc')->paginate(10);
+        $itens = $model->orderBy('start_post', 'asc')->get();
         return view('admin.blogs.index', ['itens' => $itens, 'item_id' => $item_id]);
     }
 
@@ -46,7 +47,7 @@ class BlogsController extends Controller
      */
     public function edit(Blogs $model, $item_id)
     {
-        $itens =$model->orderBy('start_post', 'asc')->paginate(10);
+        $itens =$model->orderBy('start_post', 'asc')->get();
         $item = $model->find($item_id);
         $item_id = $item->id;
         return view('admin.blogs.index', ['itens' => $itens, 'item' => $item, 'item_id' => $item_id]);
@@ -130,16 +131,32 @@ class BlogsController extends Controller
         $item = Blogs::find($id);
         if(empty($item)) {
             toast('Post não encontrado!', 'error');
-            return back();
+            return redirect()->route('blog');
+        }
+
+        $related = BlogGalleries::where('blog_id', $item->id)->get();
+        if(!empty($related)) {
+            foreach($related as $img) {
+                $img_image = $img->image;
+                if(!empty($img_image)) {
+                    unlink('images/blogs/gallery/' . $img_image);
+                }
+                $img->delete();
+            }
         }
 
         if(!$item->delete()) {
             toast('Post não pode ser deletado!', 'error');
-            return back();
+            return redirect()->route('blog');
+        }
+
+        $config_image = $item->image;
+        if(!empty($config_image)) {
+            unlink('images/blogs/posts/' . $config_image);
         }
 
         toast('Post deletado com sucesso!', 'success');
-        return back();
+        return redirect()->route('blog');
     }
 
     /**
@@ -162,7 +179,7 @@ class BlogsController extends Controller
         if($move) {
             $config = Blogs::find($id);
             $config_image = $config->image;
-            if($config_image != '') {
+            if(!empty($config_image)) {
                 unlink($destination . $config_image);
             }
             Blogs::find($id)->update(['image' => $name_image]);

@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductsRequest;
+use App\Models\CategoriesAsProducts;
+use App\Models\ProductCategories;
+use App\Models\ProductColor;
+use App\Models\ProductGalleries;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
@@ -18,8 +22,9 @@ class ProductsController extends Controller
     public function index(Products $model)
     {
         $item_id = 1;
-        $itens = $model->orderBy('created_at', 'desc')->paginate(10);
-        return view('admin.products.index', ['itens' => $itens, 'item_id' => $item_id]);
+        $itens = $model->orderBy('created_at', 'desc')->get();
+        $categories = ProductCategories::orderBy('position', 'asc')->where('status', 1)->get();
+        return view('admin.products.index', ['itens' => $itens, 'item_id' => $item_id, 'categories' => $categories]);
     }
 
     /**
@@ -30,7 +35,9 @@ class ProductsController extends Controller
      */
     public function store(ProductsRequest $request)
     {
-        if(Products::create($request->validated())){
+        if($product = Products::create($request->validated())){
+            // return dd($request->input('categories'));
+            $product->categories()->sync($request->input('categories'));
             toast('Produto cadastrado com sucesso!', 'success');
             return back();
         }
@@ -46,10 +53,13 @@ class ProductsController extends Controller
      */
     public function edit(Products $model, $item_id)
     {
-        $itens =$model->orderBy('created_at', 'desc')->paginate(10);
+        $itens =$model->orderBy('created_at', 'desc')->get();
         $item = $model->find($item_id);
         $item_id = $item->id;
-        return view('admin.products.index', ['itens' => $itens, 'item' => $item, 'item_id' => $item_id]);
+        $item->load('categories');
+        // $item->categories = $model->categorories->where('product_id', $item->id)->get();
+        $categories = ProductCategories::orderBy('position', 'asc')->where('status', 1)->get();
+        return view('admin.products.index', ['itens' => $itens, 'item' => $item, 'item_id' => $item_id, 'categories' => $categories]);
     }
 
     /**
@@ -67,6 +77,10 @@ class ProductsController extends Controller
         }
 
         if($item->update($request->validated())){
+            // CategoriesAsProducts::where('product_id', $item->id)->delete();
+            // $item->assignRole($request->input('categories'));
+            $item->categories()->sync($request->input('categories', []));
+
             toast('Produto atualizado com sucesso!', 'success');
             return redirect()->route('produtos');
         }
@@ -98,12 +112,12 @@ class ProductsController extends Controller
     }
 
     /**
-     * Highlight the status of the selected item
+     * Toggle the stock of the selected item
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function highlight($id)
+    public function stock($id)
     {
         $item = Products::find($id);
 
@@ -112,10 +126,10 @@ class ProductsController extends Controller
             return back();
         }
 
-        $item->highlight = !$item->highlight;
+        $item->out_stock = !$item->out_stock;
         $item->save();
 
-        toast('Status de Destaque alterado!', 'success');
+        toast('Estoque do Produto alterado!', 'success');
         return back();
     }
 
@@ -130,16 +144,37 @@ class ProductsController extends Controller
         $item = Products::find($id);
         if(empty($item)) {
             toast('Produto não encontrado!', 'error');
-            return back();
+            return redirect()->route('produtos');
+        }
+
+        $related = ProductGalleries::where('product_id', $item->id)->get();
+        $related2 = ProductColor::where('product_id', $item->id)->get();
+        if(!empty($related)) {
+            foreach($related as $img) {
+                $img_image = $img->image;
+                if(!empty($img_image)) {
+                    unlink('images/products/gallery/' . $img_image);
+                }
+                $img->delete();
+            }
+        }
+        if(!empty($related2)) {
+            foreach($related2 as $color) {
+                $color->delete();
+            }
         }
 
         if(!$item->delete()) {
             toast('Produto não pode ser deletado!', 'error');
-            return back();
+            return redirect()->route('produtos');
         }
 
+        $config_image = $item->image;
+        if(!empty($config_image)) {
+            unlink('images/products/product/' . $config_image);
+        }
         toast('Produto deletado com sucesso!', 'success');
-        return back();
+        return redirect()->route('produtos');
     }
 
     /**
@@ -162,7 +197,7 @@ class ProductsController extends Controller
         if($move) {
             $config = Products::find($id);
             $config_image = $config->image;
-            if($config_image != '') {
+            if(!empty($config_image)) {
                 unlink($destination . $config_image);
             }
             Products::find($id)->update(['image' => $name_image]);

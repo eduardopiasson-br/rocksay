@@ -60,15 +60,15 @@
                             </div>
                             <div class="col-md-3 form-group">
                                 <label class="form-control-label" for="phone"><i class="fas fa-phone-square"></i> {{ __('Telefone') }}</label>
-                                <input type="text" name="phone" id="phone" class="form-control" value="{{ $config->phone ?? old('phone') }}"  placeholder="(45)99999-9999">
+                                <input type="text" name="phone" id="phone" class="form-control" value="{{ $config->phone ?? old('phone') }}"  placeholder="(45) 99999-9999" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                             </div>
                             <div class="col-md-3 form-group">
                                 <label class="form-control-label" for="whatsapp"><i class="fab fa-whatsapp-square"></i> {{ __('WhatsApp') }}</label>
-                                <input type="text" name="whatsapp" id="whatsapp" class="form-control" value="{{ $config->whatsapp ?? old('whatsapp') }}"  placeholder="(45)99999-9999">
+                                <input type="text" name="whatsapp" id="whatsapp" class="form-control" value="{{ $config->whatsapp ?? old('whatsapp') }}" placeholder="(45) 99999-9999" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                             </div>
                             <div class="col-md-3 form-group">
                                 <label class="form-control-label" for="telegram"><i class="fab fa-telegram"></i> {{ __('Telegram') }}</label>
-                                <input type="text" name="telegram" id="telegram" class="form-control" value="{{ $config->telegram ?? old('telegram') }}"  placeholder="(45)99999-9999">
+                                <input type="text" name="telegram" id="telegram" class="form-control" value="{{ $config->telegram ?? old('telegram') }}" placeholder="(45) 99999-9999" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                             </div>
                         </div>
 
@@ -111,7 +111,7 @@
                                         {{ session('message_image') }}
                                     </div>
                                 @endif
-                                @if(!empty($config))<br><img src="/images/default/{{ $config->image }}" width="400px">@endif
+                                @if(!empty($config))<br><img style="max-width: 100%;" src="/images/default/{{ $config->image }}" width="400px">@endif
                             </div>
                         </div>
                         @endif
@@ -155,5 +155,30 @@
             )){window.location.reload();}
           }
        });
+    </script>
+    <script type="text/javascript">
+        function mask(o, f) {
+        setTimeout(function() {
+            var v = mphone(o.value);
+            if (v != o.value) {
+            o.value = v;
+            }
+        }, 1);
+        }
+
+        function mphone(v) {
+        var r = v.replace(/\D/g, "");
+        r = r.replace(/^0/, "");
+        if (r.length > 10) {
+            r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+        } else if (r.length > 5) {
+            r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+        } else if (r.length > 2) {
+            r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+        } else {
+            r = r.replace(/^(\d*)/, "($1");
+        }
+        return r;
+        }
     </script>
 @endpush

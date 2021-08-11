@@ -17,8 +17,9 @@ class Products extends Model
         'abstract',
         'sizes',
         'image',
+        'units',
+        'out_stock',
         'photo_name',
-        'highlight',
         'user_id'
     ];
 
@@ -27,6 +28,6 @@ class Products extends Model
      */
     public function categories()
     {
-        return $this->belongsToMany('App\ProductCategories');
+        return $this->belongsToMany(ProductCategories::class, 'categories_as_products', 'product_id', 'category_id');
     }
 }

@@ -19,7 +19,7 @@ class CreateFeedbacksTable extends Migration
             $table->string('text', 300)->nullable();
             $table->text('image')->nullable();
             $table->integer('position');
-            $table->integer('status')->default(1);
+            $table->integer('status')->default(0);
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

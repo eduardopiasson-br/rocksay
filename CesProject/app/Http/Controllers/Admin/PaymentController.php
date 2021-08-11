@@ -130,15 +130,15 @@ class PaymentController extends Controller
         $payment = Payments::find($id);
         if(empty($payment)) {
             toast('Pagamento não encontrado!', 'error');
-            return back();
+            return redirect()->route('pagamentos');
         }
 
         if(!$payment->delete()) {
             toast('Pagamento não pode ser deletado!', 'error');
-            return back();
+            return redirect()->route('pagamentos');
         }
 
         toast('Pagamento deletado com sucesso!', 'success');
-        return back();
+        return redirect()->route('pagamentos');
     }
 }

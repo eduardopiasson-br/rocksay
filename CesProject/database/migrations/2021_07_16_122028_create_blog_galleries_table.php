@@ -15,7 +15,7 @@ class CreateBlogGalleriesTable extends Migration
     {
         Schema::create('blog_galleries', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 150);
+            $table->string('name', 150)->nullable();
             $table->text('text_top')->nullable();
             $table->text('text_bottom')->nullable();
             $table->text('image');

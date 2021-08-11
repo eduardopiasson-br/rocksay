@@ -22,8 +22,9 @@ class CreateProductsTable extends Migration
             $table->string('abstract', 250)->nullable();
             $table->text('sizes')->nullable();
             $table->text('image')->nullable();
+            $table->integer('units')->nullable();
+            $table->integer('out_stock')->default(0);
             $table->string('photo_name', 150)->nullable();
-            $table->integer('highlight')->default(0);
             $table->integer('status')->default(0);
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

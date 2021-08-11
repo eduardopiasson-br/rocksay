@@ -1,13 +1,13 @@
-@extends('layouts.app', ['activePage' => 'login', 'title' => 'Light Bootstrap Dashboard Laravel by Creative Tim & UPDIVISION'])
+@extends('auth.layouts.app', ['activePage' => 'login', 'title' => 'Cutie And Sweet - Moda Fashion'])
 
 @section('content')
-    <div class="full-page section-image" data-color="black" data-image="{{asset('light-bootstrap/img/full-screen-image-2.jpg')}}">
+    <div class="full-page section-image" data-color="black" data-image="{{asset('light-bootstrap/img/cutie-and-sweet-moda-fashion.png')}}">
         <div class="content">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header">{{ __('Reset Password') }}</div>
+                            <div class="card-header">{{ __('Redefinir senha') }}</div>
 
                             <div class="card-body">
                                 <form method="POST" action="{{ route('password.update') }}">
@@ -29,7 +29,7 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Senha') }}</label>
 
                                         <div class="col-md-6">
                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -43,7 +43,7 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirme a Senha') }}</label>
 
                                         <div class="col-md-6">
                                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -53,7 +53,7 @@
                                     <div class="form-group row mb-0 justify-content-center">
                                         <div class="offset-md-4">
                                             <button type="submit" class="btn btn-warning btn-wd">
-                                                {{ __('Reset Password') }}
+                                                {{ __('Redefinir senha') }}
                                             </button>
                                         </div>
                                     </div>

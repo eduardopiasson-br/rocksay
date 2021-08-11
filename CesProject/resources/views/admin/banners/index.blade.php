@@ -7,25 +7,15 @@
             <div class="col-md-12">
                 <div class="card data-tables" style="flex-direction: inherit; flex-wrap: wrap">
 
-                    <div class="card-header col-md-12">
-                        <div class="row align-items-center">
-                            <div class="col-6">
-                                @if(!empty($banner->name))
-                                    <h3 class="mt-0 top-title"><i class="fas fa-handshake"></i> Editar Banner <a href="{{ route('banners') }}" title="Voltar para cadastros" class="btn btn-ces"><i class="fas fa-undo"></i></a></h3>
-                                @else
-                                    <h3 class="mt-0 top-title"><i class="fas fa-handshake"></i> Cadastrar Banner</h3>
-                                @endif
-                            </div>
-                            <div class="col-6">
-                                <h3 class="mt-0 top-title"><i class="fas fa-clipboard-list"></i> 
-                                    Banners Cadastrados
-                                    <a href="{{ route('banners') }}" title="Recarregar Banners" class="btn btn-ces"><i class="fas fa-sync"></i></a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="col-md-6">
+                        <div class="col-12 card-body ">
+                            @if(!empty($banner->name))
+                                <h3 class="mt-0 top-title"><i class="fas fa-handshake"></i> Editar Banner <a href="{{ route('banners') }}" title="Voltar para cadastros" class="btn btn-ces"><i class="fas fa-undo"></i></a></h3>
+                            @else
+                                <h3 class="mt-0 top-title"><i class="fas fa-handshake"></i> Cadastrar Banner</h3>
+                            @endif
+                        </div>
+
                         <form method="post" @if(!empty($banner->name)) action="{{ route('banners.atualizacao') }}" @else action="{{ route('banners.cadastro') }}" @endif autocomplete="off" enctype="multipart/form-data">
                         @csrf
 
@@ -59,7 +49,7 @@
                                 <label class="form-control-label" for="input-whatsapp">
                                     {{ __('WhatsApp') }}
                                 </label>
-                                <input type="textbtn btn-sm " name="whatsapp" id="input-whatsapp" maxlength="14" class="form-control" value="{{ $banner->whatsapp ?? old('whatsapp') }}"  placeholder="Ex: (45)99849-1539">
+                                <input type="textbtn btn-sm " name="whatsapp" id="input-whatsapp" maxlength="15" class="form-control" value="{{ $banner->whatsapp ?? old('whatsapp') }}"  placeholder="Ex: (45) 99849-1539" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="form-control-label" for="input-facebook">
@@ -130,6 +120,12 @@
                     </div>
                     
                     <div class="col-md-6 card-body table-full-width table-responsive table-ces">
+                        <div class="col-12">
+                            <h3 class="mt-0 top-title"><i class="fas fa-clipboard-list"></i> 
+                                Banners Cadastrados
+                                <a href="{{ route('banners') }}" title="Recarregar Banners" class="btn btn-ces"><i class="fas fa-sync"></i></a>
+                            </h3>
+                        </div>
                         <table class="table table-hover table-stripeds">
                             <thead>
                                 <tr class="col-md-12">
@@ -205,7 +201,7 @@
         // Crop image mobile
         $('#bannermobileimage').ijaboCropTool({
           preview : '.image-previewer',
-          setRatio:500/200,
+          setRatio:500/300,
           allowedExtensions: ['jpg', 'jpeg','png'],
           buttonsText:['CORTAR E SALVAR','SAIR/CANCELAR'],
           buttonsColor:['#30bf7d','#ee5155', -15],
@@ -303,5 +299,30 @@
           });
         }
       });
+    </script>
+    <script type="text/javascript">
+        function mask(o, f) {
+        setTimeout(function() {
+            var v = mphone(o.value);
+            if (v != o.value) {
+            o.value = v;
+            }
+        }, 1);
+        }
+
+        function mphone(v) {
+        var r = v.replace(/\D/g, "");
+        r = r.replace(/^0/, "");
+        if (r.length > 10) {
+            r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+        } else if (r.length > 5) {
+            r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+        } else if (r.length > 2) {
+            r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+        } else {
+            r = r.replace(/^(\d*)/, "($1");
+        }
+        return r;
+        }
     </script>
 @endpush

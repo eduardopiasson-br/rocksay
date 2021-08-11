@@ -7,27 +7,15 @@
             <div class="col-md-12">
                 <div class="card data-tables" style="flex-direction: inherit; flex-wrap: wrap">
 
-                    {{-- Títulos para os campos da página --}}
-                    <div class="card-header col-md-12">
-                        <div class="row align-items-center">
-                            <div class="col-6">
-                                @if(!empty($item->title))
-                                    <h3 class="mt-0 top-title"><i class="fas fa-tshirt"></i> Editar Produto <a href="{{ route('produtos') }}" title="Voltar para cadastros" class="btn btn-ces"><i class="fas fa-undo"></i></a></h3>
-                                @else
-                                    <h3 class="mt-0 top-title"><i class="fas fa-tshirt"></i> Cadastrar Produto</h3>
-                                @endif
-                            </div>
-                            <div class="col-6">
-                                <h3 class="mt-0 top-title"><i class="fas fa-clipboard-list"></i> 
-                                    Produtos Cadastrados
-                                    <a href="{{ route('produtos') }}" title="Recarregar Produtos" class="btn btn-ces"><i class="fas fa-sync"></i></a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-
                     {{-- Formulário de Cadastro/Atualização --}}
                     <div class="col-md-6">
+                        <div class="col-12 card-body">
+                            @if(!empty($item->title))
+                                <h3 class="mt-0 top-title"><i class="fas fa-tshirt"></i> Editar Produto <a href="{{ route('produtos') }}" title="Voltar para cadastros" class="btn btn-ces"><i class="fas fa-undo"></i></a></h3>
+                            @else
+                                <h3 class="mt-0 top-title"><i class="fas fa-tshirt"></i> Cadastrar Produto</h3>
+                            @endif
+                        </div>
                         <form method="post" @if(!empty($item->title)) action="{{ route('produtos.atualizacao') }}" @else action="{{ route('produtos.cadastro') }}" @endif autocomplete="off" enctype="multipart/form-data">
                         @csrf
 
@@ -58,13 +46,19 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
+                                <label class="form-control-label" for="input-units">
+                                    {{ __('Unidades') }}
+                                </label>
+                                <input value="{{ $item->units ?? old('units') }}" type="number" name="units" class="form-control" placeholder="Ex: 3">
+                            </div>
+                            <div class="col-md-4 form-group">
                                 <label class="form-control-label" for="input-price">
                                     {{ __('Preço do Produto') }} <i class="text-danger">*</i>
                                 </label>
                                 <input value="{{ $item->price ?? old('price') }}" maxlength="45" type="text" name="price" class="form-control" placeholder="Ex: R$120,90">
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
                                 <label class="form-control-label" for="input-price_promo">
                                     {{ __('Preço Promocional') }}
                                 </label>
@@ -85,7 +79,7 @@
                                 <label class="form-control-label" for="input-abstract">
                                     {{ __('Resumo sobre o Produto') }}
                                 </label>
-                                <input value="{{ $item->abstract ?? old('abstract') }}" maxlength="250" type="text" id="summary-ckeditor" name="abstract" class="form-control" placeholder="Ex: Este lindo modelo pode ser combinado com...">
+                                <textarea maxlength="250" type="text" id="summary-ckeditor" name="abstract" class="form-control" placeholder="Ex: Este lindo modelo pode ser combinado com...">{{ $item->abstract ?? old('abstract') }}</textarea>
                             </div>
                         </div>
 
@@ -118,6 +112,26 @@
                                 @endif
                             @endif
                         </div>
+                        {{-- Categorias --}}
+                        @if($categories->count() > 0)
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <label class="form-control-label" for="input">
+                                        {{ __('Marque as Categorias Relacionadas') }}<br><br>
+                                        @foreach($categories as $category)
+                                        <div class="div-checkbox">
+                                            <input type="checkbox" class="checkbox-admin" name="categories[]" id="categories{{ $category->id }}" value="{{ $category->id }}"
+                                            @if(!empty($item))
+                                            {{ in_array($category->id, old('categories', $item->categories->pluck('id')->toArray())) ? ' checked' : ''}}
+                                            @endif
+                                            > &nbsp <label class="checkbox-name-admin" for="categories{{ $category->id }}">{{ $category->name }}</label>
+                                        </div>
+                                        @endforeach
+                                    </label>
+                                </div>
+                            </div>
+                        @endif
+
 
                         <hr class="hr-ces">
                         <div class="form-group">
@@ -127,12 +141,18 @@
                         </form>
                     </div>
                     
-                    <div class="col-md-6 card-body table-full-width table-responsive table-ces">
-                        <table class="table table-hover table-stripeds">
+                    <div class="col-md-6 table-full-width table-responsive table-ces">
+                        <div class="col-12 card-body">
+                            <h3 class="mt-0 top-title"><i class="fas fa-clipboard-list"></i> 
+                                Produtos Cadastrados
+                                <a href="{{ route('produtos') }}" title="Recarregar Produtos" class="btn btn-ces"><i class="fas fa-sync"></i></a>
+                            </h3>
+                        </div>
+                        <table id="products" class="table table-hover table-stripeds">
                             <thead>
                                 <tr class="col-md-12">
                                     <td class="col-md-5"><b>Título</b></td>
-                                    <td class="col-md-3"><b>Imagem</b></td>
+                                    <td class="col-md-3" style="text-align: center"><b>Imagem</b></td>
                                     <td style="display: block">
                                     </td>
                                 </tr>
@@ -148,23 +168,23 @@
                                             </td>
                                         @else
                                             <td>{{$item->title}}</td>
-                                            <td title="{{ $item->name }}" ><img src="/images/products/product/{{ $item->image }}" width="80px"></td>
+                                            <td style="text-align: center" title="{{ $item->name }}" ><img src="/images/products/product/{{ $item->image }}" width="80px"></td>
                                         @endif
-                                        <td style="display: block">                                            
-                                            @if($item->highlight == 1)                                            
-                                                <a href="{{ route('produtos.destaque', $item->id) }}" title="Remover Destaque" class="btn btn-sm button-admin-highlight-true"><i class="fas fa-star"></i></a>
-                                            @else
-                                                <a href="{{ route('produtos.destaque', $item->id) }}" title="Destacar Produto" class="btn btn-sm button-admin-highlight-false"><i class="fas fa-tshirt"></i></a>
-                                            @endif
+                                        <td style="display: block; text-align: center">                                            
                                             @if($item->status == 1)                                            
                                                 <a href="{{ route('produtos.alternar', $item->id) }}" title="Desativar Produto" class="btn btn-sm button-admin-toggle-success"><i class="fas fa-user-check"></i></a>
                                             @else
                                                 <a href="{{ route('produtos.alternar', $item->id) }}" title="Ativar Produto" class="btn btn-sm button-admin-toggle-danger"><i class="fas fa-user-times"></i></a>
                                             @endif
                                             <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-                                            <a href="{{ route('produtos.cores', $item->id) }}" title="Cadastrar Cores para este Produto" class="btn btn-sm button-admin-colors"><i class="fas fa-palette"></i></a><br>
-                                            <a href="{{ route('produtos.galeria', $item->id) }}" title="Cadastrar Galeria para este Produto" class="btn btn-sm button-admin-gallery"><i class="fas fa-image"></i></a>
+                                            <a href="{{ route('produtos.cores', $item->id) }}" title="Cadastrar Cores para este Produto" class="btn btn-sm button-admin-colors"><i class="fas fa-palette"></i></a>
                                             <a href="{{ route('produtos.edicao', $item->id) }}" title="Editar Produto" class="btn btn-sm button-admin-edit"><i class="fas fa-marker"></i></a>
+                                            @if($item->out_stock != 1)                                            
+                                                <a href="{{ route('produtos.estoque', $item->id) }}" title="Marcar como 'Sem Estoque'" class="btn btn-sm button-admin-highlight-true"><i class="fas fa-box-open"></i></a>
+                                            @else
+                                                <a href="{{ route('produtos.estoque', $item->id) }}" title="Ativar Estoque" class="btn btn-sm button-admin-highlight-false"><i class="fas fa-exclamation-triangle"></i></a>
+                                            @endif
+                                            <a href="{{ route('produtos.galeria', $item->id) }}" title="Cadastrar Galeria para este Produto" class="btn btn-sm button-admin-gallery"><i class="fas fa-image"></i></a>
                                             <a href="{{ route('produtos.deletar', $item->id) }}" title="Deletar Produto" class="btn btn-sm delete-confirm button-admin-delete"><i class="fas fa-trash-alt"></i></a>
                                         </td>                       
                                     </tr>
@@ -243,5 +263,18 @@
                 }
             });
         });
+    </script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#products').DataTable( {
+            "order": [[ 0, "asc" ]],
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json"
+            }
+        } );
+    } );
     </script>
 @endpush
