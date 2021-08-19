@@ -1,3 +1,12 @@
+@media only screen and (min-width: 1800px)  {
+    .img img {
+        width: 100%;
+    }
+    .new-title-p h3 {
+        max-width: 50ch;
+    }
+}
+
 .blog-section {
     width: 100%;
 }
@@ -19,143 +28,13 @@
 .conteudo {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
-
-/* start banners */
-
-.banner-lateral {
-    width: 22%;
-    margin: 20px;
-    border-radius: 10px;
-    text-align: center;
-    background-color: #ffbaba;
-    margin-top: 60px;
-    display: flex;
-    flex-wrap: wrap;
-    height: 100%;
-}
-
-.banner-lateral-i {
-    color: #ffffff;
-    font-size: 40px;
-    width: 25%;
-    margin-top: 35px;
-}
-
-.banner-lateral h4 {
-    margin-bottom: 0px;
-    width: 50%;
-    margin-top: 20px;
-}
-
-.banner-lateral span {
-    margin-bottom: 0px;
-    text-shadow: 2px 2px #ffffff;
-    width: 100%;
-    font-size: 30px;
-}
-
-.banner-img {
-    margin: 30px auto;
-}
-
-.banner-img img {
-    max-width: 80%;
-    border-radius: 10px;
-    border: 5px solid #ffffff;
-}
-
-.banner-button-div {
-    margin-top: -62px;
-    margin-bottom: 5px;
-    background-image: linear-gradient(transparent, #000000);
-    position: relative;
-    width: 77%;
-    height: 57px;
-    border-radius: 5px;
-    margin: -62px auto 5px;
-}
-
-.banner-button {
-    width: 25%;
-    margin: 0 5px;
-    font-size: 38px;
-}
-
-.button-wpp {
-    color: #128C7E;
-}
-
-.button-wpp:hover {
-    color: #0c645a;
-}
-
-.button-insta {
-    color: #E1306C;
-}
-
-.button-insta:hover {
-    color: #a1244e;
-}
-
-.button-face {
-    color: #3b5998;
-}
-
-.button-face:hover {
-    color: #294070;
-}
-
-.button-site {
-    color: #4285F4;
-}
-
-.button-site:hover {
-    color: #264f91;
-}
-
-.img-hr {
-    max-width: 100%;
-}
-
-.parceiro-p {
-    padding: 0 30px;
-    font-size: 19px;
-    margin-top: 25px;
-}
-
-.a-button-contact {
-    text-decoration: none;
-    font-size: 23px;
-    border-radius: 2px;
-    padding: 0px 14px 1px;
-    color: #ffffff;
-    background-color: #128C7E;
-    border: 1px solid #ffffff;
-    transition: transform .3s;
-    margin: 0 auto 25px;
-    height: 35px;
-}
-
-.a-button-contact i {
-    margin-left: 4px;
-}
-
-.a-button-contact:hover {
-    color: #ffffff;
-    background-color: #0c5850;
-}
-
-.to-mobile {
-    display: none;
-}
-
-/* end banners */
 
 /* start blogs */
 
 .news {
-    width: 50%;
+    width: 45%;
     margin-top: 10px;
     margin-bottom: 100px;
 }
@@ -192,6 +71,13 @@
 .new-title-p a:hover {
     color: #313131;
     text-shadow: 2px 2px #ffd4d4;
+}
+
+.new-title-p h3 {
+    max-width: 38ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .new-title-p-p {
@@ -231,8 +117,79 @@
 
 /* end blogs */
 
+@media only screen and (max-width: 1300px) and (min-width: 1215px)  {
+    .new-title-p h3 {
+        max-width: 35ch;
+    }
+}
+
+@media only screen and (max-width: 1215px) {
+    .new-title-p h3 {
+        max-width: 30ch;
+        font-size: 25px;
+        margin-top: 5px;
+    }
+}
+
+@media only screen and (max-width: 1050px) {
+    .new-title-p h3 {
+        max-width: 30ch;
+        font-size: 23px;
+        margin-top: 5px;
+    }
+}
+@media only screen and (max-width: 927px) {
+    .new-title-p h3 {
+        max-width: 47ch;
+        font-size: 23px;
+        margin-top: 5px;
+    }
+    .new-title-p {
+        display: block;
+    }
+    .new-title-p span {
+        margin: -26px 5px 0px;
+        color: #000000;
+        display: flex;
+    }
+    .new-title-p a {
+        margin: 0px 5px;
+        display: block;
+    }
+}
+
 /* Responsive */
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 751px) {
+    .news {
+        width: 90%;
+        margin: 40px auto 100px!important;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .new {
+        width: 47%;
+        margin: 10px 5px 30px;
+        padding-bottom: 15px;
+        border-radius: 3px;
+        background-color: rgba(128, 128, 128, 0.144);
+    }
+    .new-title-p a {
+        display: inline;
+    }
+    .new-title-p h3 {
+        margin-left: 3px;
+        text-align: center!important;
+        font-size: 22px!important;
+    }
+    .new-title-p-p {
+        margin: -31px 5px 6px;
+        font-size: 18px;
+    }
+}
+
+/* Responsive */
+@media only screen and (max-width: 750px) {
 
     .news {
         width: 90%;
@@ -248,8 +205,8 @@
     }
 
     .new-title-p h3 {
-        font-size: 30px;
-        text-align: left;
+        font-size: 25px;
+        margin-top: 30px;        
     }
 
     .new-title-p p {
@@ -264,62 +221,6 @@
         display: block;
     }
 
-    .banner-lateral {
-        width: 90%;
-        margin-top: 25px;
-    }
-
-    .banner-img {
-        display: none;
-    }
-
-    .slide {
-        max-width: 100%;
-    }
-
-    .slide img {
-        max-width: 90%;
-        margin-top: 30px;
-        border-radius: 10px;
-        border: 5px solid #ffffff;
-    }
-
-    .banner-button {
-        font-size: 50px;
-    }
-
-    .banner-button-div {
-        margin-top: -3px;
-        background-image: none;
-    }
-
-    .img-hr {
-        display: none;
-    }
-
-    .mobile {
-        display: none;
-    }
-
-    .to-mobile {
-        display: block;
-    }    
-
-    .img-hr-mobile {
-        max-width: 100%;
-        margin-top: -10px;
-        margin-bottom: 15px;
-    }
-
-    .a-button {
-        font-size: 20px;
-    }
-
-    .a-button-contact {
-        font-size: 28px;
-        height: 43px;
-    }
-
     /* Glide Config */
     .glide__arrow {
         margin: -20px -42px 0px!important;
@@ -331,5 +232,36 @@
     .hr-feedback {
         max-width: 100%;
         margin-bottom: 50px;
+    }
+}
+@media only screen and (max-width: 450px) {
+    .new {
+        width: 100%;
+        background-color: transparent;
+    }
+    .news {
+        margin: 40px auto 10px!important;
+    }
+}
+
+/* Responsive */
+@media only screen and (max-width: 340px) {
+    .news {
+        margin: 40px auto 14px!important;
+    }
+    .new-title-p h3 {
+        max-width: 100%;
+        overflow: none;
+        text-overflow: none;
+        white-space: normal;
+    }
+    .new-title-p p {
+        text-align: center!important;
+    }
+    .new-title-p h3 {
+        margin-top: 5px;
+    }
+    .hr-new {
+        display: none;
     }
 }

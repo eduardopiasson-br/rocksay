@@ -8,28 +8,28 @@
         <div class="social-contacts">
             @if(!empty($config->whatsapp))
                 <div class="social-item whatsapp">
-                    <a target="_blank" href="https://api.whatsapp.com/send?phone=55{{ Str::of($config->whatsapp)->replaceMatches('/[^A-Za-z0-9]++/', '') }}">
+                    <a rel="noopener" target="_blank" href="https://api.whatsapp.com/send?phone=55{{ Str::of($config->whatsapp)->replaceMatches('/[^A-Za-z0-9]++/', '') }}">
                         <h2><i class="fab fa-whatsapp"></i><br> Whatsapp</h2>
                     </a>
                 </div>
             @endif
             @if(!empty($config->telegram))
                 <div class="social-item telegram">
-                    <a target="_blank" href="https://telegram.me/{{ Str::of($config->telegram)->replaceMatches('/[^A-Za-z0-9]++/', '') }}">
+                    <a rel="noopener" target="_blank" href="https://telegram.me/{{ Str::of($config->telegram)->replaceMatches('/[^A-Za-z0-9]++/', '') }}">
                         <h2><i class="fab fa-telegram"></i><br> Telegram</h2>
                     </a>
                 </div>
             @endif
             @if(!empty($config->instagram))
                 <div class="social-item instagram">
-                    <a target="_blank" href="{{ $config->instagram }}">
+                    <a rel="noopener" target="_blank" href="{{ $config->instagram }}">
                         <h2><i class="fab fa-instagram"></i><br> Instagram</h2>
                     </a>
                 </div>
             @endif
             @if(!empty($config->facebook))
                 <div class="social-item facebook">
-                    <a target="_blank" href="{{ $config->facebook }}">
+                    <a rel="noopener" target="_blank" href="{{ $config->facebook }}">
                         <h2><i class="fab fa-facebook-square"></i><br> Facebook</h2>
                     </a>
                 </div>

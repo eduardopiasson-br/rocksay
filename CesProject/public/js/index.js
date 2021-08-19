@@ -3,12 +3,15 @@ new Glide('.glide', {
     type: 'carousel',
     startAt: 0,
     perView: 4,
-    autoplay: 5000,
+    // autoplay: 5000,
     breakpoints: {
-        1024: {
+        1200: {
+          perView: 3
+        },
+        800: {
           perView: 2
         },
-        600: {
+        500: {
           perView: 1
         }
       }

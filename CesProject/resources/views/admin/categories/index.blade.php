@@ -131,7 +131,7 @@
     // Crop image desktop
         $('#categoryimage').ijaboCropTool({
           preview : '.image-previewer',
-          setRatio:720/720,
+          setRatio:558/558,
           allowedExtensions: ['jpg', 'jpeg','png'],
           buttonsText:['CORTAR E SALVAR','SAIR/CANCELAR'],
           buttonsColor:['#30bf7d','#ee5155', -15],

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\AboutGalleriesRequest;
+use Illuminate\Support\Str;
 use App\Models\AboutGallery;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AboutGalleriesRequest;
 
 class AboutGalleriesController extends Controller
 {
@@ -80,7 +81,7 @@ class AboutGalleriesController extends Controller
         if ($image = $request->file('image')) {
             $destinationPath = 'images/about/';
             unlink($destinationPath . $img->image);
-            $profileImage = $request->input('name') . '-' .date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $profileImage = Str::of($request->input('name'))->slug('-') . '-' .date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['image'] = "$profileImage";
         }else{

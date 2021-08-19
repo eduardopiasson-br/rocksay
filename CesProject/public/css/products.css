@@ -70,6 +70,19 @@
     font-size: 19px;
 }
 
+.indisponivel {
+    position: relative;
+    align-items: center;
+    align-content: stretch;
+    text-align: center;
+    color: #ffffff;
+    background-color: #610707;
+    max-width: 80%;
+    margin: -18px auto 0px;
+    border-radius: 3px;
+    font-size: 19px;
+}
+
 .discount {
     font-weight: 600;
     font-size: 25px;
@@ -85,6 +98,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .h2-product:hover {
@@ -216,6 +230,13 @@
     background-color: #ffbaba;
 }
 
+@media only screen and (max-width: 1200px) and (min-width: 800px)  {
+    .price-discount {
+        max-width: 60%;
+        margin: -45px auto 0px;
+    }
+}
+
 /* Responsive */
 @media only screen and (max-width: 991px) {
 
@@ -287,28 +308,41 @@
     }
 
     .price{
+        color: #ffffff;
         max-width: 100%;
         padding: 0px 5px;
         font-weight: 600;
         margin-top: -33px;
         border-radius: 1px;
         background-color: transparent;
-        background-image: linear-gradient(transparent, #ffffff);
+        background-image: linear-gradient(transparent, #000000);
     }
 
     .price-discount {
+        display: grid;
         max-width: 100%;
         margin-top: -65px;
         border-radius: 1px;
         color: transparent;
         background-color: transparent;
-        background-image: linear-gradient(transparent, #ffffff);
+        background-image: linear-gradient(transparent, #000000);
+    }
+
+    .indisponivel {
+        color: #ffffff;
+        display: grid;
+        max-width: 100%;
+        margin-top: -27px;
+        border-radius: 1px;
+        background-color: transparent;
+        background-image: linear-gradient(transparent, #610707);
     }
 
     .h2-product {
         height: 64px;
         font-size: 20px;
         margin: 4px 0px 15px;
+        text-shadow: 1px 1px #ffffff;
     }
 
     .top-product p {

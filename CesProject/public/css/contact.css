@@ -154,19 +154,15 @@
 
 /* Responsive */
 @media only screen and (max-width: 991px) {
-
     .contact {
-        margin: 5px 5px 80px;
+        margin: 20px 5px 80px;
     }
-
     .div-contact {
         padding: 40px 5px;
     }
-
     .contact-social {
         max-width: 100%;
     }
-
     .iframe-maps {
         margin: 0px;
     }

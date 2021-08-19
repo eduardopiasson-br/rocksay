@@ -69,7 +69,7 @@ class DefaultConfigurationsController extends Controller
     {
         $destination = 'images/default/';
         $file = $request->file('configimage');
-        $name_image = 'CutieAndSweet' . uniqid() . $file->getClientOriginalExtension();
+        $name_image = 'images/default/CutieAndSweet' . uniqid() . $file->getClientOriginalExtension();
         $move = $file->move(public_path($destination), $name_image);
         if(!$move) {
             return response()->json(['status' => 0, 'msg' => 'Imagem não pode ser enviada!']); 
@@ -78,7 +78,7 @@ class DefaultConfigurationsController extends Controller
             $config = DefaultConfiguration::find(1);
             $config_image = $config->image;
             if(!empty($config_image)) {
-                unlink($destination . $config_image);
+                unlink($config_image);
             }
             DefaultConfiguration::find(1)->update(['image' => $name_image]);
             return response()->json(['status' => 1, 'msg' => 'Imagem cadastrada com sucesso!!!']);

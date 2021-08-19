@@ -1,3 +1,11 @@
+@media only screen and (min-width: 1800px)  {
+    .pilares-text p {
+        font-size: 19px;
+        max-width: 50%;
+        margin: 0 auto;
+    }
+}
+
 .about {
     padding: 10px 30px;
     text-align: center;
@@ -130,6 +138,13 @@
     margin: 0 20px;
 }
 
+@media only screen and (max-width: 800px) and (min-width: 500px)  {
+    .pilares-text p {
+        max-width: 60%;
+        margin: 0 auto;
+    }
+}
+
 /* Responsive */
 @media only screen and (max-width: 991px) {
 
@@ -158,4 +173,10 @@
         max-width: 100%;
     }
 
+}
+
+@media only screen and (max-width: 991px) {
+    .container .gallery a img {
+        max-height: 115px;
+    }
 }

@@ -1,2 +1,7 @@
 Layout - contact button phone
 MER - Default to DefaultConfiguration
+MER - Adicionar
+
+Colocar os produtos q não estão em falta como primeiro,
+Marcar nos PRODUTOS os q estão em falta.
+Fazer a página 404

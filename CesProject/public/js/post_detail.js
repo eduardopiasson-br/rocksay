@@ -11,9 +11,12 @@ new Glide('.glide-post', {
   // autoplay: 5000,
   breakpoints: {
       1024: {
-        perView: 1
+        perView: 3
       },
-      600: {
+      800: {
+        perView: 2
+      },
+      500: {
         perView: 1
       }
     }

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\ProductCategories;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductCategoriesRequest;
-use App\Models\ProductCategories;
-use Illuminate\Http\Request;
 
 class ProductCategoriesController extends Controller
 {
@@ -155,17 +156,17 @@ class ProductCategoriesController extends Controller
      */
     public function crop(Request $request, $id)
     {
+        $config = ProductCategories::find($id);
         $destination = 'images/categories/';
         if(!$file = $request->file('categoryimage')){
             return response()->json(['status' => 0, 'msg' => 'Imagem não enviada!']); 
         }
-        $name_image = 'Categoria' . uniqid() . $file->getClientOriginalExtension();
+        $name_image = Str::of($config->name)->slug('-') . '-' . date('YmdHis') . "-" .  $file->getClientOriginalName();;
         $move = $file->move(public_path($destination), $name_image);
         if(!$move) {
             return response()->json(['status' => 0, 'msg' => 'Imagem não pode ser enviada!']); 
         }
         if($move) {
-            $config = ProductCategories::find($id);
             $config_image = $config->image;
             if(!empty($config_image)) {
                 unlink($destination . $config_image);

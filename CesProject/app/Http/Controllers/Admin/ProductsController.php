@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductsRequest;
-use App\Models\CategoriesAsProducts;
 use App\Models\ProductCategories;
 use App\Models\ProductColor;
 use App\Models\ProductGalleries;
@@ -22,7 +21,7 @@ class ProductsController extends Controller
     public function index(Products $model)
     {
         $item_id = 1;
-        $itens = $model->orderBy('created_at', 'desc')->get();
+        $itens = $model->orderBy('title', 'asc')->get();
         $categories = ProductCategories::orderBy('position', 'asc')->where('status', 1)->get();
         return view('admin.products.index', ['itens' => $itens, 'item_id' => $item_id, 'categories' => $categories]);
     }

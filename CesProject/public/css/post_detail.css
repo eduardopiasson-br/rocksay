@@ -1,3 +1,41 @@
+@media only screen and (min-width: 1800px)  {
+    .img img {
+        width: 100%;
+    }
+    .new-title-p h3 {
+        max-width: 50ch;
+    }
+}
+
+.blog-section {
+    margin-bottom: 25px;
+}
+
+.conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.blog-title {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.blog-title h2 {
+    font-size: 40px;
+    text-shadow: 2px 2px #ffbaba;
+}
+
+.news {
+    max-width: 45%;
+}
+
+.new-title-p {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .new-title-p p {
     margin: 0 5px 10px;
     line-height: 1.7;
@@ -6,7 +44,7 @@
 }
 
 .img img {
-    opacity: 1!important;
+    max-width: 100%;
 }
 
 .autor-post {
@@ -18,7 +56,7 @@
     border-radius: 4px;
     text-align: center;
     margin: 10px 0 20px;
-    background-color: #ffbaba;
+    background-color: #ffbaba73;
 }
 
 .related p {
@@ -46,15 +84,28 @@
 }
 
 .new iframe {
-    width: 100%;
+    width: 90%;
     height: 340px;
-    margin: 5px;
+    margin: 5px auto;
+    display: block;
     border-radius: 4px;
 }
 
 .gallery {
     text-align: center;
     margin-bottom: 20px;
+}
+
+.container {
+    padding: 5px;
+    margin: 10px 5px;
+    border-radius: 3px;
+    background-color: #64646418;
+}
+
+.container h3 {
+    padding: 10px;
+    text-shadow: 1px 1px #ffbaba;
 }
 
 .container .gallery a img {
@@ -72,9 +123,39 @@
     position: relative;
 }
 
+.date-share {
+    color: #646464;
+    padding: 10px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.date-share span {
+    width: 50%;
+    padding: 4px;
+    font-size: 25px;
+}
+
+.share {
+    width: 50%;
+    text-align: end;
+}
+
+.share a {
+    font-size: 30px;
+    color: #ffbaba;
+    margin: 0 5px;
+    text-shadow: 1px 1px 3px #000000;
+}
+.share a:hover {
+    color: #000000;
+    text-shadow: 1px 1px 3px #ffbaba;
+}
+
 /* Mais Posts */
 .more-posts {
-    margin-bottom: 50px;
+    margin-bottom: 175px
 }
 
 .more-h2 {
@@ -193,7 +274,7 @@
 
 .glide__arrow {
     position: relative!important;
-    padding: 6px 2px!important;
+    padding: 12px 4px!important;
 }
 
 .blog-title-mobile {
@@ -217,6 +298,29 @@
     width: 100%;
     font-size: 17px!important;
     text-align: center!important;
+    color: #646464d8;
+}
+
+@media only screen and (min-width: 1150px) {
+    .new iframe {
+        height: 340px;
+    }
+}
+
+
+@media only screen and (max-width: 1150px) {
+    .blog-title {
+        margin-top: 40px!important;
+    }
+    .share a {
+        font-size: 24px;
+    }
+    .date-share span {
+        font-size: 16px;
+    }
+    .h2-post {
+        font-size: 21px;
+    }
 }
 
 /* Responsive */
@@ -231,13 +335,19 @@
     }
 
     .new-title-p p {
-        margin: 10px 5px 10px;
-        font-size: 22px;
+        margin: 0px 5px 10px;
+        font-size: 18px;
     }
 
     .new-title-p span {
-        margin: -31px 5px!important;
-        font-size: 24px!important;
+        margin: -40px 2px!important;
+        font-size: 18px!important;
+        color: #000000;
+    }
+
+    .share {
+        width: 100%;
+        text-align: center;
     }
 
     .blog-title {
@@ -260,4 +370,64 @@
         margin: -190px -50px 0px!important;
     }
 
+}
+
+/* Responsive */
+@media only screen and (max-width: 500px) {
+    .news {
+        max-width: 100%;
+    }
+    .blog_title {
+        margin-top: 0px!important
+    }
+    .blog-title h2 {
+        font-size: 28px;
+    }
+    .container {
+        margin: 10px auto;
+    }
+    .new-title-p {
+        padding: 0px 10px;
+    }
+    .date-share span {
+        font-size: 21px;
+        width: 100%;
+        display: block;
+        margin-bottom: -9px!important;
+    }
+    .share a {
+        font-size: 35px;
+        margin: 0px 10px;
+    }
+    .more-posts {
+        margin: 0px 30px 0px;
+    }
+    .a-post-more {
+        border-radius: 3px;
+    }
+    .h2-post {
+        font-size: 25px;
+    }
+    .new-title-p span {
+        margin: 0px!important;
+    }
+    .date-share {
+        margin-top: -40px;
+    }
+    .date-share-2 {
+        margin-top: 0px!important;
+    }
+    .share {
+        margin-top: -10px;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+    .blog-title {
+        margin-top: 0px!important;
+    }
+    .container .gallery a img {
+        max-height: 90px;
+        padding: 5px;
+    }
 }

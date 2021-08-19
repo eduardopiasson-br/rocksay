@@ -6,9 +6,12 @@ new Glide('.glide', {
     autoplay: 5000,
     breakpoints: {
         1024: {
+          perView: 3
+        },
+        800: {
           perView: 2
         },
-        600: {
+        500: {
           perView: 1
         }
       }

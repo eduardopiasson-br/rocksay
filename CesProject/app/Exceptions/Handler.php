@@ -8,7 +8,7 @@ use Throwable;
 class Handler extends ExceptionHandler
 {
     /**
-     * A list of the exception types that are not reported.
+     * Uma lista dos tipos de exceção que não são relatados.
      *
      * @var array
      */
@@ -28,14 +28,32 @@ class Handler extends ExceptionHandler
     ];
 
     /**
-     * Register the exception handling callbacks for the application.
+     * Registre os chullbacks de manuseio de exceção para o aplicativo.
      *
      * @return void
      */
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
+            if($this->isHttpException($e))
+            {
+                switch (intval($e->getStatusCode())) {
+                    // not found
+                    case 404:
+                        return redirect()->route('404');
+                        break;
+                    // internal error
+                    case 500:
+                        return redirect()->route('');
+                        break;
+        
+                    default:
+                        return $this->renderHttpException($e);
+                        break;
+                }
+            }
+
+            // return parent::render($e);  
         });
     }
 }

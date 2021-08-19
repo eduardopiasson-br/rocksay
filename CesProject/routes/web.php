@@ -37,6 +37,7 @@ Route::get('/post/{post_id}/{post_name}', [SiteController::class, 'post_selected
 Route::get('/blog-c&s', [SiteController::class, 'blog']);
 Route::get('/feedback', [SiteController::class, 'feedback']);
 Route::get('/contatos', [SiteController::class, 'contact']);
+Route::get('/404', [SiteController::class, 'error_404']);
 
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {

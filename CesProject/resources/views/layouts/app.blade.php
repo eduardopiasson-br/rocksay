@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" @if(!empty($meta_product)) itemscope itemtype=”http://schema.org/Product” @endif>
 
 <head>
     <!-- Metadata -->
@@ -9,14 +9,18 @@
     <!-- Icon title-->
     <link rel="shortcut icon" href="Images/icon.png" />
 
+    {{-- Meta Tags Share SEO --}}
+    @include('layouts.meta.meta_default')
+    <meta name="keywords" content="Cutie And Sweet Moda Fashion, Loja Online de Roupas, {{ $site_keys }}">
+    @if(!empty($meta_product))@include('layouts.meta.meta_product')@endif
+
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Css + Css Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Css Geral -->
+    <link href="{{ url('css/dependence/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ url('css/default.css') }}">
-
     @if(!empty($index_css))<link rel="stylesheet" href="{{ url('css/index.css') }}">@endif
     @if(!empty($about_css))<link rel="stylesheet" href="{{ url('css/about.css') }}">@endif
     @if(!empty($glide1_css))<link rel="stylesheet" href="{{ url('css/dependence/glide.core.min.css') }}">@endif
@@ -28,6 +32,7 @@
     @if(!empty($products_css))<link rel="stylesheet" href="{{ url('css/products.css') }}">@endif
     @if(!empty($product_detail_css))<link rel="stylesheet" href="{{ url('css/product_detail.css') }}">@endif
     @if(!empty($post_detail_css))<link rel="stylesheet" href="{{ url('css/post_detail.css') }}">@endif
+    @if(!empty($banners_css))<link rel="stylesheet" href="{{ url('css/banners.css') }}">@endif
 
     <!-- Title -->
     <title>{{ $title }}</title>
@@ -37,29 +42,29 @@
     <header>
         <div class="top-header">
             @if(!empty($config->address))
-            <a class="top-localization" target="_blank" href="{{ $config->link_address ?? '#' }}" title="Ver localização no mapa">
+            <a class="top-localization" rel="noopener" target="_blank" href="{{ $config->link_address ?? '#' }}" title="Ver localização no mapa">
                 <span class="top-icon-map"><i class="fas fa-map-marked-alt"></i></span>
                 {{ $config->address }}
             </a>
             @endif
             <div class="top-social">
                 @if(!empty($config->instagram))
-                <a href="{{ $config->instagram }}" target="_blank" title="Conheça nossa loja no Instagram">
+                <a href="{{ $config->instagram }}" rel="noopener" target="_blank" title="Conheça nossa loja no Instagram">
                     <i class="top-icon fab fa-instagram"></i>
                 </a>
                 @endif
                 @if(!empty($config->facebook))
-                <a href="{{ $config->facebook }}" target="_blank" title="Curta nossa página no Facebook!">
+                <a href="{{ $config->facebook }}" rel="noopener" target="_blank" title="Curta nossa página no Facebook!">
                     <i class="top-icon fab fa-facebook-square"></i>
                 </a>
                 @endif
                 @if(!empty($config->whatsapp))
-                <a href="https://api.whatsapp.com/send?phone=55{{ Str::of($config->whatsapp)->replaceMatches('/[^A-Za-z0-9]++/', '') }}" target="_blank" title="Entre em contato pelo WhatsApp">
+                <a rel="noopener" href="https://api.whatsapp.com/send?phone=55{{ Str::of($config->whatsapp)->replaceMatches('/[^A-Za-z0-9]++/', '') }}" target="_blank" title="Entre em contato pelo WhatsApp">
                     <i class="top-icon fab fa-whatsapp"></i>
                 </a>
                 @endif
                 @if(!empty($config->telegram))
-                <a href="https://telegram.me/{{ Str::of($config->telegram)->replaceMatches('/[^A-Za-z0-9]++/', '') }}" target="_blank" title="Entre em contato pelo Telegram">
+                <a rel="noopener" href="https://telegram.me/{{ Str::of($config->telegram)->replaceMatches('/[^A-Za-z0-9]++/', '') }}" target="_blank" title="Entre em contato pelo Telegram">
                     <i class="top-icon fab fa-telegram"></i>
                 </a>
                 @endif
@@ -79,7 +84,7 @@
         <nav class="navbar-expand-lg navbar-light nav-menu">
             <a href="{{ url('/') }}" class="div-logo" title="Pagina Inicial">
                 <h2 class="text-logo">C&S</h2>
-                <h4 class="text-logo">Cutie and Sweet</h4>
+                <p class="text-logo">Cutie and Sweet</p>
                 <span class="text-logo">Moda Fashion</span>
             </a>
             <div class="div-menu collapse navbar-collapse" id="myLinks">
@@ -113,20 +118,20 @@
 
         <div class="show-menu-options">
             <ul class="menu-ul">
-                <li class="menu-li"><a href="{{ url('/') }}">INICIO</a></li>
+                <a href="{{ url('/') }}"><li class="menu-li">INICIO</li></a>
                 @if(!empty($about))
-                    <li class="menu-li"><a href="{{ url('/sobre-a-loja') }}">SOBRE</a></li>
+                    <a href="{{ url('/sobre-a-loja') }}"><li class="menu-li">SOBRE</li></a>
                 @endif
                 @if(!empty($products))
-                    <li class="menu-li"><a href="{{ url('/produtos') }}">PRODUTOS</a></li>
+                    <a href="{{ url('/produtos') }}"><li class="menu-li">PRODUTOS</li></a>
                 @endif
                 @if(!empty($blog_general))
-                    <li class="menu-li"><a href="{{ url('/blog-c&s') }}">BLOG</a></li>
+                    <a href="{{ url('/blog-c&s') }}"><li class="menu-li">BLOG</li></a>
                 @endif
                 @if(!empty($feedback))
-                    <li class="menu-li"><a href="{{ url('/feedback') }}">FEEDBACK</a></li>
+                    <a href="{{ url('/feedback') }}"><li class="menu-li">FEEDBACK</li></a>
                 @endif
-                <li class="menu-li"><a href="{{ url('/contatos') }}">CONTATOS</a></li>
+                <a href="{{ url('/contatos') }}"><li class="menu-li">CONTATOS</li></a>
             </ul>
         </div>
     </div>
@@ -136,7 +141,7 @@
         <div class="wrapper @if (!auth()->check() || request()->route()->getName() == "") wrapper-full-page @endif">
             @php use Illuminate\Support\Str; @endphp
 
-            <div class="@if (auth()->check() && request()->route()->getName() != "") main-panel @endif">
+            <div class="div-content  @if (auth()->check() && request()->route()->getName() != "") main-panel @endif">
                 @yield('content')
             </div>
 
@@ -148,7 +153,7 @@
                 <i class="fas fa-arrow-up"></i>
             </a>
             @if(!empty($config->whatsapp))
-            <a class="top-link show top-link-2" title="Fale conosco!" target="_blank" href="https://api.whatsapp.com/send?phone=55{{ Str::of($config->whatsapp)->replaceMatches('/[^A-Za-z0-9]++/', '') }}">
+            <a rel="noopener" class="top-link show top-link-2" title="Fale conosco!" target="_blank" href="https://api.whatsapp.com/send?phone=55{{ Str::of($config->whatsapp)->replaceMatches('/[^A-Za-z0-9]++/', '') }}">
                 <i class="fab fa-whatsapp fa-wpp"></i>
             </a>
             @endif
@@ -156,7 +161,7 @@
             <div class="div-footer footer-right">
                 <a href="{{ url('/') }}" class="div-logo" title="Pagina Inicial">
                     <h2 class="text-logo">C&S</h2>
-                    <h4 class="text-logo">Cutie and Sweet</h4>
+                    <p class="text-logo">Cutie and Sweet</p>
                     <span class="text-logo">Moda Fashion</span>
                 </a>
                 @if(!empty($config->footer_text))<p class="footer-p">{{ $config->footer_text }}</p>@endif
@@ -166,23 +171,23 @@
                 <h3>Entre em Contato:</h3>
                 <div class="footer-social">
                     @if(!empty($config->instagram))
-                    <a href="{{ $config->instagram }}" target="_blank" title="Nos acompanhe no Instagram">
+                    <a rel="noopener" href="{{ $config->instagram }}" target="_blank" title="Nos acompanhe no Instagram">
                         <i class="fab fa-instagram"></i> @cutieandsweet.ces
                     </a>
                     @endif
                     @if(!empty($config->facebook))
-                    <a href="{{ $config->facebook }}" target="_blank"
+                    <a rel="noopener" href="{{ $config->facebook }}" target="_blank"
                         title="Curta nossa página no Facebook">
                         <i class="fab fa-facebook"></i> Cutie And Sweet
                     </a>
                     @endif
                     @if(!empty($config->whatsapp))
-                    <a href="https://api.whatsapp.com/send?phone=55{{ Str::of($config->whatsapp)->replaceMatches('/[^A-Za-z0-9]++/', '') }}" target="_blank" title="Mande uma mensagem em nosso WhatsApp">
+                    <a rel="noopener" href="https://api.whatsapp.com/send?phone=55{{ Str::of($config->whatsapp)->replaceMatches('/[^A-Za-z0-9]++/', '') }}" target="_blank" title="Mande uma mensagem em nosso WhatsApp">
                         <i class="fab fa-whatsapp"></i> {{ $config->whatsapp }}
                     </a>
                     @endif
                     @if(!empty($config->telegram))
-                    <a href="https://telegram.me/{{ Str::of($config->telegram)->replaceMatches('/[^A-Za-z0-9]++/', '') }}" target="_blank" title="Mande uma mensagem em nosso Telegram">
+                    <a rel="noopener" href="https://telegram.me/{{ Str::of($config->telegram)->replaceMatches('/[^A-Za-z0-9]++/', '') }}" target="_blank" title="Mande uma mensagem em nosso Telegram">
                         <i class="fab fa-telegram"></i> {{ $config->telegram }}
                     </a>
                     @endif
@@ -226,7 +231,7 @@
                             <h2><i class="fas fa-id-card"></i></h2>
                         </a>
                         @if(!empty($config->link_address))
-                            <a href="{{ $config->link_address }}" target="_blank" class="category" title="Nossa localização">
+                            <a rel="noopener" href="{{ $config->link_address }}" target="_blank" class="category" title="Nossa localização">
                                 <h2><i class="fas fa-map-marker-alt"></i></h2>
                             </a>
                         @endif
@@ -237,17 +242,17 @@
                             </a>
                         @endif
                         @if(!empty($config->whatsapp))
-                            <a href="https://api.whatsapp.com/send?phone=55{{ Str::of($config->whatsapp)->replaceMatches('/[^A-Za-z0-9]++/', '') }}" target="_blank" class="category" title="Fale conosco pelo whatsapp">
+                            <a rel="noopener" href="https://api.whatsapp.com/send?phone=55{{ Str::of($config->whatsapp)->replaceMatches('/[^A-Za-z0-9]++/', '') }}" target="_blank" class="category" title="Fale conosco pelo whatsapp">
                                 <h2><i class="fab fa-whatsapp"></i></h2>
                             </a>
                         @endif
                         @if(!empty($config->instagram))
-                            <a href="{{ $config->instagram }}" target="_blank" class="category" title="Conheça nossa loja no instagram!">
+                            <a rel="noopener" href="{{ $config->instagram }}" target="_blank" class="category" title="Conheça nossa loja no instagram!">
                                 <h2><i class="fab fa-instagram"></i></h2>
                             </a>
                         @endif
                         @if(!empty($config->facebook))
-                            <a href="{{ $config->facebook }}" target="_blank" class="category" title="Curta nossa página no Facebook!">
+                            <a rel="noopener" href="{{ $config->facebook }}" target="_blank" class="category" title="Curta nossa página no Facebook!">
                                 <h2><i class="fab fa-facebook-square"></i></h2>
                             </a>
                         @endif

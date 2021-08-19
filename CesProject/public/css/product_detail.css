@@ -1,3 +1,9 @@
+@media only screen and (min-width: 1800px)  {
+    .button-shop{
+        text-align: center;
+    }
+}
+
 .product {
     width: 100%;
     display: flex;
@@ -439,7 +445,7 @@
     transition: all 0.3s;
     height: 115px;
     white-space: break-spaces;
-    display: flex;
+    display: grid;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -526,6 +532,56 @@
     border-radius: 3px;
     text-decoration: none;
     color: #128C7E;
+}
+
+
+@media only screen and (max-width: 1200px) and (min-width: 800px)  {
+    .product-discount {
+        width: 35%;
+    }
+    .product-request {
+        width: 30%;
+    }
+    .button-shop {
+        width: 60%;
+        text-align: center;
+    }
+    .product-price-div {
+        margin-top: 0px;
+    }
+    .product-info-p p {
+        font-size: 15px;
+        margin-bottom: 5px!important;
+    }
+    .product-price-prazo {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    .product-price-p-2{
+        font-size: 35px;
+    }
+    .button-shop {
+        width: 100%;
+    }
+    .shop {
+        display: block;
+        margin-bottom: 0px!important;
+    }
+    .shop-p {
+        padding: 15px 0px;
+        color: #646464da;
+    }
+}
+
+@media only screen and (max-width: 992px) and (min-width: 750px)  {
+    .img-product {
+        width: 40%;
+    }
+}
+@media only screen and (max-width: 750px) and (min-width: 600px)  {
+    .img-product {
+        width: 60%;
+    }
 }
 
 /* Responsive */
@@ -700,11 +756,13 @@
     .danger-message a {
         padding: 3px 15px;
         display: inline-block;
-        margin-top: 10px;
+        max-width: 200px;
+        margin: 10px auto 0px;
         font-size: 26px;
     }
 
     .danger-message {
+        display: grid;
         margin-bottom: 0px!important;
     }
 
@@ -729,4 +787,13 @@
         height: 87px;
     }
 
+}
+
+@media only screen and (max-width: 991px) {
+    .container .gallery a img {
+        max-height: 90px;
+    }
+    .container .gallery a img {
+        padding: 5px;
+    }
 }

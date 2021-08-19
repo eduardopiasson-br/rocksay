@@ -8,20 +8,28 @@
         </div>
 
         <div class="conteudo">
-            @include('layouts.banners.left')
-
-            <div class="blog-title blog-title-mobile">
-                <p>post completo <i class="fas fa-level-down-alt"></i></p>
-                <h2> {{ $post_selected->title }} </h2>
-            </div>
+            @include('layouts.banners.left')            
 
             <div class="news">
+                <div class="blog-title blog-title-mobile">
+                    <p>post completo <i class="fas fa-level-down-alt"></i></p>
+                    <h2> {{ $post_selected->title }} </h2>
+                </div>
                 <div class="new">
                     <div class="img">
                         <img src="{{ url('images/blogs/posts/'.$post_selected->image) }}" alt="{{ $post_selected->title }}">
                     </div>
                     <div class="new-title-p">
-                        <span>{{ date('d/m/Y', strtotime($post_selected->start_post)) }}</span>
+                        <div class="date-share">
+                            <span>{{ date('d/m/Y', strtotime($post_selected->start_post)) }}</span>
+                            <div class="share">
+                                <span> Compartilhe:</span>
+                                <a target="_blank" href="https://www.facebook.com/sharer.php?u={{ \URL::current() }}"><i class="fab fa-facebook-square"></i></a>
+                                <a target="_blank" href="https://twitter.com/intent/tweet?url={{ \URL::current() }}&text={{ $post_selected->title }}"><i class="fab fa-twitter-square"></i></a>
+                                <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{ \URL::current() }}&title={{ $post_selected->title }}&source={{ \URL::current() }}"><i class="fab fa-linkedin"></i></a>
+                                <a target="_blank" href="https://api.whatsapp.com/send?text={{ \URL::current() }}"><i class="fab fa-whatsapp-square"></i></a>
+                            </div>
+                        </div>
                         <?= $post_selected->text ?>                        
                         @foreach ($post_selected->gallery as $imagem)
                             @if($imagem->in_text)
@@ -49,8 +57,9 @@
                         </div>
                     @endif 
 
-                    @if(!empty($post_selected->gallery))
+                    @if($post_selected->gallery->count() > 0)
                         <div class="container">
+                            <h3>Mais Imagens:</h3>
                             <div class="gallery" id="gallery">
                                 @foreach($post_selected->gallery as $image)
                                     <a href="{{ url('images/blogs/gallery/'. $image->image) }}" class="big"><img src="{{ url('images/blogs/gallery/'. $image->image) }}" alt="{{ $image->name ?? $post_selected->title }}"
@@ -71,6 +80,16 @@
                             <a href="{{ $post_selected->button_link }}" target="_blank" title="Relacionados">{{ $post_selected->button }}</a>
                         </div>
                     @endif
+                    <div class="date-share date-share-2">
+                        <span></span>
+                        <div class="share">
+                            <span> Compartilhe:</span>
+                            <a target="_blank" href="https://www.facebook.com/sharer.php?u={{ \URL::current() }}"><i class="fab fa-facebook-square"></i></a>
+                            <a target="_blank" href="https://twitter.com/intent/tweet?url={{ \URL::current() }}&text={{ $post_selected->title }}"><i class="fab fa-twitter-square"></i></a>
+                            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{ \URL::current() }}&title={{ $post_selected->title }}&source={{ \URL::current() }}"><i class="fab fa-linkedin"></i></a>
+                            <a target="_blank" href="https://api.whatsapp.com/send?text={{ \URL::current() }}"><i class="fab fa-whatsapp-square"></i></a>
+                        </div>
+                    </div>
                     <hr class="hr-new"> 
                 </div>
                 @include('layouts.more_posts')                            

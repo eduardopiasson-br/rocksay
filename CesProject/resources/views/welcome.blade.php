@@ -12,7 +12,7 @@
                             <a class="a-category-1" href="{{ url('produtos?categoria='.Str::of($category->name)->slug('-')) }}" title="Conheça todos os produtos da categoria {{ $category->name }}">
                                 <div class="category-1">
                                     <div class="image">
-                                        <img src="{{ url('images/categories/'.$category->image) }}" class="category-img" alt="{{ $category->name }}">
+                                        <img src="{{ url('images/categories/'.$category->image) }}" class="category-img" alt="{{ $category->name }}" title="{{ $category->name }}">
                                     </div>
                                     <hr>
                                     <div class="category-text">
@@ -32,7 +32,7 @@
                             <a class="a-category-2" href="{{ url('produtos?categoria='.Str::of($category->name)->slug('-')) }}" title="Conheça todos os produtos da categoria {{ $category->name }}">
                                 <div class="category-2">
                                     <div class="image">
-                                        <img src="{{ url('images/categories/'.$category->image) }}" class="category-img" alt="{{ $category->name }}">
+                                        <img src="{{ url('images/categories/'.$category->image) }}" class="category-img" alt="{{ $category->name }}" title="{{ $category->name }}">
                                     </div>
                                     <hr>
                                     <div class="category-text">
@@ -60,18 +60,18 @@
     </div>
 </section>
 <section class="all-category">
-    <a href="{{ url('produtos') }}" class="category-button">VER TODOS OS PRODUTOS <i class="fas fa-external-link-alt"></i></a>
+    <a href="{{ url('produtos') }}" title="Ver todos os produtos" class="category-button">VER TODOS OS PRODUTOS <i class="fas fa-external-link-alt"></i></a>
 </section>
 @endif
 
 @if(!empty($config->wellcome_message))
 <section class="wellcome-section">
     <div class="wellcome-div">
-        <img src="images/hr.png" alt="Traço com corações" loading="lazy">
+        <img src="images/hr.png" alt="Traço de divisão de text" loading="lazy">
         <h2 class="wellcome-h2">Bem vinda a <span class="wellcome-span">Cutie and Sweet!</span></h2>
         <hr class="wellcome-hr">
         <p class="wellcome-p">{{ $config->wellcome_message }}</p>
-        <img src="images/hr.png" alt="Traço com corações" loading="lazy">
+        <img src="images/hr.png" alt="Traço de divisão de texto" loading="lazy">
     </div>
 </section>
 @endif
@@ -86,7 +86,7 @@
     @foreach ($blog as $k => $post)
         @if ($k % 2 == 0)
             <div class="new">
-                <a href="{{ url('blog/post/'.$post->id.'/'.$post->title) }}"><img loading="lazy" class="new-img" src="{{ url('images/blogs/posts/'.$post->image) }}" alt="{{ $post->title }}" title="{{ $post->title }}"
+                <a title="{{ $post->title }}" href="{{ url('post', ['post_id' => $post->id, 'post_name' => Str::of($post->title)->slug('-')]) }}"><img loading="lazy" class="new-img" src="{{ url('images/blogs/posts/'.$post->image) }}" alt="{{ $post->title }}" title="{{ $post->title }}"
                         loading="lazy"></a>
                 <div class="new-div">
                     <h2 class="new-h2"><i class="fas fa-star"></i>
@@ -94,7 +94,7 @@
                     </h2>
                     <div class="new-div-p"><?= $post->text ?></div>
                     <div class="new-div-buttom">
-                        <a type="button" class="new-button category-button" href="{{ url('blog/post/'.$post->id.'/'.$post->title) }}" title="Ler mais sobre {{ $post->title }}">
+                        <a type="button" class="new-button category-button" href="{{ url('post', ['post_id' => $post->id, 'post_name' => Str::of($post->title)->slug('-')]) }}" title="Ler mais sobre {{ $post->title }}">
                             <i class="fas fa-star"></i>Saiba Mais
                         </a>
                     </div>
@@ -104,7 +104,7 @@
             <hr class="div">
         @else
             <div class="new">
-                <a href="{{ url('blog-c&s/post/'.$post->id.'/'.$post->title) }}"><img loading="lazy" class="new-img-hidden"  src="{{ url('images/blogs/posts/'.$post->image) }}" alt="{{ $post->title }} title="{{ $post->title }}"
+                <a title="{{ $post->title }}" href="{{ url('post', ['post_id' => $post->id, 'post_name' => Str::of($post->title)->slug('-')]) }}"><img loading="lazy" class="new-img-hidden"  src="{{ url('images/blogs/posts/'.$post->image) }}" alt="{{ $post->title }} title="{{ $post->title }}"
                         loading="lazy"></a>
                 <div class="new-div-2">
                     <h2 class="new-h2-2">
@@ -112,12 +112,12 @@
                     </h2>
                     <div class="new-div-p"><?= $post->text ?></div>
                     <div class="new-div-buttom">
-                        <a type="button" class="new-button category-button" href="{{ url('blog-c&s/post/'.$post->id.'/'.$post->title) }}" title="Ler mais sobre {{ $post->title }}">
+                        <a type="button" class="new-button category-button" href="{{ url('post', ['post_id' => $post->id, 'post_name' => Str::of($post->title)->slug('-')]) }}" title="Ler mais sobre {{ $post->title }}">
                             Saiba Mais <i class="fas fa-star"></i>
                         </a>
                     </div>
                 </div>
-                <a href="{{ url('blog-c&s/post/'.$post->id.'/'.$post->title) }}"><img loading="lazy" class="new-img-2"  src="{{ url('images/blogs/posts/'.$post->image) }}" alt="{{ $post->title }}" title="{{ $post->title }}"
+                <a title="{{ $post->title }}" href="{{ url('post', ['post_id' => $post->id, 'post_name' => Str::of($post->title)->slug('-')]) }}"><img loading="lazy" class="new-img-2"  src="{{ url('images/blogs/posts/'.$post->image) }}" alt="{{ $post->title }}" title="{{ $post->title }}"
                         loading="lazy"></a>
             </div>
         
