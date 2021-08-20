@@ -33,6 +33,7 @@
     @if(!empty($product_detail_css))<link rel="stylesheet" href="{{ url('css/product_detail.css') }}">@endif
     @if(!empty($post_detail_css))<link rel="stylesheet" href="{{ url('css/post_detail.css') }}">@endif
     @if(!empty($banners_css))<link rel="stylesheet" href="{{ url('css/banners.css') }}">@endif
+    @if(!empty($erro_css))<link rel="stylesheet" href="{{ url('css/erro.css') }}">@endif
 
     <!-- Title -->
     <title>{{ $title }}</title>

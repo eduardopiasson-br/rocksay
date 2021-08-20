@@ -60,8 +60,8 @@ class SiteController extends Controller
         return view('about', ['site_title' => $site_title, 'site_keys' => $site_keys, 'site_description' => $site_description, 'config' => $config, 'about' => $about, 'about_gallery' => $about_gallery, 'feedback' => $feedback, 'blog_general' => $blog_general, 'products' => $products, 'about_css' => 1, 'simple_css' => 1]);
     }
 
-        /**
-     * Apresenta a página sobre a empresa
+    /**
+     * Apresenta a página de erros
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -76,7 +76,7 @@ class SiteController extends Controller
         $blog_general = Blogs::where('status', 1)->count();
         $products = Products::where('status', 1)->count();
 
-        return view('error_404', ['site_title' => $site_title, 'site_keys' => $site_keys, 'site_description' => $site_description, 'config' => $config, 'about' => $about, 'feedback' => $feedback, 'blog_general' => $blog_general, 'products' => $products, 'about_css' => 1, 'simple_css' => 1]);
+        return view('error_404', ['site_title' => $site_title, 'site_keys' => $site_keys, 'site_description' => $site_description, 'config' => $config, 'about' => $about, 'feedback' => $feedback, 'blog_general' => $blog_general, 'products' => $products, 'erro_css' => 1]);
     }
 
     /**

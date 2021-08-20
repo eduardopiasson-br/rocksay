@@ -1,5 +1,8 @@
 @extends('layouts/app', ['activePage' => 'sobre', 'title' => 'Sobre a C&S - Cutie & Sweet'])
 
 @section('content')
-    <h1>teste</h1>
+    <div class="div-error">
+        <h2>ERRO 404</h2>
+        <h3>Página Não Encontrada</h3>
+    </div>
 @endsection

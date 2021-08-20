@@ -729,12 +729,16 @@ i {
         width: 100%;
     }
 
+    .div-footer .div-logo{
+        margin-bottom: 20px!important;
+    }
+
     .div-footer a {
-        margin-top: 15px;
+        margin-top: 15px;        
     }
 
     .div-footer a h2 {
-        padding: 20px 10px!important;
+        padding: 20px 10px;
     }
 
     .footer-right {
