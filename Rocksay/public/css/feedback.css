@@ -1,0 +1,118 @@
+/* Titulo */
+
+.feedback-section {
+    margin: 30px 50px 40px;
+    text-align: center;
+}
+
+.feedback-title {
+    display: block;
+    width: 100%;
+}
+
+.feedback-title h2 {
+    font-size: 40px;
+    text-shadow: 2px 2px #600416;
+}
+
+.feedback-title i {
+    text-shadow: 2px 2px transparent;
+}
+
+.feedback-title p {
+    font-size: 19px;
+    margin-bottom: 25px;
+}
+
+/* Feedbacks */
+
+.feedback-item {
+    border-radius: 3px;
+    background-image: linear-gradient(#600416, transparent);
+}
+
+.gallery img {
+    max-width: 90%;
+}
+
+.feedback-conteudo hr {
+    max-width: 80%;
+    margin: 0 auto 20px;
+}
+
+.feedback-conteudo p {
+    font-size: 20px;
+    font-weight: 400;
+    white-space: break-spaces;
+    margin: 0px 0px;
+    padding: 0px 50px!important;
+}
+
+.feedback-conteudo h3 {
+    padding: 5px 0px 0px;
+}
+
+/* Glide Config */
+.glide__arrow {
+    margin: 0 -68px!important;
+    color: #000000!important;
+    background-color: #600416;
+    border: 1px solid #000000!important;
+}
+
+.hr-feedback {
+    max-width: 100%;
+    margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .feedback-conteudo hr {
+        margin: 5px auto 5px;
+    }
+    .feedback-conteudo p {
+        font-size: calc( 16px + (24 - 16) * (76vh - 400px) / (800 - 400) );
+        margin-bottom: 0px;
+    }
+    .feedback-item {
+        height: 240px;
+    }
+    .feedback-conteudo {
+        padding: 20px 5px;
+        vertical-align: middle;
+        display: block;
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+    }
+    .feedback-conteudo h3 {
+        margin: 0 auto;
+    }
+    .feedback-conteudo img {
+        max-width: 90%;
+        margin: 0px 10px 0px!important;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .feedback-item {
+        margin: 10px 20px!important;
+    }
+    .feedback-conteudo {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 450px) {   
+    .feedback-conteudo {
+        display: block;
+    }
+    .feedback-item {
+        margin: 10px 0px!important;
+    }
+    .feedback-conteudo img {
+        margin-top: 10px!important;
+    }
+    .feedback-conteudo p {
+        padding: 0px 15px!important;
+    }
+}

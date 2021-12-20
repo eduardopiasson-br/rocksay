@@ -1,0 +1,353 @@
+.user-button {
+    color: #ffffff; 
+    border-color: #ffffff
+}
+.user-button:hover {
+    color: #600416; 
+    background-color: #ffffff;
+    border-color: #600416
+}
+.full-admin-table {
+    flex-direction: inherit;
+    flex-wrap: wrap
+}
+.message-image {
+    text-align:center; 
+    margin-bottom: 0px
+}
+.button-admin-delete {
+    margin: 4px 1px 1px;
+    color:rgb(138, 0, 0);
+    border: 1px solid rgb(138, 0, 0);
+}
+.button-admin-delete:hover {
+    color:rgb(138, 0, 0);
+    background-color: #000;
+    border: 1px solid rgb(138, 0, 0);
+}
+.button-admin-edit {
+    margin: 4px 1px 1px;
+    color:rgb(177, 177, 0);
+    border: 1px solid rgb(177, 177, 0);
+}
+.button-admin-edit:hover {
+    color:rgb(177, 177, 0);
+    background-color: #000;
+    border: 1px solid rgb(177, 177, 0);
+}
+.button-admin-info {
+    margin: 4px 1px 1px;
+    color:rgb(0, 71, 177);
+    border: 1px solid rgb(0, 71, 177);
+}
+.button-admin-info:hover {
+    color:rgb(0, 71, 177);
+    background-color: #000;
+    border: 1px solid rgb(0, 71, 177);
+}
+.button-admin-toggle-danger {
+    margin: 4px 1px 1px;
+    color:rgb(196, 0, 0);
+    border: 1px solid rgb(196, 0, 0);
+}
+.button-admin-toggle-danger:hover {
+    color:rgb(196, 0, 0);
+    background-color: #000;
+    border: 1px solid rgb(196, 0, 0);
+}
+.button-admin-toggle-success {
+    margin: 4px 1px 1px;
+    color:rgb(0, 109, 0);
+    border: 1px solid rgb(0, 109, 0);
+}
+.button-admin-toggle-success:hover {
+    color:rgb(0, 109, 0);
+    background-color: #000;
+    border: 1px solid rgb(0, 109, 0);
+}
+.button-admin-highlight-true {
+    margin: 4px 1px 1px;
+    color:#600416;
+    border: 1px solid #600416;
+}
+.button-admin-highlight-true:hover {
+    color:#600416;
+    background-color: #000;
+    border: 1px solid #600416;
+}
+.button-admin-highlight-false {
+    margin: 4px 1px 1px;
+    color:#747474;
+    border: 1px solid #747474;
+}
+.button-admin-highlight-false:hover {
+    color:#747474;
+    background-color: #000;
+    border: 1px solid #747474;
+}
+.button-admin-gallery {
+    margin: 4px 1px 1px;
+    color:#007194;
+    border: 1px solid #007194;
+}
+.button-admin-gallery:hover {
+    color:#007194;
+    background-color: #000;
+    border: 1px solid #007194;
+}
+.button-admin-colors {
+    margin: 4px 1px 1px;
+    color:#880094;
+    border: 1px solid #880094;
+}
+.button-admin-colors:hover {
+    color:#880094;
+    background-color: #000;
+    border: 1px solid #880094;
+}
+table {
+    border: 5px double #600416;
+}
+thead {
+    background-color: #600416da;
+    color: #ffffff;
+}
+tbody {
+    background-color: #ffe6e6;
+}
+.top-title {
+    text-align: center;
+    margin-bottom: 0;
+}
+.form-control {
+    border: 1px solid #600416!important;
+}
+.cke_chrome {
+    border: 1px solid #600416!important;
+}
+.cke_top {
+    border-bottom: 1px solid #600416!important;
+    background: #600416!important;
+}
+.cke_bottom {
+    border-top: 1px solid #600416!important;
+    background: #600416!important;
+}
+.card {
+    border: 1px solid #600416!important;
+}
+.table-ces {
+    margin-left: 0px!important;
+}
+.hr-ces {
+    width: 97%;
+    text-align: center;
+    background-color: #600416;
+}
+.div-image-about {
+    text-align: center;
+}
+.btn-ces {
+    color: #600416;
+    border: 1px solid #600416;
+}
+.btn-ces:hover {
+    color: #600416;
+    background-color: #000;
+    border: 1px solid #600416;
+}
+.limit-text {
+    max-width: 25ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.limit-icon {
+    padding: 15px!important;
+}
+.table-center {
+    text-align: center;
+}
+.btn-sm{
+    width: 37px!important;
+}
+.nav-product {
+    border: 1px solid;
+}
+.user-mobile {
+    display: none;
+}
+
+/* start datatable custom css */
+
+.dataTables_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dataTables_wrapper select {
+    padding: 8px;
+    background-color: #600416;
+}
+
+.dataTables_length {
+    max-width: 50%;
+}
+
+.dataTables_filter {
+    max-width: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dataTables_filter input {
+    padding: 6px;
+    margin-left: 1px;
+    background-color: #600416;
+}
+
+.dataTables_info {
+    width: 100%;
+    text-align: center;
+    margin-top: -10px;
+}
+
+.paginate_button {
+    border: 1px solid #000000;
+    background-color: #600416;
+    padding: 5px 7px;
+    cursor: pointer;
+    color: #000000;
+}
+
+.paginate_button:hover {
+    border: 1px solid #600416;
+    background-color: #000000;
+    padding: 5px 7px;
+    cursor: pointer;
+    color: #600416;
+}
+
+.paging_simple_numbers {
+    margin: 5px auto 25px;
+}
+
+.div-checkbox {
+    display: inline-block;
+}
+
+.checkbox-admin {
+    height: 20px;
+    width: 25px;
+}
+
+.checkbox-name-admin {
+    margin-right: 20px;
+    color: #000000!important;
+    vertical-align: middle;
+    margin-left: -6px;
+    margin-top: -5px;
+}
+
+.show-multiple-image-preview img {
+    max-width: 27%;
+    margin: 5px;
+    padding: 5px;
+    box-shadow: 0px 0px 5px -2px #000000;
+}
+
+td img {
+    display: flex;
+    padding: 4px;
+    margin: 0 auto;
+    max-width: 80px;
+    box-shadow: 0px 0px 5px -2px #000000;
+}
+
+/* end datatable custom css */
+
+/* start button css */
+
+.btn-success {
+    color: #000000;
+    background-color: #87CB16;
+}
+
+/* end button css */
+
+.navbar-brand {
+    color: #ffffff!important;
+}
+
+/* start dashboard css */
+
+.infos-dash-rock {
+    padding: 20px;
+    color: #ffffff;
+    border-radius: 4px;
+    background-color: #600416da;
+}
+.infos-dash-rock:hover {
+    background-color: #600416;
+}
+.info-dr-title {
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.info-dr-count {
+    font-size: 35px;
+    text-align: center;
+    text-shadow: 2px 2px 2px #000;
+}
+
+.info-dr-button {
+    color: #ffffff;
+    border-color: #ffffff;
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.info-dr-button:hover {
+    color: #600416;
+    border-color: #600416;
+    background-color: #ffffff;
+}
+
+/* end dashboard css */
+
+/* Responsive */
+@media only screen and (max-width: 991px) {
+    .user-mobile {
+        display: block;
+    }
+    .user-button {
+        color: #000000; 
+        border-color: #000000;
+        margin: 20px auto -20px!important;
+        display: flex;
+    }
+    .user-button:hover {
+        color: #000000; 
+        background-color: #000;
+        border-color: #000000
+    }
+    .container-fluid {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .card-header {
+        margin-bottom: 20px;
+    }
+    .navbar {
+        max-height: 90px;
+        color: #600416;
+    }
+    .dataTables_length {
+        max-width: 100%;
+    }
+}

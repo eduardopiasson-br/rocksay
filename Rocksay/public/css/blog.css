@@ -1,0 +1,267 @@
+@media only screen and (min-width: 1800px)  {
+    .img img {
+        width: 100%;
+    }
+    .new-title-p h3 {
+        max-width: 50ch;
+    }
+}
+
+.blog-section {
+    width: 100%;
+}
+
+.blog-title {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.blog-title h2 {
+    font-size: 45px;
+    text-shadow: 2px 2px #600416;
+}
+
+.blog-title p {
+    font-size: 19px;
+}
+
+.conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* start blogs */
+
+.news {
+    width: 45%;
+    margin-top: 10px;
+    margin-bottom: 100px;
+}
+
+.img img {
+    opacity: 0.7;
+    max-width: 100%;
+    transition: transform .3s;
+}
+
+.img img:hover {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.new-title-p {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.new-title-p span {
+    margin: 10px 5px;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.new-title-p a {
+    margin: 5px;
+    color: #000000;
+    text-decoration: none;
+    text-shadow: 2px 2px #600416;
+}
+
+.new-title-p a:hover {
+    color: #313131;
+    text-shadow: 2px 2px #ffd4d4;
+}
+
+.new-title-p h3 {
+    max-width: 38ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.new-title-p-p {
+    margin: 0 5px 6px;
+    font-size: 19px;
+    max-height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.a-button {
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 2px;
+    padding: 5px 10px;
+    color: #000000;
+    background-color: #600416;
+    border: 1px solid #000000;
+    transition: transform .3s;
+    margin: 0 5px;
+    height: 35px;
+}
+
+.a-button i {
+    margin-left: 4px;
+}
+
+.a-button:hover {
+    color: #600416;
+    background-color: #000000;
+    transform: scale(1.1);
+}
+
+.hr-new {
+    margin: 25px 0px;
+}
+
+/* end blogs */
+
+@media only screen and (max-width: 1300px) and (min-width: 1215px)  {
+    .new-title-p h3 {
+        max-width: 35ch;
+    }
+}
+
+@media only screen and (max-width: 1215px) {
+    .new-title-p h3 {
+        max-width: 30ch;
+        font-size: 25px;
+        margin-top: 5px;
+    }
+}
+
+@media only screen and (max-width: 1050px) {
+    .new-title-p h3 {
+        max-width: 30ch;
+        font-size: 23px;
+        margin-top: 5px;
+    }
+}
+@media only screen and (max-width: 927px) {
+    .new-title-p h3 {
+        max-width: 47ch;
+        font-size: 23px;
+        margin-top: 5px;
+    }
+    .new-title-p {
+        display: block;
+    }
+    .new-title-p span {
+        margin: -26px 5px 0px;
+        color: #000000;
+        display: flex;
+    }
+    .new-title-p a {
+        margin: 0px 5px;
+        display: block;
+    }
+}
+
+/* Responsive */
+@media only screen and (max-width: 751px) {
+    .news {
+        width: 90%;
+        margin: 40px auto 100px!important;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .new {
+        width: 47%;
+        margin: 10px 5px 30px;
+        padding-bottom: 15px;
+        border-radius: 3px;
+        background-color: rgba(128, 128, 128, 0.144);
+    }
+    .new-title-p a {
+        display: inline;
+    }
+    .new-title-p h3 {
+        margin-left: 3px;
+        text-align: center!important;
+        font-size: 22px!important;
+    }
+    .new-title-p-p {
+        margin: -31px 5px 6px;
+        font-size: 18px;
+    }
+}
+
+/* Responsive */
+@media only screen and (max-width: 750px) {
+
+    .news {
+        width: 90%;
+        margin: 40px 20px 100px;
+    }
+
+    .new {
+        text-align: center;
+    }
+
+    .hr-new {
+        margin: 30px 0px;
+    }
+
+    .new-title-p h3 {
+        font-size: 25px;
+        margin-top: 30px;        
+    }
+
+    .new-title-p p {
+        text-align: left;
+    }
+
+    .new-title-p span {
+        margin: -28px 5px;
+    }
+    
+    .conteudo {
+        display: block;
+    }
+
+    /* Glide Config */
+    .glide__arrow {
+        margin: -20px -42px 0px!important;
+        color: #000000!important;
+        background-color: #600416;
+        border: 1px solid #000000!important;
+    }
+
+    .hr-feedback {
+        max-width: 100%;
+        margin-bottom: 50px;
+    }
+}
+@media only screen and (max-width: 450px) {
+    .new {
+        width: 100%;
+        background-color: transparent;
+    }
+    .news {
+        margin: 40px auto 10px!important;
+    }
+}
+
+/* Responsive */
+@media only screen and (max-width: 340px) {
+    .news {
+        margin: 40px auto 14px!important;
+    }
+    .new-title-p h3 {
+        max-width: 100%;
+        overflow: none;
+        text-overflow: none;
+        white-space: normal;
+    }
+    .new-title-p p {
+        text-align: center!important;
+    }
+    .new-title-p h3 {
+        margin-top: 5px;
+    }
+    .hr-new {
+        display: none;
+    }
+}
