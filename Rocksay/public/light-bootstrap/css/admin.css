@@ -1,11 +1,14 @@
+.admin-logo-img {
+    max-width: 100%;
+}
 .user-button {
     color: #ffffff; 
     border-color: #ffffff
 }
 .user-button:hover {
-    color: #600416; 
+    color: #000000; 
     background-color: #ffffff;
-    border-color: #600416
+    border-color: #000000
 }
 .full-admin-table {
     flex-direction: inherit;
@@ -67,13 +70,13 @@
 }
 .button-admin-highlight-true {
     margin: 4px 1px 1px;
-    color:#600416;
-    border: 1px solid #600416;
+    color:#000000;
+    border: 1px solid #000000;
 }
 .button-admin-highlight-true:hover {
-    color:#600416;
+    color:#000000;
     background-color: #000;
-    border: 1px solid #600416;
+    border: 1px solid #000000;
 }
 .button-admin-highlight-false {
     margin: 4px 1px 1px;
@@ -105,36 +108,29 @@
     background-color: #000;
     border: 1px solid #880094;
 }
-table {
-    border: 5px double #600416;
-}
 thead {
-    background-color: #600416da;
+    background-color: #000000da;
     color: #ffffff;
 }
 tbody {
-    background-color: #ffe6e6;
-}
-.top-title {
-    text-align: center;
-    margin-bottom: 0;
+    background-color: #b8b8b8;
 }
 .form-control {
-    border: 1px solid #600416!important;
+    border: 1px solid #000000!important;
 }
 .cke_chrome {
-    border: 1px solid #600416!important;
+    border: 1px solid #000000!important;
 }
 .cke_top {
-    border-bottom: 1px solid #600416!important;
-    background: #600416!important;
+    border-bottom: 1px solid #000000!important;
+    background: #000000!important;
 }
 .cke_bottom {
-    border-top: 1px solid #600416!important;
-    background: #600416!important;
+    border-top: 1px solid #000000!important;
+    background: #000000!important;
 }
 .card {
-    border: 1px solid #600416!important;
+    border: 1px solid #000000!important;
 }
 .table-ces {
     margin-left: 0px!important;
@@ -142,19 +138,19 @@ tbody {
 .hr-ces {
     width: 97%;
     text-align: center;
-    background-color: #600416;
+    background-color: #000000;
 }
 .div-image-about {
     text-align: center;
 }
 .btn-ces {
-    color: #600416;
-    border: 1px solid #600416;
+    color: #000000;
+    border: 1px solid #000000;
 }
 .btn-ces:hover {
-    color: #600416;
+    color: #000000;
     background-color: #000;
-    border: 1px solid #600416;
+    border: 1px solid #000000;
 }
 .limit-text {
     max-width: 25ch;
@@ -171,77 +167,66 @@ tbody {
 .btn-sm{
     width: 37px!important;
 }
-.nav-product {
-    border: 1px solid;
-}
 .user-mobile {
     display: none;
 }
 
 /* start datatable custom css */
-
 .dataTables_wrapper {
     display: flex;
     flex-wrap: wrap;
 }
-
 .dataTables_wrapper select {
     padding: 8px;
-    background-color: #600416;
+    color: #ffffff;
+    background-color: #000000;
 }
-
 .dataTables_length {
     max-width: 50%;
+    width: 100%;
 }
-
 .dataTables_filter {
     max-width: 50%;
     width: 100%;
     display: flex;
     justify-content: flex-end;
 }
-
 .dataTables_filter input {
     padding: 6px;
+    width: 300px;
     margin-left: 1px;
-    background-color: #600416;
+    color: #ffffff;
+    background-color: #000000;
 }
-
 .dataTables_info {
     width: 100%;
     text-align: center;
     margin-top: -10px;
 }
-
 .paginate_button {
+    border: 1px solid #ffffff;
+    background-color: #000000;
+    padding: 5px 7px;
+    cursor: pointer;
+    color: #ffffff;
+}
+.paginate_button:hover {
     border: 1px solid #000000;
-    background-color: #600416;
+    background-color: #646464;
     padding: 5px 7px;
     cursor: pointer;
     color: #000000;
 }
-
-.paginate_button:hover {
-    border: 1px solid #600416;
-    background-color: #000000;
-    padding: 5px 7px;
-    cursor: pointer;
-    color: #600416;
-}
-
 .paging_simple_numbers {
     margin: 5px auto 25px;
 }
-
 .div-checkbox {
     display: inline-block;
 }
-
 .checkbox-admin {
     height: 20px;
     width: 25px;
 }
-
 .checkbox-name-admin {
     margin-right: 20px;
     color: #000000!important;
@@ -249,20 +234,28 @@ tbody {
     margin-left: -6px;
     margin-top: -5px;
 }
-
 .show-multiple-image-preview img {
     max-width: 27%;
     margin: 5px;
     padding: 5px;
     box-shadow: 0px 0px 5px -2px #000000;
 }
-
 td img {
     display: flex;
     padding: 4px;
     margin: 0 auto;
     max-width: 80px;
     box-shadow: 0px 0px 5px -2px #000000;
+}
+.td-title {
+    padding: 10px!important;
+}
+.image-list {
+    max-width: 60px;
+    transition: transform .5s;
+}
+.image-list:hover {
+    transform: scale(2.5);
 }
 
 /* end datatable custom css */
@@ -286,10 +279,10 @@ td img {
     padding: 20px;
     color: #ffffff;
     border-radius: 4px;
-    background-color: #600416da;
+    background-color: #000000da;
 }
 .infos-dash-rock:hover {
-    background-color: #600416;
+    background-color: #000000;
 }
 .info-dr-title {
     font-size: 20px;
@@ -313,8 +306,8 @@ td img {
 }
 
 .info-dr-button:hover {
-    color: #600416;
-    border-color: #600416;
+    color: #000000;
+    border-color: #000000;
     background-color: #ffffff;
 }
 
@@ -345,7 +338,7 @@ td img {
     }
     .navbar {
         max-height: 90px;
-        color: #600416;
+        color: #000000;
     }
     .dataTables_length {
         max-width: 100%;

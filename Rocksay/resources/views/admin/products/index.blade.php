@@ -8,7 +8,7 @@
                 <div class="card data-tables" style="flex-direction: inherit; flex-wrap: wrap">
 
                     {{-- Formulário de Cadastro/Atualização --}}
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="col-12 card-body">
                             @if(!empty($item->title))
                                 <h3 class="mt-0 top-title"><i class="fas fa-tshirt"></i> Editar Produto <a href="{{ route('produtos') }}" title="Voltar para cadastros" class="btn btn-ces"><i class="fas fa-undo"></i></a></h3>
@@ -38,48 +38,44 @@
 
                         {{-- Título e preços --}}
                         <div class="row">
-                            <div class="col-md-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label class="form-control-label" for="input-title">
                                     {{ __('Título do Produto') }} <i class="text-danger">*</i>
                                 </label>
                                 <input type="text" name="title" id="input-title" maxlength="100" class="form-control" value="{{ $item->title ?? old('title') }}" placeholder="T-shirt Tananana Rocket Line super fashion e taus...">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-2 form-group">
                                 <label class="form-control-label" for="input-units">
-                                    {{ __('Unidades') }}
+                                    {{ __('Unidades') }} <i class="text-danger">*</i>
                                 </label>
                                 <input value="{{ $item->units ?? old('units') }}" type="number" name="units" class="form-control" placeholder="Ex: 3">
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-2 form-group">
                                 <label class="form-control-label" for="input-price">
                                     {{ __('Preço do Produto') }} <i class="text-danger">*</i>
                                 </label>
                                 <input value="{{ $item->price ?? old('price') }}" maxlength="45" type="text" name="price" class="form-control" placeholder="Ex: R$120,90">
                             </div>
-                            <div class="col-md-4 form-group">
+                            <div class="col-md-2 form-group">
                                 <label class="form-control-label" for="input-price_promo">
                                     {{ __('Preço Promocional') }}
                                 </label>
                                 <input value="{{ $item->price_promo ?? old('price_promo') }}" maxlength="45" type="text" name="price_promo"class="form-control" placeholder="Ex: R$105,90">
                             </div>
                         </div>
+                        
                         <div class="row">
-                            <div class="col-md-12 form-group">
+                            <div class="col-md-4 form-group">
                                 <label class="form-control-label" for="input-prazo">
                                     {{ __('Valor a Prazo') }}
                                 </label>
                                 <input value="{{ $item->prazo ?? old('prazo') }}" maxlength="50" type="text" name="prazo" class="form-control" placeholder="Ex: Ou parcele em até 3x de 39,90 no cartão de crédito...">
                             </div>
-                        </div>
-                        {{-- Resumo --}}
-                        <div class="row">
-                            <div class="col-md-12 form-group">
+                            <div class="col-md-8 form-group">
                                 <label class="form-control-label" for="input-abstract">
                                     {{ __('Resumo sobre o Produto') }}
                                 </label>
-                                <textarea maxlength="250" type="text" id="summary-ckeditor" name="abstract" class="form-control" placeholder="Ex: Este lindo modelo pode ser combinado com...">{{ $item->abstract ?? old('abstract') }}</textarea>
+                                <textarea maxlength="250" type="text" name="abstract" class="form-control" placeholder="Ex: Este lindo modelo pode ser combinado com...">{{ $item->abstract ?? old('abstract') }}</textarea>
                             </div>
                         </div>
 
@@ -133,64 +129,72 @@
                         @endif
 
 
-                        <hr class="hr-ces">
                         <div class="form-group">
                             <button type="submit" class="btn btn-success mr-1" title="Salvar Dados">Salvar</button>
                             <button type="reset" class="btn btn-warning ml-1" title="Restaurar Dados">Restaurar</button>
                         </div>
                         </form>
                     </div>
-                    
-                    <div class="col-md-6 table-full-width table-responsive table-ces">
+                    <hr class="hr-ces">
+
+                    <div class="col-md-12 table-full-width table-responsive table-ces">
                         <div class="col-12 card-body">
                             <h3 class="mt-0 top-title"><i class="fas fa-clipboard-list"></i> 
                                 Produtos Cadastrados
                                 <a href="{{ route('produtos') }}" title="Recarregar Produtos" class="btn btn-ces"><i class="fas fa-sync"></i></a>
                             </h3>
                         </div>
-                        <table id="products" class="table table-hover table-stripeds">
-                            <thead>
-                                <tr class="col-md-12">
-                                    <td class="col-md-5"><b>Título</b></td>
-                                    <td class="col-md-3" style="text-align: center"><b>Imagem</b></td>
-                                    <td style="display: block">
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody id="tablecontents">
-                                @foreach ($itens as $item)
-                                    <tr class="row1" data-id="{{ $item->id }}">
-                                        @if (!$item->image)
-                                            <td>{{$item->title}}</td>
-                                            <td class="table-center" title="{{ $item->title }}">
-                                                Imagem : <input type="file" data-id="{{ $item->id }}" id="productimage" name="productimage" class="form-control">
-                                                @php $item_id = $item->id @endphp
-                                            </td>
-                                        @else
-                                            <td>{{$item->title}}</td>
-                                            <td style="text-align: center" title="{{ $item->name }}" ><img src="/images/products/product/{{ $item->image }}" width="80px"></td>
-                                        @endif
-                                        <td style="display: block; text-align: center">                                            
-                                            @if($item->status == 1)                                            
-                                                <a href="{{ route('produtos.alternar', $item->id) }}" title="Desativar Produto" class="btn btn-sm button-admin-toggle-success"><i class="fas fa-user-check"></i></a>
-                                            @else
-                                                <a href="{{ route('produtos.alternar', $item->id) }}" title="Ativar Produto" class="btn btn-sm button-admin-toggle-danger"><i class="fas fa-user-times"></i></a>
-                                            @endif
-                                            <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-                                            <a href="{{ route('produtos.cores', $item->id) }}" title="Cadastrar Cores para este Produto" class="btn btn-sm button-admin-colors"><i class="fas fa-palette"></i></a>
-                                            <a href="{{ route('produtos.edicao', $item->id) }}" title="Editar Produto" class="btn btn-sm button-admin-edit"><i class="fas fa-marker"></i></a>
-                                            @if($item->out_stock != 1)                                            
-                                                <a href="{{ route('produtos.estoque', $item->id) }}" title="Marcar como 'Sem Estoque'" class="btn btn-sm button-admin-highlight-true"><i class="fas fa-box-open"></i></a>
-                                            @else
-                                                <a href="{{ route('produtos.estoque', $item->id) }}" title="Ativar Estoque" class="btn btn-sm button-admin-highlight-false"><i class="fas fa-exclamation-triangle"></i></a>
-                                            @endif
-                                            <a href="{{ route('produtos.galeria', $item->id) }}" title="Cadastrar Galeria para este Produto" class="btn btn-sm button-admin-gallery"><i class="fas fa-image"></i></a>
-                                            <a href="{{ route('produtos.deletar', $item->id) }}" title="Deletar Produto" class="btn btn-sm delete-confirm button-admin-delete"><i class="fas fa-trash-alt"></i></a>
-                                        </td>                       
+                        @if(!empty($itens[0]))
+                            <table id="products" class="table table-hover table-stripeds" style="width:100%!important">
+                                <thead>
+                                    <tr class="col-md-12">
+                                        <td class="col-md-1 text-center"><b>#</b></td>
+                                        <td class="col-md-8"><b>Título</b></td>
+                                        <td class="col-md-3 text-center"><b>Imagem</b></td>
+                                        <td style="display: block">
+                                        </td>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody id="tablecontents">
+                                    @foreach ($itens as $index => $item)
+                                        <tr class="row1" data-id="{{ $item->id }}">
+                                            <td class="text-center">{{ $index }}</td>
+                                            @if (!$item->image)
+                                                <td>{{$item->title}}</td>
+                                                <td class="table-center" title="{{ $item->title }}">
+                                                    Imagem : <input type="file" data-id="{{ $item->id }}" id="productimage" name="productimage" class="form-control">
+                                                    @php $item_id = $item->id @endphp
+                                                </td>
+                                            @else
+                                                <td>{{$item->title}}</td>
+                                                <td style="text-align: center" title="{{ $item->name }}" ><img src="/images/products/product/{{ $item->image }}" width="80px"></td>
+                                            @endif
+                                            <td style="display: block; float: right;">                                            
+                                                @if($item->status == 1)                                            
+                                                    <a href="{{ route('produtos.alternar', $item->id) }}" title="Desativar Produto" class="btn btn-sm button-admin-toggle-success"><i class="fas fa-user-check"></i></a>
+                                                @else
+                                                    <a href="{{ route('produtos.alternar', $item->id) }}" title="Ativar Produto" class="btn btn-sm button-admin-toggle-danger"><i class="fas fa-user-times"></i></a>
+                                                @endif
+                                                <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+                                                <a href="{{ route('produtos.cores', $item->id) }}" title="Cadastrar Cores para este Produto" class="btn btn-sm button-admin-colors"><i class="fas fa-palette"></i></a>
+                                                <a href="{{ route('produtos.edicao', $item->id) }}" title="Editar Produto" class="btn btn-sm button-admin-edit"><i class="fas fa-marker"></i></a>
+                                                @if($item->out_stock != 1)                                            
+                                                    <a href="{{ route('produtos.estoque', $item->id) }}" title="Marcar como 'Sem Estoque'" class="btn btn-sm button-admin-highlight-true"><i class="fas fa-box-open"></i></a>
+                                                @else
+                                                    <a href="{{ route('produtos.estoque', $item->id) }}" title="Ativar Estoque" class="btn btn-sm button-admin-highlight-false"><i class="fas fa-exclamation-triangle"></i></a>
+                                                @endif
+                                                <a href="{{ route('produtos.galeria', $item->id) }}" title="Cadastrar Galeria para este Produto" class="btn btn-sm button-admin-gallery"><i class="fas fa-image"></i></a>
+                                                <a href="{{ route('produtos.deletar', $item->id) }}" title="Deletar Produto" class="btn btn-sm delete-confirm button-admin-delete"><i class="fas fa-trash-alt"></i></a>
+                                            </td>                       
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <div class="alert alert-secondary text-center">
+                                <i class="fas fa-info pr-2"></i> Nenhum item cadastrado!
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

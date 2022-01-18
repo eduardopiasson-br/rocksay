@@ -52,14 +52,14 @@
                                 @elseif(empty($post_selected->font) && !empty($post_selected->autor))
                                     {{ $post_selected->autor }}
                                 @endif
-                                @if(!empty($post_selected->font_link)) - <a href="{{ $post_selected->font_link }}" title="Ir para a fonte"><i class="fas fa-external-link-alt"></i></a>@endif
+                                @if(!empty($post_selected->font_link)) - <a class="autor-post-a" href="{{ $post_selected->font_link }}" title="Ir para a fonte"><i class="fas fa-external-link-alt"></i></a>@endif
                             </p>
                         </div>
                     @endif 
 
                     @if($post_selected->gallery->count() > 0)
                         <div class="container">
-                            <h3>Mais Imagens:</h3>
+                            <h3>Mais Imagens</h3>
                             <div class="gallery" id="gallery">
                                 @foreach($post_selected->gallery as $image)
                                     <a href="{{ url('images/blogs/gallery/'. $image->image) }}" class="big"><img src="{{ url('images/blogs/gallery/'. $image->image) }}" alt="{{ $image->name ?? $post_selected->title }}"
@@ -77,12 +77,11 @@
                     @if(!empty($post_selected->button_text) && !empty($post_selected->button) && !empty($post_selected->button_link))
                         <div class="related">
                             <p>{{ $post_selected->button_text }}</p>
-                            <a href="{{ $post_selected->button_link }}" target="_blank" title="Relacionados">{{ $post_selected->button }}</a>
+                            <a href="{{ $post_selected->button_link }}" target="_blank" title="Relacionado">{{ $post_selected->button }}</a>
                         </div>
                     @endif
                     <div class="date-share date-share-2">
-                        <span></span>
-                        <div class="share">
+                        <div class="share new-share">
                             <span> Compartilhe:</span>
                             <a target="_blank" href="https://www.facebook.com/sharer.php?u={{ \URL::current() }}"><i class="fab fa-facebook-square"></i></a>
                             <a target="_blank" href="https://twitter.com/intent/tweet?url={{ \URL::current() }}&text={{ $post_selected->title }}"><i class="fab fa-twitter-square"></i></a>

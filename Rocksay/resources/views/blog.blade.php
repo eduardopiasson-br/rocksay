@@ -3,8 +3,8 @@
 @section('content')
     <section class="blog-section">
         <div class="blog-title">
-            <h2>Blog Cutie And Sweet</h2>
-            <p>Confira as novidades da loja, tendências da moda do momento e muito mais por aqui!</p>
+            <h2><i class="fas fa-blog"></i> Blog - Rocksay</h2>
+            <p>Confira as novidades da loja, estilo rocksay e muito mais por aqui!</p>
         </div>
 
         <div class="conteudo">

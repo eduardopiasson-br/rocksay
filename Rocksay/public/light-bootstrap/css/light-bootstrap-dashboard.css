@@ -357,7 +357,7 @@ body>.navbar-collapse .sidebar-wrapper {
     width: 260px;
     z-index: 4;
     padding-bottom: 100px;
-    background-color: #600416;
+    background-color: #000000;
 }
 
 .sidebar .sidebar-background,
@@ -430,11 +430,11 @@ body>.navbar-collapse .nav {
 .sidebar .nav li .nav-link,
 body>.navbar-collapse .nav li .nav-link {
     color: #ffffff;
-    margin: 5px 15px;
+    margin: 2px 15px;
     opacity: .86;
     border-radius: 4px;
     display: block;
-    padding: 10px 15px;
+    padding: 5px 15px;
 }
 
 .sidebar .nav li .nav-link:hover,
@@ -455,7 +455,7 @@ body>.navbar-collapse .nav li .nav-link p {
 
 .sidebar .nav li .nav-link i,
 body>.navbar-collapse .nav li .nav-link i {
-    font-size: 28px;
+    font-size: 24px;
     margin-right: 15px;
     width: 30px;
     text-align: center;
@@ -715,7 +715,7 @@ body>.navbar-collapse[data-color="purple"]:after {
 .main-panel .navbar {
     color: #ffffff
     margin-bottom: 0;
-    background-color: #600416;
+    background-color: #000000;
 }
 
 .sidebar,
@@ -1807,7 +1807,7 @@ fieldset[disabled] .form-control {
 .table>thead>tr>td,
 .table>tbody>tr>td,
 .table>tfoot>tr>td {
-    padding: 12px 8px;
+    padding: 5px;
     vertical-align: middle;
 }
 

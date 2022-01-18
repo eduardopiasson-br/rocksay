@@ -6,7 +6,7 @@
             <h2><i class="fas fa-hand-holding-usd"></i> Formas de Pagamento</h2>
             @foreach ($payments as $payment)                
                 <button class="accordion" aria-label="Clique para saber os detalhes da ferramenta">
-                    <?= $payment->icon ?> {{ $payment->title }} <i
+                    <?= $payment->icon ?> &nbsp; {{ $payment->title }} <i
                         class="fas fa-caret-down i-right"></i>
                 </button>
                 <div class="panel">
@@ -21,7 +21,7 @@
         <div class="shipping-p" id="shipping">
             <h2><i class="fas fa-shipping-fast"></i> Entregas e Envios</h2>
             @foreach ($deliverys as $delivery)
-                <p><?= $delivery->icon ?> {{ $delivery->text }}</p>
+                <p><?= $delivery->icon ?> &nbsp; {{ $delivery->text }}</p>
             @endforeach
         </div>
         @endif

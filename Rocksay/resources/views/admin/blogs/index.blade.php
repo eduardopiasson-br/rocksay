@@ -1,4 +1,4 @@
-@extends('admin.layouts.app', ['activePage' => 'blogs', 'title' => 'Blog C&S - Gerenciar', 'navName' => 'Gerenciar Posts do Blog', 'activeButton' => 'laravel'])
+@extends('admin.layouts.app', ['activePage' => 'blogs', 'title' => 'Blog Rocksay - Gerenciar', 'navName' => 'Gerenciar Posts do Blog', 'activeButton' => 'laravel'])
 
 @section('content')                 
 <div class="content">
@@ -8,15 +8,17 @@
                 <div class="card data-tables" style="flex-direction: inherit; flex-wrap: wrap">
 
                     {{-- Formulário de Cadastro/Atualização --}}
-                    <div class="col-md-6">
+                    <div class="col-md-12" id="div-form">
                         <div class="col-12 card-body">
                             @if(!empty($item->title))
                                 <h3 class="mt-0 top-title"><i class="fas fa-blog"></i> Editar Post <a href="{{ route('blog') }}" title="Voltar para cadastros" class="btn btn-ces"><i class="fas fa-undo"></i></a></h3>
                             @else
-                                <h3 class="mt-0 top-title"><i class="fas fa-blog"></i> Cadastrar Post</h3>
+                                <h3 class="mt-0 top-title"><i class="fas fa-blog"></i> Cadastrar Post
+                                <button class="btn btn-secondary" id="cancelar-cadastro">Cancelar</button>
+                                </h3>
                             @endif
                         </div>
-                        <form method="post" @if(!empty($item->title)) action="{{ route('blog.atualizacao') }}" @else action="{{ route('blog.cadastro') }}" @endif autocomplete="off" enctype="multipart/form-data">
+                        <form id="form" method="post" @if(!empty($item->title)) action="{{ route('blog.atualizacao') }}" @else action="{{ route('blog.cadastro') }}" @endif autocomplete="off" enctype="multipart/form-data">
                         @csrf
 
                         {{-- Retorno de Erros --}}
@@ -38,11 +40,23 @@
 
                         {{-- Título e texto --}}
                         <div class="row">
-                            <div class="col-md-12 form-group">
+                            <div class="col-md-6 form-group">
                                 <label class="form-control-label" for="input-title">
                                     {{ __('Título do Post') }} <i class="text-danger">*</i>
                                 </label>
                                 <input type="text" name="title" id="input-title" class="form-control" value="{{ $item->title ?? old('title') }}" placeholder="Destaques para a próxima estação!">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label class="form-control-label" for="input-start_post">
+                                    {{ __('Data Inicial') }} <i class="text-danger">*</i>
+                                </label>
+                                <input type="date" name="start_post" id="input-start_post" class="form-control" value="{{ $item->start_post ?? old('start_post') }}"  placeholder="00/00/0000">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label class="form-control-label" for="input-end_post">
+                                    {{ __('Data Final') }}
+                                </label>
+                                <input type="date" name="end_post" id="input-end_post" class="form-control" value="{{ $item->end_post ?? old('end_post') }}" placeholder="00/00/0000">
                             </div>
                         </div>
                         <div class="row">
@@ -53,38 +67,21 @@
                                 <textarea type="text" name="text" id="summary-ckeditor" class="form-control" placeholder="Descrição para o post...">{{ $item->text ?? old('text') }}</textarea>
                             </div>
                         </div>
-                        {{-- Datas --}}
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label class="form-control-label" for="input-start_post">
-                                    {{ __('Data Inicial') }} <i class="text-danger">*</i>
-                                </label>
-                                <input type="date" name="start_post" id="input-start_post" class="form-control" value="{{ $item->start_post ?? old('start_post') }}"  placeholder="00/00/0000">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label class="form-control-label" for="input-end_post">
-                                    {{ __('Data Final') }}
-                                </label>
-                                <input type="date" name="end_post" id="input-end_post" class="form-control" value="{{ $item->end_post ?? old('end_post') }}" placeholder="00/00/0000">
-                            </div>
-                        </div>
                         {{-- Caso tenha alguma fonte --}}
                         <div class="row">
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
                                 <label class="form-control-label" for="input-autor">
                                     {{ __('Autor da Matéria') }}
                                 </label>
                                 <input type="text" maxlength="150" name="autor" id="input-autor" class="form-control" value="{{ $item->autor ?? old('autor') }}"  placeholder="Fulano de Tal">
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
                                 <label class="form-control-label" for="input-font">
                                     {{ __('Fonte da Matéria') }}
                                 </label>
                                 <input type="text" maxlength="150" name="font" id="input-font" class="form-control" value="{{ $item->font ?? old('font') }}"  placeholder="O Globo, UOL, Moda Fashion Oficial...">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 form-group">
+                            <div class="col-md-4 form-group">
                                 <label class="form-control-label" for="input-font_link">
                                     {{ __('Link da Fonte da Matéria') }}
                                 </label>
@@ -149,55 +146,61 @@
                         </form>
                     </div>
                     
-                    <div class="col-md-6 table-full-width table-responsive table-ces">
+                    <div class="col-md-12 table-full-width table-responsive table-ces">
                         <div class="col-12 card-body">
                             <h3 class="mt-0 top-title"><i class="fas fa-clipboard-list"></i> 
                                 Posts Cadastrados
-                                <a href="{{ route('blog') }}" title="Recarregar Posts" class="btn btn-ces"><i class="fas fa-sync"></i></a>
+                                @if(!empty($itens[0]))<a href="{{ route('blog') }}" title="Recarregar Posts" class="btn btn-ces"><i class="fas fa-sync"></i></a>@endif
+                                @if(empty($item->title)) <button class="btn btn-primary" id="cadastrar-blog">Cadastrar Post</button>@endif
                             </h3>
                         </div>
 
-                        <table id="blogtable" class="table table-hover table-stripeds">
-                            <thead>
-                                <tr class="col-md-12">
-                                    <td class="col-md-1"><b>#</b></td>
-                                    <td class="col-md-8"><b>Título</b></td>
-                                    <td style="display: block">
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody id="tablecontents">
-                                @foreach ($itens as $k => $item)
-                                    <tr class="row1" data-id="{{ $item->id }}">
-                                        <td>{{ $k }}</td>
-                                        @if (!$item->image)
-                                            <td class="table-center" title="{{ $item->title }}">
-                                                Imagem : <input type="file" data-id="{{ $item->id }}" id="blogimage" name="blogimage" class="form-control">
-                                                @php $item_id = $item->id @endphp
-                                            </td>
-                                        @else
-                                            <td title="{{ $item->start_post }}">{{ $item->title }}</td>
-                                        @endif
-                                        <td class="d-flex justify-content-end">                                            
-                                            @if($item->highlight == 1)                                            
-                                                <a href="{{ route('blog.destaque', $item->id) }}" title="Remover Destaque" class="btn btn-sm button-admin-highlight-true"><i class="fas fa-star"></i></a>
-                                            @else
-                                                <a href="{{ route('blog.destaque', $item->id) }}" title="Destacar Post" class="btn btn-sm button-admin-highlight-false"><i class="fas fa-blog"></i></a>
-                                            @endif
-                                            @if($item->status == 1)                                            
-                                                <a href="{{ route('blog.alternar', $item->id) }}" title="Desativar Post" class="btn btn-sm button-admin-toggle-success"><i class="fas fa-user-check"></i></a>
-                                            @else
-                                                <a href="{{ route('blog.alternar', $item->id) }}" title="Ativar Post" class="btn btn-sm button-admin-toggle-danger"><i class="fas fa-user-times"></i></a>
-                                            @endif
-                                            <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-                                            <a href="{{ route('blog.galeria', $item->id) }}" title="Cadastrar Galeria para este Post" class="btn btn-sm button-admin-gallery"><i class="fas fa-image"></i></a>
-                                            <a href="{{ route('blog.edicao', $item->id) }}" title="Editar Post" class="btn btn-sm button-admin-edit"><i class="fas fa-marker"></i></a>
-                                            <a href="{{ route('blog.deletar', $item->id) }}" title="Deletar Post" class="btn btn-sm delete-confirm button-admin-delete"><i class="fas fa-trash-alt"></i></a>
-                                        </td>                       
+                        @if(!empty($itens[0]))
+                            <table id="blogtable" class="table table-hover table-stripeds" style="width:100%!important">
+                                <thead>
+                                    <tr class="col-md-12">
+                                        <td class="col-md-1"><b>#</b></td>
+                                        <td class="col-md-8"><b>Título</b></td>
+                                        <td class="col-md-3 text-center"></td>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody id="tablecontents">
+                                    @foreach ($itens as $k => $post)
+                                        <tr class="row1" data-id="{{ $post->id }}">
+                                            <td>{{ $k }}</td>
+                                            @if (!$post->image)
+                                                <td class="table-center" title="{{ $post->title }}">
+                                                    Imagem : <input type="file" data-iditem="{{ $post->id }}" id="blogimage" name="blogimage" class="form-control">
+                                                    @php $item_id = $post->id @endphp
+                                                </td>
+                                            @else
+                                                <td title="{{ $post->start_post }}">{{ $post->title }}</td>
+                                            @endif
+                                            <td class="d-flex justify-content-end">                                            
+                                                @if($post->highlight == 1)                                            
+                                                    <a href="{{ route('blog.destaque', $post->id) }}" title="Remover Destaque" class="btn btn-sm button-admin-highlight-true"><i class="fas fa-star"></i></a>
+                                                @else
+                                                    <a href="{{ route('blog.destaque', $post->id) }}" title="Destacar Post" class="btn btn-sm button-admin-highlight-false"><i class="fas fa-blog"></i></a>
+                                                @endif
+                                                @if($post->status == 1)                                            
+                                                    <a href="{{ route('blog.alternar', $post->id) }}" title="Desativar Post" class="btn btn-sm button-admin-toggle-success"><i class="fas fa-user-check"></i></a>
+                                                @else
+                                                    <a href="{{ route('blog.alternar', $post->id) }}" title="Ativar Post" class="btn btn-sm button-admin-toggle-danger"><i class="fas fa-user-times"></i></a>
+                                                @endif
+                                                <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+                                                <a href="{{ route('blog.galeria', $post->id) }}" title="Cadastrar Galeria para este Post" class="btn btn-sm button-admin-gallery"><i class="fas fa-image"></i></a>
+                                                <a href="{{ route('blog.edicao', $post->id) }}" title="Editar Post" class="btn btn-sm button-admin-edit"><i class="fas fa-marker"></i></a>
+                                                <a href="{{ route('blog.deletar', $post->id) }}" title="Deletar Post" class="btn btn-sm delete-confirm button-admin-delete"><i class="fas fa-trash-alt"></i></a>
+                                            </td>                       
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <div class="alert alert-secondary text-center">
+                                <i class="fas fa-info pr-2"></i> Nenhum item cadastrado!
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -207,6 +210,22 @@
 @endsection
 
 @push('js')
+    @if(!empty($item->title))
+        <script type="text/javascript">$('#div-form').show();</script>
+    @else
+        <script type="text/javascript">
+            $('#div-form').hide();
+            $('#cadastrar-blog').on('click', function (event) {
+                $('#div-form').show(500);
+                $('#cadastrar-blog').hide(500);
+            });
+            $('#cancelar-cadastro').on('click', function (event) {
+                $('#div-form').hide(500);
+                $('#form')[0].reset();
+                $('#cadastrar-blog').show(500);
+            }); 
+        </script>
+    @endif
     <script type="text/javascript">
     // Crop image desktop
         $('#blogimage').ijaboCropTool({

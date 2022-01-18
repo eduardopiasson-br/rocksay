@@ -73,34 +73,40 @@
                                 <a href="{{ route('entregas') }}" title="Recarregar Entregas" class="btn btn-ces"><i class="fas fa-sync"></i></a>
                             </h3>
                         </div>
-                        <table class="table table-hover table-stripeds">
-                            <thead>
-                                <tr class="col-md-12">
-                                    <td></td>
-                                    <td class="col-md-9"><b>Descrição</b></td>
-                                    <td style="display: block">
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody id="tablecontents">
-                                @foreach ($deliverys as $delivery)
-                                    <tr class="row1" data-id="{{ $delivery->id }}" style="cursor: n-resize" title="Clique e arraste para reordenar...">
-                                        <td class="limit-icon"><?= $delivery->icon ?></td>
-                                        <td class="limit-text">{{$delivery->text}}</td>
-                                        <td class="d-flex justify-content-end">
-                                            @if($delivery->status == 1)                                            
-                                                <a href="{{ route('entregas.alternar', $delivery->id) }}" title="Desativar Entrega" class="btn btn-sm button-admin-toggle-success"><i class="fas fa-user-check"></i></a>
-                                            @else
-                                                <a href="{{ route('entregas.alternar', $delivery->id) }}" title="Ativar Entrega" class="btn btn-sm button-admin-toggle-danger"><i class="fas fa-user-times"></i></a>
-                                            @endif
-                                            <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-                                            <a href="{{ route('entregas.edicao', $delivery->id) }}" title="Editar Entrega" class="btn btn-sm button-admin-edit"><i class="fas fa-marker"></i></a>
-                                            <a href="{{ route('entregas.deletar', $delivery->id) }}" title="Deletar Entrega" class="btn btn-sm delete-confirm button-admin-delete"><i class="fas fa-trash-alt"></i></a>
-                                        </td>                       
+                        @if(!empty($deliverys[0]))
+                            <table class="table table-hover table-stripeds">
+                                <thead>
+                                    <tr class="col-md-12">
+                                        <td></td>
+                                        <td class="col-md-9"><b>Descrição</b></td>
+                                        <td style="display: block">
+                                        </td>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody id="tablecontents">
+                                    @foreach ($deliverys as $delivery)
+                                        <tr class="row1" data-id="{{ $delivery->id }}" style="cursor: n-resize" title="Clique e arraste para reordenar...">
+                                            <td class="limit-icon"><?= $delivery->icon ?></td>
+                                            <td class="limit-text">{{$delivery->text}}</td>
+                                            <td class="d-flex justify-content-end">
+                                                @if($delivery->status == 1)                                            
+                                                    <a href="{{ route('entregas.alternar', $delivery->id) }}" title="Desativar Entrega" class="btn btn-sm button-admin-toggle-success"><i class="fas fa-user-check"></i></a>
+                                                @else
+                                                    <a href="{{ route('entregas.alternar', $delivery->id) }}" title="Ativar Entrega" class="btn btn-sm button-admin-toggle-danger"><i class="fas fa-user-times"></i></a>
+                                                @endif
+                                                <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+                                                <a href="{{ route('entregas.edicao', $delivery->id) }}" title="Editar Entrega" class="btn btn-sm button-admin-edit"><i class="fas fa-marker"></i></a>
+                                                <a href="{{ route('entregas.deletar', $delivery->id) }}" title="Deletar Entrega" class="btn btn-sm delete-confirm button-admin-delete"><i class="fas fa-trash-alt"></i></a>
+                                            </td>                       
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <div class="alert alert-secondary text-center">
+                                <i class="fas fa-info pr-2"></i> Nenhum item cadastrado!
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

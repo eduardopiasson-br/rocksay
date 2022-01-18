@@ -1,7 +1,7 @@
-@extends('auth/layouts/app', ['activePage' => 'login', 'title' => 'Login - Cutie & Sweet - Moda Fashion'])
+@extends('auth/layouts/app', ['activePage' => 'login', 'title' => 'Login - Rocksay Store'])
 
 @section('content')
-    <div class="full-page section-image" data-color="black" data-image="{{asset('light-bootstrap/img/cutie-and-sweet-moda-fashion.png')}}">
+    <div class="full-page section-image" data-color="black">
         <div class="content pt-5">
             <div class="container mt-5">    
                 <div class="col-md-4 col-sm-6 ml-auto mr-auto">

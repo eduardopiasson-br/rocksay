@@ -11,24 +11,22 @@
     text-align: center;
 }
 
-.about-heart {
+.about-rock {
     color: #600416;
     text-shadow: 2px 1px #000000;
     font-size: 90px;
     margin-bottom: 10px;
 }
 
-.about-p-icon {
-    color: #000000;
-    margin-top: -74px;
-    margin-right: 2px;
-    font-size: 41px!important;
-}
-
 .about-h2 {
     text-shadow: 2px 2px #600416;
     font-size: 45px;
     margin: 30px;
+    color: #000000;
+}
+
+.text-about {
+    color: #646464;
 }
 
 .text-about p {
@@ -124,10 +122,12 @@
 
 .pilares-text h3 {
     font-size: 35px;
-    text-shadow: 2px 2px #000000;
+    color: #000000;
+    text-shadow: 2px 2px #600416;
 }
 
 .pilares-text p {
+    color: #646464;
     font-size: 19px;
 }
 

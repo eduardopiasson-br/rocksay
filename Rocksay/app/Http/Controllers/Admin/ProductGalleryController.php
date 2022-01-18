@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\ProductGalleries;
 use App\Http\Controllers\Controller;
+use Throwable;
+
 class ProductGalleryController extends Controller
 {
     /**
@@ -24,47 +26,46 @@ class ProductGalleryController extends Controller
 
     public function saveUpload(Request $request, $product_id)
     {
-         
-        $max_position = ProductGalleries::max('position') + 1;
-        $product = Products::find($product_id);
-        $validatedData = $request->validate([
-            'images' => 'required',
-            'images.*' => 'mimes:jpg,png,jpeg,gif,svg',
-            'name' => ['max:150'],
-        ]);
- 
-        if($request->TotalImages > 0)
-        {
-                
-            for ($x = 0; $x < $request->TotalImages; $x++) 
+        try {
+            $max_position = ProductGalleries::max('position') + 1;
+            $product = Products::find($product_id);
+            $validatedData = $request->validate([
+                'images' => 'required',
+                'images.*' => 'mimes:jpg,png,jpeg,gif,svg',
+                'name' => ['max:150'],
+            ]);
+     
+            if($request->TotalImages > 0)
             {
+                    
+                for ($x = 0; $x < $request->TotalImages; $x++) 
+                {
+        
+                    if ($request->hasFile('images'.$x)) 
+                        {
+                            $file      = $request->file('images'.$x);
+        
+                            $outro = $request->input('name') ? Str::of($request->input('name'))->slug('-') : Str::of($product->title)->slug('-');
+                            $name = $outro . '-' . date('YmdHis') . "-" .  $file->getClientOriginalName();
+                            $file->move('images/products/gallery/', $name);
     
-                if ($request->hasFile('images'.$x)) 
-                    {
-                        $file      = $request->file('images'.$x);
+                            $insert[$x]['image'] = $name;
+                            $insert[$x]['name'] = $request->input('name') ? $request->input('name') : NULL;
+                            $insert[$x]['product_id'] = $product_id;
+                            $insert[$x]['user_id'] = auth()->user()->id;
+                            $insert[$x]['position'] = $max_position + ($x + 1);
     
-                        $outro = $request->input('name') ? Str::of($request->input('name'))->slug('-') : Str::of($product->title)->slug('-');
-                        $name = $outro . '-' . date('YmdHis') . "-" .  $file->getClientOriginalName();
-                        $file->move('images/products/gallery/', $name);
-
-                        $insert[$x]['image'] = $name;
-                        $insert[$x]['name'] = $request->input('name') ? $request->input('name') : NULL;
-                        $insert[$x]['product_id'] = $product_id;
-                        $insert[$x]['user_id'] = auth()->user()->id;
-                        $insert[$x]['position'] = $max_position + ($x + 1);
-
-                    }
+                        }
+                }
+     
+                ProductGalleries::insert($insert);
+     
+                toast('Imagens cadastradas com sucesso!', 'success');
+                return response()->json(['success'=>'Imagens cadastradas com sucesso!']);
             }
- 
-            ProductGalleries::insert($insert);
- 
-            toast('Imagens cadastradas com sucesso!', 'success');
-            return response()->json(['success'=>'Imagens cadastradas com sucesso!']);
-        }
-        else
-        {
-            toast('Erro, tente novamente!', 'error');
-            return response()->json(["message" => "Tente Novamente!"]);
+        } catch (Throwable $e) {
+            toast($e->getMessage(), 'error');
+            return response()->json(["message" => $e->getMessage()]);
         }
  
     }   

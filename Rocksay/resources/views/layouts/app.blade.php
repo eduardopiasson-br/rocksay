@@ -7,11 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Icon title-->
-    <link rel="shortcut icon" href="Images/icon.png" />
+    <link rel="shortcut icon" href="{{ url('images/favicon.png') }}" />
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ url('images/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ url('images/favicon.png') }}">
 
     {{-- Meta Tags Share SEO --}}
     @include('layouts.meta.meta_default')
-    <meta name="keywords" content="Cutie And Sweet Moda Fashion, Loja Online de Roupas, {{ $site_keys }}">
+    <meta name="keywords" content="Rocksay Store, Loja Online de Roupas, {{ $site_keys }}">
     @if(!empty($meta_product))@include('layouts.meta.meta_product')@endif
 
     <!-- Google Font -->
@@ -84,9 +86,7 @@
         </div>
         <nav class="navbar-expand-lg navbar-light nav-menu">
             <a href="{{ url('/') }}" class="div-logo" title="Pagina Inicial">
-                <h2 class="text-logo">C&S</h2>
-                <p class="text-logo">Cutie and Sweet</p>
-                <span class="text-logo">Moda Fashion</span>
+                <img src="{{ url('/images/logo_large_colors.png') }}" alt="Rocksay Store Logo">
             </a>
             <div class="div-menu collapse navbar-collapse" id="myLinks">
                 <ul class="navbar-nav mr-auto ul-menu">
@@ -160,10 +160,8 @@
             @endif
     
             <div class="div-footer footer-right">
-                <a href="{{ url('/') }}" class="div-logo" title="Pagina Inicial">
-                    <h2 class="text-logo">C&S</h2>
-                    <p class="text-logo">Cutie and Sweet</p>
-                    <span class="text-logo">Moda Fashion</span>
+                <a href="{{ url('/') }}" class="div-logo-footer" title="Pagina Inicial">
+                    <img src="{{ url('/images/logo_large_colors.png') }}" alt="Rocksay Store Logo">
                 </a>
                 @if(!empty($config->footer_text))<p class="footer-p">{{ $config->footer_text }}</p>@endif
             </div>
@@ -173,13 +171,13 @@
                 <div class="footer-social">
                     @if(!empty($config->instagram))
                     <a rel="noopener" href="{{ $config->instagram }}" target="_blank" title="Nos acompanhe no Instagram">
-                        <i class="fab fa-instagram"></i> @cutieandsweet.ces
+                        <i class="fab fa-instagram"></i> @rocksay.store
                     </a>
                     @endif
                     @if(!empty($config->facebook))
                     <a rel="noopener" href="{{ $config->facebook }}" target="_blank"
                         title="Curta nossa página no Facebook">
-                        <i class="fab fa-facebook"></i> Cutie And Sweet
+                        <i class="fab fa-facebook"></i> Rocksay Store Page
                     </a>
                     @endif
                     @if(!empty($config->whatsapp))
@@ -263,7 +261,7 @@
         </section>
     
         <div class="copyright-div">
-            <p>Copyright © 2021 - C&S Cutie and Sweet</p>
+            <p>Copyright © 2021 - Rocksay Store</p>
             @if(!empty($config->cnpj))<p>Cnpj: {{ $config->cnpj }}</p>@endif
             @if(!empty($config->owner))<p>Proprietária: {{ $config->owner }}</p>@endif
         </div>

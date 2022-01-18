@@ -87,43 +87,49 @@
                     
                     <div class="col-md-2"></div>
                     <div class="col-md-8 card-body table-full-width table-responsive table-ces">
-                        <table class="table table-hover table-stripeds">
-                            <thead>
-                                <tr class="col-md-12">
-                                    <td class="col-md-3"><b>Nome</b></td>
-                                    <td class="col-md-6 table-center"><b>Texto/Imagem</b></td>
-                                    <td style="display: block">
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody id="tablecontents">
-                                @foreach ($feedback as $feed)
-                                    <tr class="row1" data-id="{{ $feed->id }}" style="cursor: n-resize" title="Clique e arraste para reordenar...">
-                                        <td>{{ $feed->name }}</td>
-                                        @if($feed->image != NULL)
-                                            <td title="{{ $feed->name }}"class="table-center"><img src="/images/feedback/{{ $feed->image }}" width="100px"></td>
-                                        @elseif ($feed->text != NULL)
-                                            <td class="limit-text"><?= $feed->text ?></td>
-                                        @else
-                                            <td class="table-center">
-                                                <input type="file" data-id="{{ $feed->id }}" id="feedbackimage" name="feedbackimage" class="form-control" placeholder="Imagem Padrão">
-                                                @php $item_id = $feed->id @endphp
-                                            </td>
-                                        @endif
-                                        <td class="d-flex justify-content-end">
-                                            @if($feed->status == 1)                                            
-                                                <a href="{{ route('feedback.alternar', $feed->id) }}" title="Desativar Feedback" class="btn btn-sm button-admin-toggle-success"><i class="fas fa-user-check"></i></a>
-                                            @else
-                                                <a href="{{ route('feedback.alternar', $feed->id) }}" title="Ativar Feedback" class="btn btn-sm button-admin-toggle-danger"><i class="fas fa-user-times"></i></a>
-                                            @endif
-                                            <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-                                            <a href="{{ route('feedback.edicao', $feed->id) }}" title="Editar Feedback" class="btn btn-sm button-admin-edit"><i class="fas fa-marker"></i></a>
-                                            <a href="{{ route('feedback.deletar', $feed->id) }}" title="Deletar Feedback" class="btn btn-sm delete-confirm button-admin-delete"><i class="fas fa-trash-alt"></i></a>
-                                        </td>                       
+                        @if(!empty($feedback[0]))
+                            <table class="table table-hover table-stripeds">
+                                <thead>
+                                    <tr class="col-md-12">
+                                        <td class="col-md-3"><b>Nome</b></td>
+                                        <td class="col-md-6 table-center"><b>Texto/Imagem</b></td>
+                                        <td style="display: block">
+                                        </td>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody id="tablecontents">
+                                    @foreach ($feedback as $feed)
+                                        <tr class="row1" data-id="{{ $feed->id }}" style="cursor: n-resize" title="Clique e arraste para reordenar...">
+                                            <td>{{ $feed->name }}</td>
+                                            @if($feed->image != NULL)
+                                                <td title="{{ $feed->name }}"class="table-center"><img src="/images/feedback/{{ $feed->image }}" width="100px"></td>
+                                            @elseif ($feed->text != NULL)
+                                                <td class="limit-text"><?= $feed->text ?></td>
+                                            @else
+                                                <td class="table-center">
+                                                    <input type="file" data-id="{{ $feed->id }}" id="feedbackimage" name="feedbackimage" class="form-control" placeholder="Imagem Padrão">
+                                                    @php $item_id = $feed->id @endphp
+                                                </td>
+                                            @endif
+                                            <td class="d-flex justify-content-end">
+                                                @if($feed->status == 1)                                            
+                                                    <a href="{{ route('feedback.alternar', $feed->id) }}" title="Desativar Feedback" class="btn btn-sm button-admin-toggle-success"><i class="fas fa-user-check"></i></a>
+                                                @else
+                                                    <a href="{{ route('feedback.alternar', $feed->id) }}" title="Ativar Feedback" class="btn btn-sm button-admin-toggle-danger"><i class="fas fa-user-times"></i></a>
+                                                @endif
+                                                <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+                                                <a href="{{ route('feedback.edicao', $feed->id) }}" title="Editar Feedback" class="btn btn-sm button-admin-edit"><i class="fas fa-marker"></i></a>
+                                                <a href="{{ route('feedback.deletar', $feed->id) }}" title="Deletar Feedback" class="btn btn-sm delete-confirm button-admin-delete"><i class="fas fa-trash-alt"></i></a>
+                                            </td>                       
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <div class="alert alert-secondary text-center">
+                                <i class="fas fa-info pr-2"></i> Nenhuma item cadastrado!
+                            </div>
+                        @endif
                     </div>
                     <div class="col-md-2"></div>
                 </div>

@@ -1,38 +1,3 @@
-// Slider more products
-new Glide('.glide', {
-    type: 'carousel',
-    startAt: 0,
-    perView: 4,
-    autoplay: 5000,
-    breakpoints: {
-        1024: {
-          perView: 3
-        },
-        800: {
-          perView: 2
-        },
-        500: {
-          perView: 1
-        }
-      }
-}).mount();
-
-// faq de pagamento
-var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
-
 // Select all links with hashes
 $('a[href*="#"]')
   // Remove links that don't actually link to anything
@@ -74,3 +39,38 @@ $('a[href*="#"]')
 (function() {
   var $gallery = new SimpleLightbox('.gallery a', {});
 })();
+
+// faq de pagamento
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+// Slider more products
+new Glide('.glide', {
+  type: 'carousel',
+  startAt: 0,
+  perView: 4,
+  autoplay: 5000,
+  breakpoints: {
+      1024: {
+        perView: 3
+      },
+      800: {
+        perView: 2
+      },
+      500: {
+        perView: 1
+      }
+    }
+}).mount();

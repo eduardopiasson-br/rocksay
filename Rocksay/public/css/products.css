@@ -9,10 +9,12 @@
 
 .top-product h2 {
     font-size: 45px;
+    color: #000000;
     text-shadow: 2px 2px #600416;
 }
 
 .top-product p {
+    color: #646464;
     font-size: 19px;
 }
 
@@ -62,7 +64,7 @@
     align-items: center;
     align-content: stretch;
     text-align: center;
-    color: #000000;
+    color: #600416;
     background-color: #000000;
     max-width: 80%;
     margin: -18px auto 0px;
@@ -109,7 +111,7 @@
 
 .button-product {
     background-color: #000000;
-    color: #000000;
+    color: #600416;
     border-radius: 3px;
     display: block;
     text-align: center;
@@ -135,7 +137,7 @@
 
 .div-shipping {
     padding: 50px 100px;
-    color: #000000;
+    color: #ffffff;
     border-radius: 3px;
     background-image: linear-gradient(to bottom right, #000000, #600416);
     width: 100%;
@@ -172,7 +174,7 @@
 
 .accordion {
     background-color: transparent;
-    color: #000000;
+    color: #ffffff;
     cursor: pointer;
     padding: 18px;
     border: none;
@@ -212,6 +214,7 @@
 }
 
 .redirects-title {
+    color: #000000;
     display: contents;
 }
 
@@ -221,13 +224,13 @@
     border: 0px solid transparent;
     text-decoration: none;
     border-radius: 3px;
-    color: #646464;
-    background-color: #6004169c;
+    color: #ffffff;
+    background-color: #600416;
 }
 
 .redirects-button:hover {
     color: #000000;
-    background-color: #600416;
+    background-color: #6004169c;
 }
 
 @media only screen and (max-width: 1200px) and (min-width: 800px)  {

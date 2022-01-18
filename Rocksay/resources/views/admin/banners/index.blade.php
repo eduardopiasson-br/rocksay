@@ -123,47 +123,53 @@
                         <div class="col-12">
                             <h3 class="mt-0 top-title"><i class="fas fa-clipboard-list"></i> 
                                 Banners Cadastrados
-                                <a href="{{ route('banners') }}" title="Recarregar Banners" class="btn btn-ces"><i class="fas fa-sync"></i></a>
+                                @if(!empty($banners[0]))<a href="{{ route('banners') }}" title="Recarregar Banners" class="btn btn-ces"><i class="fas fa-sync"></i></a>@endif
                             </h3>
                         </div>
-                        <table class="table table-hover table-stripeds">
-                            <thead>
-                                <tr class="col-md-12">
-                                    <td class="col-md-8"><b>Nome</b></td>
-                                    <td style="display: block">
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody id="tablecontents">
-                                @foreach ($banners as $banner)
-                                    <tr class="row1" data-id="{{ $banner->id }}" style="cursor: n-resize" title="Clique e arraste para reordenar...">
-                                        @if (!$banner->image_desktop)
-                                            <td class="table-center" title="{{ $banner->name }}">
-                                                Banner PC: <input type="file" data-id="{{ $banner->id }}" id="bannerdesktopimage" name="bannerdesktopimage" class="form-control" placeholder="Imagem Padrão">
-                                                @php $item_id = $banner->id @endphp
-                                            </td>
-                                        @elseif (!$banner->image_mobile)
-                                            <td class="table-center" title="{{ $banner->name }}">
-                                                Banner Celular: <input type="file" data-id="{{ $banner->id }}" id="bannermobileimage" name="bannermobileimage" class="form-control" placeholder="Imagem Padrão">
-                                                @php $item_id = $banner->id @endphp
-                                            </td>
-                                        @else
-                                            <td>{{ $banner->name }}</td>
-                                        @endif
-                                        <td class="d-flex justify-content-end">
-                                            @if($banner->status == 1)                                            
-                                                <a href="{{ route('banners.alternar', $banner->id) }}" title="Desativar Banner" class="btn btn-sm button-admin-toggle-success"><i class="fas fa-user-check"></i></a>
-                                            @else
-                                                <a href="{{ route('banners.alternar', $banner->id) }}" title="Ativar Banner" class="btn btn-sm button-admin-toggle-danger"><i class="fas fa-user-times"></i></a>
-                                            @endif
-                                            <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
-                                            <a href="{{ route('banners.edicao', $banner->id) }}" title="Editar Banner" class="btn btn-sm button-admin-edit"><i class="fas fa-marker"></i></a>
-                                            <a href="{{ route('banners.deletar', $banner->id) }}" title="Deletar Banner" class="btn btn-sm delete-confirm button-admin-delete"><i class="fas fa-trash-alt"></i></a>
-                                        </td>                       
+                        @if(!empty($banners[0]))
+                            <table class="table table-hover table-stripeds">
+                                <thead>
+                                    <tr class="col-md-12">
+                                        <td class="col-md-8"><b>Nome</b></td>
+                                        <td style="display: block">
+                                        </td>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody id="tablecontents">
+                                    @foreach ($banners as $banner)
+                                        <tr class="row1" data-id="{{ $banner->id }}" style="cursor: n-resize" title="Clique e arraste para reordenar...">
+                                            @if (!$banner->image_desktop)
+                                                <td class="table-center" title="{{ $banner->name }}">
+                                                    Banner PC: <input type="file" data-id="{{ $banner->id }}" id="bannerdesktopimage" name="bannerdesktopimage" class="form-control" placeholder="Imagem Padrão">
+                                                    @php $item_id = $banner->id @endphp
+                                                </td>
+                                            @elseif (!$banner->image_mobile)
+                                                <td class="table-center" title="{{ $banner->name }}">
+                                                    Banner Celular: <input type="file" data-id="{{ $banner->id }}" id="bannermobileimage" name="bannermobileimage" class="form-control" placeholder="Imagem Padrão">
+                                                    @php $item_id = $banner->id @endphp
+                                                </td>
+                                            @else
+                                                <td>{{ $banner->name }}</td>
+                                            @endif
+                                            <td class="d-flex justify-content-end">
+                                                @if($banner->status == 1)                                            
+                                                    <a href="{{ route('banners.alternar', $banner->id) }}" title="Desativar Banner" class="btn btn-sm button-admin-toggle-success"><i class="fas fa-user-check"></i></a>
+                                                @else
+                                                    <a href="{{ route('banners.alternar', $banner->id) }}" title="Ativar Banner" class="btn btn-sm button-admin-toggle-danger"><i class="fas fa-user-times"></i></a>
+                                                @endif
+                                                <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+                                                <a href="{{ route('banners.edicao', $banner->id) }}" title="Editar Banner" class="btn btn-sm button-admin-edit"><i class="fas fa-marker"></i></a>
+                                                <a href="{{ route('banners.deletar', $banner->id) }}" title="Deletar Banner" class="btn btn-sm delete-confirm button-admin-delete"><i class="fas fa-trash-alt"></i></a>
+                                            </td>                       
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <div class="alert alert-secondary text-center">
+                                <i class="fas fa-info pr-2"></i> Nenhum item cadastrado!
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

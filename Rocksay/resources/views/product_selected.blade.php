@@ -1,4 +1,4 @@
-@extends('layouts/app', ['activePage' => 'produtos', 'title' => $product_selected->title . ' - Cutie & Sweet'])
+@extends('layouts/app', ['activePage' => 'produtos', 'title' => $product_selected->title . ' - Rocksay'])
 
 @section('content')
     <section class="product-detail">
@@ -10,7 +10,7 @@
             <i class="fas fa-star"></i>
         </h2>
         <div class="redirects">
-            <a href="products.html" class="redirects-button" title="Ir para todos os produtos">
+            <a href="{{ url('produtos') }}" class="redirects-button" title="Ir para todos os produtos">
                 <i class="fas fa-reply-all"></i> Todos os Produtos
             </a>
             @if($product_selected->gallery->count() > 0)
@@ -28,9 +28,11 @@
                     <i class="fab fa-slack-hash"></i> Entregas e Envios
                 </a>
             @endif
-            <a href="#products" class="redirects-button" title="Ir para mais produtos relacionados">
-                <i class="fab fa-slack-hash"></i> Mais Produtos
-            </a>
+            @if($products->count() > 0)
+                <a href="#products" class="redirects-button" title="Ir para mais produtos relacionados">
+                    <i class="fab fa-slack-hash"></i> Mais Produtos
+                </a>
+            @endif
             <a href="#contact" class="redirects-button" title="Ir para nossos contatos">
                 <i class="fab fa-slack-hash"></i> Contatos
             </a>
@@ -139,7 +141,7 @@
 
     @include('layouts.payments_delivery')
 
-    @if(!empty($products))
+    @if(!empty($products[0]))
     <section class="more-products" id="products">
         <h2 class="more-h2">Conheça também</h2>
         <hr class="more-hr">
@@ -177,6 +179,7 @@
     @endif
 
     @include('layouts.socials')
+    <hr class="hr-wide">
     
 @endsection
 

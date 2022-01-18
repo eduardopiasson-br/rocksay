@@ -62,8 +62,8 @@
                             </div>
                         @endif                
                         <div class="form-group d-flex justify-content-center">
-                            <button type="submit" class="btn btn-success mr-1" title="Salvar Dados">Salvar</button>
-                            <button type="reset" class="btn btn-warning ml-1" title="Restaurar Dados">Restaurar</button>
+                            <button type="submit" class="btn btn-success mr-1" title="Salvar Dados"><i class="fas fa-save"></i> Salvar</button>
+                            <button type="reset" class="btn btn-warning ml-1" title="Restaurar Dados"><i class="fas fa-undo-alt"></i> Restaurar</button>
                         </div>
                         </form>
                     </div>
@@ -80,8 +80,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8 card-body table-full-width table-responsive table-ces">
+                    <div class="col-md-12 card-body table-full-width table-responsive table-ces">
                         <table class="table table-hover table-stripeds">
                             <thead>
                                 <tr class="col-md-12">
@@ -111,7 +110,6 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-md-2"></div>
                 </div>
             </div>
         </div>
@@ -187,11 +185,7 @@
                     order: order,
             },
             success: function(response) {
-                if (response.status == "success") {
-                  console.log(response);
-                } else {
-                  console.log(response);
-                }
+                location.reload();
             }
           });
         }

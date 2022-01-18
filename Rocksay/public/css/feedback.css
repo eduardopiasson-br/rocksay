@@ -11,7 +11,8 @@
 }
 
 .feedback-title h2 {
-    font-size: 40px;
+    font-size: 45px;
+    color: #000000;
     text-shadow: 2px 2px #600416;
 }
 
@@ -43,12 +44,14 @@
 .feedback-conteudo p {
     font-size: 20px;
     font-weight: 400;
+    color: #000000;
     white-space: break-spaces;
     margin: 0px 0px;
     padding: 0px 50px!important;
 }
 
 .feedback-conteudo h3 {
+    color: #000000;
     padding: 5px 0px 0px;
 }
 

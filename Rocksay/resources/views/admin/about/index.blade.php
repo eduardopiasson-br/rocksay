@@ -1,4 +1,4 @@
-@extends('admin.layouts.app', ['activePage' => 'about', 'title' => 'Sobre a C&S - Gerenciar', 'navName' => 'Sobre a Cutie & Sweet', 'activeButton' => 'laravel'])
+@extends('admin.layouts.app', ['activePage' => 'about', 'title' => 'Sobre a C&S - Gerenciar', 'navName' => 'Sobre a Rocksay', 'activeButton' => 'laravel'])
 
 @section('content')                 
 <div class="content">
@@ -73,8 +73,8 @@
                         <br><br>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success" title="Salvar Dados">Salvar</button>
-                            <button type="reset" class="btn btn-warning" title="Restaurar Dados">Restaurar</button>
+                            <button type="submit" class="btn btn-success" title="Salvar Dados"><i class="fas fa-save"></i> Salvar</button>
+                            <button type="reset" class="btn btn-warning" title="Restaurar Dados"><i class="fas fa-undo-alt"></i> Restaurar</button>
                         </div>
                         </form>
                     </div>

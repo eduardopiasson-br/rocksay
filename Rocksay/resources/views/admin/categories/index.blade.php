@@ -8,7 +8,7 @@
                 <div class="card data-tables" style="flex-direction: inherit; flex-wrap: wrap">
 
                     {{-- Formulário de Cadastro/Atualização --}}
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="col-12 card-body">
                             @if(!empty($category))
                                 <h3 class="mt-0 top-title"><i class="fab fa-pied-piper-hat"></i> Editar Categoria <a href="{{ route('categorias') }}" title="Voltar para cadastros" class="btn btn-ces"><i class="fas fa-undo"></i></a></h3>
@@ -39,15 +39,13 @@
 
                         {{-- Título e texto --}}
                         <div class="row">
-                            <div class="col-md-12 form-group">
+                            <div class="col-md-4 form-group">
                                 <label class="form-control-label" for="input-name">
                                     {{ __('Nome da Categoria') }} <i class="text-danger">*</i>
                                 </label>
                                 <input type="text" name="name" id="input-name" class="form-control" value="{{ $category->name ?? old('name') }}" placeholder="Calças, Blusas, Cintos...">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 form-group">
+                            <div class="col-md-8 form-group">
                                 <label class="form-control-label" for="input-abstract">
                                     {{ __('Resumo da Categoria') }} <i class="text-danger">*</i>
                                 </label>
@@ -70,15 +68,15 @@
                             </div>
                         @endif
 
-                        <hr class="hr-ces">
                         <div class="form-group">
                             <button type="submit" class="btn btn-success mr-1" title="Salvar Dados">Salvar</button>
                             <button type="reset" class="btn btn-warning ml-1" title="Restaurar Dados">Restaurar</button>
                         </div>
                         </form>
                     </div>
-                    
-                    <div class="col-md-6 table-full-width table-responsive table-ces">
+                    <hr class="hr-ces">
+
+                    <div class="col-md-12 table-full-width table-responsive table-ces">
                         <div class="col-12 card-body">
                             <h3 class="mt-0 top-title"><i class="fas fa-clipboard-list"></i> 
                                 Categorias Cadastrados
@@ -88,7 +86,8 @@
                         <table class="table table-hover table-stripeds">
                             <thead>
                                 <tr class="col-md-12">
-                                    <td class="col-md-8"><b>Nome</b></td>
+                                    <td class="col-md-4"><b>Nome</b></td>
+                                    <td class="col-md-4"><b>Imagem</b></td>
                                     <td style="display: block">
                                     </td>
                                 </tr>
@@ -96,13 +95,14 @@
                             <tbody id="tablecontents">
                                 @foreach ($categories as $item)
                                     <tr class="row1" data-id="{{ $item->id }}" style="cursor: n-resize" title="Clique e arraste para reordenar...">
+                                        <td>{{ $item->name }}</td> 
                                         @if (!$item->image)
                                             <td class="table-center" title="{{ $item->name }}">
                                                 Imagem : <input type="file" data-id="{{ $item->id }}" id="categoryimage" name="categoryimage" class="form-control">
                                                 @php $item_id = $item->id @endphp
                                             </td>
                                         @else
-                                            <td>{{ $item->name }}</td>
+                                        <td title="{{ $item->name }}"class="table-center"><img src="/images/categories/{{ $item->image }}" width="100px"></td>
                                         @endif
                                         <td class="d-flex justify-content-end">                                            
                                             @if($item->status == 1)                                            
@@ -221,12 +221,13 @@
                },
                success: function(response) {
                    if (response.status == "success") {
-                     console.log(response);
+                     location.reload();
                    } else {
                      console.log(response);
                    }
                }
              });
+             location.reload();
            }
          });
        </script>

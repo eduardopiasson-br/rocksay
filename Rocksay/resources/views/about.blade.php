@@ -4,8 +4,7 @@
     <section class="about">
         <div class="div-about">
             <div class="text-about">
-                <i class="fas fa-heart about-heart">
-                    <p class="about-p-icon">C&S</p>
+                <i class="fas fa-fist-raised about-rock">
                 </i>
                 <h2 class="about-h2">{{ $about->title }}</h2>
                 <?= $about->text ?>
@@ -29,7 +28,7 @@
                 @endif
                 @if(!empty($about->vision))
                 <div class="pilares-item">
-                    <i class="fas fa-grin-hearts"></i>
+                    <i class="fas fa-grin-tongue-squint"></i>
                     <div class="pilares-text">
                         <h3>Visão</h3>
                         <p>

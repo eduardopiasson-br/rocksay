@@ -24,6 +24,7 @@
 
 .blog-title h2 {
     font-size: 40px;
+    color: #000000;
     text-shadow: 2px 2px #600416;
 }
 
@@ -37,50 +38,59 @@
 }
 
 .new-title-p p {
+    color: #000000;
     margin: 0 5px 10px;
     line-height: 1.7;
     font-size: 19px;
+    text-align: justify;
     max-height: 100%!important;
 }
 
 .img img {
+    width: 100%;
     max-width: 100%;
 }
 
 .autor-post {
+    color: #646464;
     text-align: center;
 }
 
+.autor-post-a {
+    color: #600416;
+}
+
+.autor-post-a:hover {
+    color: #000000;
+}
 .related {
     padding: 10px 10px 15px;
     border-radius: 4px;
     text-align: center;
     margin: 10px 0 20px;
-    background-color: #60041673;
+    background-color: #600416;
 }
 
 .related p {
     font-size: 19px;
-    font-weight: 600;
-    color: #000000;
+    color: #ffffff;
     margin-bottom: 10px;
-    text-shadow: 1px 2px 5px #000000;
 }
 
 .related a {
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
-    background-color: gray;
+    background-color: #000000;
     border-radius: 4px;
     font-size: 19px;
     padding: 5px 10px;
-    border: 1px solid #000000;
+    border: 1px solid #ffffff;
 }
 
 .related a:hover {
-    color: gray;
-    background-color: #000000;
-    border: 1px solid gray;
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid #000000;
 }
 
 .new iframe {
@@ -104,6 +114,8 @@
 }
 
 .container h3 {
+    text-align: center;
+    color: #000000;
     padding: 10px;
     text-shadow: 1px 1px #600416;
 }
@@ -142,6 +154,11 @@
     text-align: end;
 }
 
+.new-share {
+    width: 100%!important;
+    text-align: center!important;
+}
+
 .share a {
     font-size: 30px;
     color: #600416;
@@ -159,6 +176,7 @@
 }
 
 .more-h2 {
+    color: #000000;
     font-size: 40px;
     text-align: center;
     text-shadow: 2px 2px #600416;
@@ -200,14 +218,19 @@
 .h2-post {
     font-size: 25px;
     text-align: center;
-    color: #000000;
-    margin: 5px 0px 20px;
+    color: #ffffff;
+    margin: 10px 0px 20px;
     transition: all 0.3s;
     height: 78px;
     white-space: break-spaces;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 3.6em;
+    line-height: 1em;
 }
 
 .h2-post:hover {
@@ -218,7 +241,7 @@
 
 .button-post {
     background-color: #000000;
-    color: #000000;
+    color: #ffffff;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     display: block;
@@ -243,14 +266,14 @@
     margin-left: -48px;
     margin-top: -132px;
     display: flex!important;
-    border-color: #000000;
-    color: #000000;
+    border-color: #ffffff;
+    color: #ffffff;
 }
 
 .button-slide-left:hover {
     color: #000000!important;
     text-shadow: 1px 2px transparent!important;
-    background-color: #000000;
+    background-color: #600416;
     box-shadow: -2px 2px #000000;
 }
 
@@ -262,14 +285,15 @@
     background-color: #000000;
     display: inline-flex!important;
     float: right;
-    border-color: #000000;
-    color: #000000;
+    border-color: #ffffff;
+    color: #ffffff;
 }
 
 .button-slide-right:hover {
     color: #000000!important;
     text-shadow: 1px 2px transparent!important;
-    background-color: #000000;
+    background-color: #600416;
+    box-shadow: 2px 2px #000000;
 }
 
 .glide__arrow {

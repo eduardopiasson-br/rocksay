@@ -22,9 +22,9 @@
                         <a class="banner-button button-site" href="{{ $banner->site }}" target="_blank" title="Visite o site!"><i class="fas fa-external-link-square-alt"></i></a>
                         @endif
                     </div>
+                    <hr class="hr-wide-banner">
                 </div>
-                <img class="img-hr" src="{{ url('images/hr-white.png') }}" alt="hr">
-            @endif
+                @endif
         @endforeach
 
         <div class="glide glide-2 to-mobile">
@@ -60,8 +60,8 @@
                 <button class="glide__arrow glide__arrow--right button-slide-right" title="Próximas"
                     data-glide-dir=">"><i class="fas fa-angle-double-right i-slide"></i></button>
             </div>
+            <hr class="hr-wide-banner">
         </div>
-        <img class="img-hr to-mobile" src="{{ url('images/hr-white.png') }}" alt="hr">
 
         <p class="parceiro-p">Entre em contato e seja também um de nossos parceiros!</p>
         <a class="a-button-contact" title="Fale conosco pelo WhatsApp" href="https://api.whatsapp.com/send?phone=55{{ Str::of($config->whatsapp)->replaceMatches('/[^A-Za-z0-9]++/', '') }}">Fale Conosco <i class="fab fa-whatsapp"></i></a>

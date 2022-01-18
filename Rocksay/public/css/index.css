@@ -4,6 +4,9 @@
         margin-top: 60px;
     }
 }
+.hr-wide:before {
+    margin: 0 0 0 -15px!important;
+}
 
 .section-categories {
     height: 600px;
@@ -17,7 +20,7 @@
 }
 
 .a-category-2 {
-    color: #000000!important;
+    color: #646464!important;
     text-decoration: none!important;
 }
 
@@ -82,13 +85,13 @@
 
 .category-title-2 {
     height: 45px;
-    color: #000000;
+    color: #646464;
     margin: 0 auto;
 }
 
 .category-p-2 {
     height: 50px;
-    color: #000000;
+    color: #646464;
     margin: 0 auto;
     white-space: break-spaces;
 }
@@ -119,9 +122,9 @@
     font-size: 17px;
     border-radius: 2px;
     padding: 7px 20px;
-    color: #000000;
+    color: #646464;
     background-color: #000000;
-    border: 1px solid #000000;
+    border: 1px solid #646464;
     transition: transform .2s;
     margin: 0 auto;
     height: 35px;
@@ -132,7 +135,7 @@
 .category-button-2:hover {
     transform: scale(1.1);
     color: #000000;
-    background-color: #000000;
+    background-color: #646464;
 }
 
 .button-slide-left {
@@ -141,10 +144,10 @@
 }
 
 .button-slide-left:hover {
-    color: #000000!important;
+    color: #600416!important;
     text-shadow: 1px 2px transparent!important;
     background-color: #000000;
-    box-shadow: -2px 2px #000000;
+    box-shadow: -2px 2px #600416;
 }
 
 .button-slide-right {
@@ -153,10 +156,10 @@
 }
 
 .button-slide-right:hover {
-    color: #000000!important;
-    text-shadow: 1px 2px transparent!important;
+    color: #600416 !important;
+    text-shadow: 1px 2px transparent !important;
     background-color: #000000;
-    box-shadow: -2px 2px #000000;
+    box-shadow: -2px 2px #600416;
 }
 
 .all-category {
@@ -170,8 +173,8 @@
 }
 
 .wellcome-div {
-    margin-bottom: 50px;
-    background: radial-gradient(#600416ce, transparent);
+    padding: 50px 0px;
+    background-image: linear-gradient(to top right, #000000, #600416);
 }
 
 .wellcome-div img {
@@ -181,26 +184,26 @@
 }
 
 .wellcome-h2 {
-    margin: 15px;
+    margin: 40px 15px 15px;
     font-size: 48px;
     text-align: center;
 }
 
 .wellcome-span {
-    text-shadow: 2px 2px #600416;
+    text-shadow: 0px 3px #600416;
 }
 
 .wellcome-p {
     text-align: center;
     font-size: 22px;
     max-width: 63%;
-    margin: 30px auto;
+    margin: 30px auto 50px;
 }
 
 .wellcome-hr {
-    width: 20%;
+    width: 40%;
     font-size: 4px;
-    height: 3px!important;
+    height: 1px!important;
     opacity: 1!important;
     box-shadow: 2px 2px #600416;
     border-radius: 30px;
@@ -227,6 +230,7 @@
 }
 
 .title-news p {
+    color: #000000;
     font-size: 20px;
 }
 
@@ -259,21 +263,25 @@
 }
 
 .new-h2 {
-    padding-left: 5px;
+    font-size: 25px;
+    padding-left: 10px;
     margin-bottom: 30px;
     max-width: 50ch;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: #000000;
 }
 
 .new-h2-2 {
-    padding-right: 5px;
+    font-size: 25px;
+    padding-right: 10px;
     margin-bottom: 30px;
     max-width: 50ch;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: #000000;
 }
 
 .new-h2 i {
@@ -290,10 +298,11 @@
     max-height: 170px;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
 }
 
 .new-div-p p {
+    color: #646464;
     margin-bottom: 0px;
 }
 
@@ -341,6 +350,14 @@
 
     /* start Section-Categories */
 
+    .title-news h1 {
+        font-size: 40px;
+    }
+
+    .hr-wide:before{
+        margin: 0 0 0 -14px;
+    }
+
     .section-categories {
         width: 100%!important;
         height: 100%!important;
@@ -382,6 +399,9 @@
 
     .wellcome-h2 {
         margin: 20px auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .wellcome-h2 span {
@@ -411,7 +431,7 @@
     .new-h2 {
         margin-bottom: 15px!important;
         text-align: center;
-        font-size: 28px;
+        font-size: 23px;
         background-color: #600416;
         border-radius: 2px;
         padding: 5px 8px;
@@ -422,7 +442,7 @@
     .new-h2-2 {
         margin-bottom: 15px!important;
         text-align: center;
-        font-size: 28px;
+        font-size: 23px;
         background-color: #600416;
         border-radius: 2px;
         padding: 8px;
@@ -481,12 +501,12 @@
     }
 
     .category-button {
-        padding: 15px 25px;
+        padding: 10px 25px;
         height: auto;
     }
 
     .category-button-2 {
-        padding: 15px 25px;
+        padding: 10px 25px;
     }
 
     .category-title {

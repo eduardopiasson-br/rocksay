@@ -49,7 +49,9 @@
         </div>
     </section>
 
-    <img class="hr-feedback" src="images/hr.png" alt="Traço com corações">
+    <br>
+    <hr class="hr-wide">
+    <br>
 
     @include('layouts.socials')
 @endsection

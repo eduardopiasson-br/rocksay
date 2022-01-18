@@ -4,8 +4,11 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('light-bootstrap/img/apple-icon.png') }}">
-    <link rel="icon" type="image/png" href="{{ asset('light-bootstrap/img/favicon.ico') }}">
+    <!-- Icon title-->
+    <link rel="shortcut icon" href="{{ url('images/favicon.png') }}" />
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ url('images/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ url('images/favicon.png') }}">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -30,7 +33,7 @@
 <body>
     @include('sweetalert::alert')
     <div class="wrapper @if (!auth()->check() ||
-        request()->route()->getName() == '') wrapper-full-page @endif">
+    request()->route()->getName() == '') wrapper-full-page @endif">
 
         @if (auth()->check() &&
     request()->route()->getName() != '')
@@ -38,7 +41,7 @@
         @endif
 
         <div class="@if (auth()->check() &&
-            request()->route()->getName() != '') main-panel @endif">
+    request()->route()->getName() != '') main-panel @endif">
             @include('admin.layouts.navbars.navbar')
             @yield('content')
             @include('admin.layouts.footer.nav')
@@ -81,6 +84,17 @@
         }
     })
 </script>
+@if ($errors->isEmpty())
+    <script>
+        $('#cadastrar-item').hide();
+        $('#cancel-cadastrar-item').hide();
+    </script>
+@else
+    <script>
+        $('#cadastrar-item').show();
+        $('#cancel-cadastrar-item').show();
+    </script>
+@endif
 <script src="{{ asset('light-bootstrap/js/demo.js') }}"></script>
 @stack('js')
 

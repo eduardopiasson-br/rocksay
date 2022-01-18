@@ -87,43 +87,49 @@
                                         class="btn btn-ces"><i class="fas fa-sync"></i></a>
                                 </h3>
                             </div>
-                            <table class="table table-hover table-stripeds">
-                                <thead>
-                                    <tr class="col-md-12">
-                                        <td></td>
-                                        <td class="col-md-8"><b>Título</b></td>
-                                        <td style="display: block">
-                                        </td>
-                                    </tr>
-                                </thead>
-                                <tbody id="tablecontents">
-                                    @foreach ($payments as $payment)
-                                        <tr class="row1" data-id="{{ $payment->id }}" style="cursor: n-resize"
-                                            title="Clique e arraste para reordenar...">
-                                            <td class="limit-icon"><?= $payment->icon ?></td>
-                                            <td class="limit-text">{{ $payment->title }}</td>
-                                            <td class="d-flex justify-content-end">
-                                                @if ($payment->status == 1)
-                                                    <a href="{{ route('pagamentos.alternar', $payment->id) }}"
-                                                        title="Desativar Pagamento" class="btn btn-sm button-admin-toggle-success"><i
-                                                            class="fas fa-user-check"></i></a>
-                                                @else
-                                                    <a href="{{ route('pagamentos.alternar', $payment->id) }}"
-                                                        title="Ativar Pagamento" class="btn btn-sm button-admin-toggle-danger"><i
-                                                            class="fas fa-user-times"></i></a>
-                                                @endif
-                                                <input type="hidden" id="_token" name="_token"
-                                                    value="{{ csrf_token() }}">
-                                                <a href="{{ route('pagamentos.edicao', $payment->id) }}"
-                                                    title="Editar Pagamento" class="btn btn-sm button-admin-edit"><i class="fas fa-marker"></i></a>
-                                                <a href="{{ route('pagamentos.deletar', $payment->id) }}"
-                                                    title="Deletar Pagamento" class="btn btn-sm delete-confirm button-admin-delete"><i
-                                                        class="fas fa-trash-alt"></i></a>
+                            @if(!empty($payments[0]))
+                                <table class="table table-hover table-stripeds">
+                                    <thead>
+                                        <tr class="col-md-12">
+                                            <td></td>
+                                            <td class="col-md-8"><b>Título</b></td>
+                                            <td style="display: block">
                                             </td>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody id="tablecontents">
+                                        @foreach ($payments as $payment)
+                                            <tr class="row1" data-id="{{ $payment->id }}" style="cursor: n-resize"
+                                                title="Clique e arraste para reordenar...">
+                                                <td class="limit-icon"><?= $payment->icon ?></td>
+                                                <td class="limit-text">{{ $payment->title }}</td>
+                                                <td class="d-flex justify-content-end">
+                                                    @if ($payment->status == 1)
+                                                        <a href="{{ route('pagamentos.alternar', $payment->id) }}"
+                                                            title="Desativar Pagamento" class="btn btn-sm button-admin-toggle-success"><i
+                                                                class="fas fa-user-check"></i></a>
+                                                    @else
+                                                        <a href="{{ route('pagamentos.alternar', $payment->id) }}"
+                                                            title="Ativar Pagamento" class="btn btn-sm button-admin-toggle-danger"><i
+                                                                class="fas fa-user-times"></i></a>
+                                                    @endif
+                                                    <input type="hidden" id="_token" name="_token"
+                                                        value="{{ csrf_token() }}">
+                                                    <a href="{{ route('pagamentos.edicao', $payment->id) }}"
+                                                        title="Editar Pagamento" class="btn btn-sm button-admin-edit"><i class="fas fa-marker"></i></a>
+                                                    <a href="{{ route('pagamentos.deletar', $payment->id) }}"
+                                                        title="Deletar Pagamento" class="btn btn-sm delete-confirm button-admin-delete"><i
+                                                            class="fas fa-trash-alt"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @else
+                                <div class="alert alert-secondary text-center">
+                                    <i class="fas fa-info pr-2"></i> Nenhum item cadastrado!
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

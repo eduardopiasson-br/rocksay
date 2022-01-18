@@ -118,8 +118,8 @@
                         <br><br>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success" title="Salvar Dados">Salvar</button>
-                            <button type="reset" class="btn btn-warning" title="Restaurar Dados">Restaurar</button>
+                            <button type="submit" class="btn btn-success" title="Salvar Dados"><i class="fas fa-save"></i> Salvar</button>
+                            <button type="reset" class="btn btn-warning" title="Restaurar Dados"><i class="fas fa-undo-alt"></i> Restaurar</button>
                         </div>
                         </form>
                     </div>

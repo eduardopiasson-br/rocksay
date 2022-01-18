@@ -44,7 +44,7 @@ class UserController extends Controller
     {
         $user = $model->find($user_id);
 
-        return view('admin.users.index', ['users' => $model->paginate(5), 'user' => $user]);
+        return response()->json($user);
     }
 
     /**

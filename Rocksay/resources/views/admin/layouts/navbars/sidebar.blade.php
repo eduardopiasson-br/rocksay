@@ -2,7 +2,7 @@
     <div class="sidebar-wrapper">
         <div class="logo">
             <a href="{{ url('/') }}" class="simple-text">
-                <i class="fas fa-hand-rock"></i> {{ __("ROCKSAY") }}
+                <img class="admin-logo-img" src="{{ url('images/logo_large_colors.png') }}" alt="Logo Rocksay Store">
             </a>
         </div>
         <div class="dropdown user-mobile">
@@ -43,7 +43,7 @@
             <li class="nav-item @if($activePage == 'about') active @endif">
                 <a class="nav-link" href="{{ route('sobre') }}">
                     <i class="fas fa-heart"></i>
-                    <p>{{ __("Sobre a C&S") }}</p>
+                    <p>{{ __("Sobre a Rocksay") }}</p>
                 </a>
             </li>
             <li class="nav-item @if($activePage == 'categories') active @endif">
@@ -53,7 +53,7 @@
                 </a>
             </li>
             <li class="nav-item @if($activePage == 'products') active @endif">
-                <a class="nav-link nav-product" href="{{ route('produtos') }}">
+                <a class="nav-link" href="{{ route('produtos') }}">
                     <i class="fas fa-tshirt"></i>
                     <p>{{ __("Produtos") }}</p>
                 </a>
@@ -61,7 +61,7 @@
             <li class="nav-item @if($activePage == 'blogs') active @endif">
                 <a class="nav-link" href="{{ route('blog') }}">
                     <i class="fas fa-blog"></i>
-                    <p>{{ __("Blog da C&S") }}</p>
+                    <p>{{ __("Blog da Rocksay") }}</p>
                 </a>
             </li>
             <li class="nav-item @if($activePage == 'banners') active @endif">

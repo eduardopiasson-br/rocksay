@@ -1,4 +1,4 @@
-@extends('layouts/app', ['activePage' => 'inicio', 'title' => 'Cutie & Sweet - Moda Fashion'])
+@extends('layouts/app', ['activePage' => 'inicio', 'title' => 'Rocksay Store'])
 
 @section('content')
 @if($categories->count() > 0)
@@ -67,20 +67,24 @@
 @if(!empty($config->wellcome_message))
 <section class="wellcome-section">
     <div class="wellcome-div">
-        <img src="images/hr.png" alt="Traço de divisão de text" loading="lazy">
-        <h2 class="wellcome-h2">Bem vinda a <span class="wellcome-span">Cutie and Sweet!</span></h2>
+        <hr class="hr-short">
+        <hr class="hr-wide">
+        <h2 class="wellcome-h2">Bem vindos a <span class="wellcome-span">Rocksay Store</span>!!!</h2>
         <hr class="wellcome-hr">
         <p class="wellcome-p">{{ $config->wellcome_message }}</p>
-        <img src="images/hr.png" alt="Traço de divisão de texto" loading="lazy">
+        <hr class="hr-wide">
+        <hr class="hr-short" >
     </div>
 </section>
 @endif
 
+@include('layouts.socials')
+
 @if($blog->count() > 0)
 <section class="news">
     <div class="title-news">
-        <h1>Blog - Cutie And Sweet</h1>
-        <p>Conheça as novidades da loja e saiba mais sobre a moda do momento!</p>
+        <h1>Blog - Rocksay</h1>
+        <p>Conheça as novidades da loja e saiba mais sobre o estilo Rocksay!</p>
     </div>
 
     @foreach ($blog as $k => $post)
@@ -89,7 +93,7 @@
                 <a title="{{ $post->title }}" href="{{ url('post', ['post_id' => $post->id, 'post_name' => Str::of($post->title)->slug('-')]) }}"><img loading="lazy" class="new-img" src="{{ url('images/blogs/posts/'.$post->image) }}" alt="{{ $post->title }}" title="{{ $post->title }}"
                         loading="lazy"></a>
                 <div class="new-div">
-                    <h2 class="new-h2"><i class="fas fa-star"></i>
+                    <h2 class="new-h2" title="{{ $post->title }}"><i class="fas fa-star"></i>
                         {{ $post->title }}
                     </h2>
                     <div class="new-div-p"><?= $post->text ?></div>
@@ -107,7 +111,7 @@
                 <a title="{{ $post->title }}" href="{{ url('post', ['post_id' => $post->id, 'post_name' => Str::of($post->title)->slug('-')]) }}"><img loading="lazy" class="new-img-hidden"  src="{{ url('images/blogs/posts/'.$post->image) }}" alt="{{ $post->title }} title="{{ $post->title }}"
                         loading="lazy"></a>
                 <div class="new-div-2">
-                    <h2 class="new-h2-2">
+                    <h2 class="new-h2-2" title="{{ $post->title }}">
                         {{ $post->title }} <i class="fas fa-star"></i>
                     </h2>
                     <div class="new-div-p"><?= $post->text ?></div>
@@ -126,8 +130,6 @@
     @endforeach
 </section>
 @endif
-
-@include('layouts.socials')
 
 @endsection
 

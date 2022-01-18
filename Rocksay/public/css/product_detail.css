@@ -4,6 +4,15 @@
     }
 }
 
+.hr-wide {
+    margin-top: -35px !important;
+    margin-bottom: 45px;
+}
+
+.hr-wide:before {
+    margin: 2px 0 0 -10px!important;
+}
+
 .product {
     width: 100%;
     display: flex;
@@ -55,13 +64,13 @@
     border: 0px solid transparent;
     text-decoration: none;
     border-radius: 3px;
-    color: #646464;
-    background-color: #6004169c;
+    color: #ffffff;
+    background-color: #600416;
 }
 
 .redirects-button:hover {
     color: #000000;
-    background-color: #600416;
+    background-color: #6004169c;
 }
 
 .image-product {
@@ -76,6 +85,7 @@
 }
 
 .img-autor {
+    color: #000000;
     font-size: 17px;
     margin: 10px 0px;
 }
@@ -152,10 +162,12 @@
 
 .product-info-h2 {
     font-size: 35px;
+    color: #000000;
     text-shadow: 2px 2px #600416;
 }
 
 .product-info-p p {
+    color: #000000;
     font-size: 19px;
 }
 
@@ -175,6 +187,8 @@
     padding: 5px 15px;
     margin: 0px 5px;
     box-shadow: 1px 2px #600416;
+    color: #000000;
+    font-weight: 600;
 }
 
 .size:hover {
@@ -192,7 +206,7 @@
     font-size: 17px;
     padding: 15px 15px;
     margin: 0px 5px;
-    box-shadow: 3px 3px 5px 0px;
+    box-shadow: 3px 3px 5px 0px #000000;
     border-radius: 25px;
 }
 
@@ -259,11 +273,11 @@
     animation:blinkingText 1.4s infinite;
 }
 @keyframes blinkingText{
-    0%{     border-color: #600416; color: #600416;}
-    49%{    border-color: #600416; color: #600416;}
-    60%{    border-color: #000000; color: #000000;}
-    99%{    border-color: #000000; color: #000000;}
-    100%{   border-color: #600416; color: #600416;}
+    0%{     border-color: #600416; color: #600416; background-color: #128C7E;}
+    49%{    border-color: #600416; color: #600416; background-color: #128C7E;}
+    60%{    border-color: #000000; color: #000000; background-color: #600416;}
+    99%{    border-color: #000000; color: #000000; background-color: #600416;}
+    100%{   border-color: #600416; color: #600416; background-color: #128C7E;}
 }
 
 .button-shop:hover {
@@ -278,6 +292,7 @@
 }
 
 .gallery-info {
+    color: #000000;
     margin-left: 10px;
 }
 
@@ -306,6 +321,7 @@
 
 .shipping-payment {
     width: 50%;
+    color: #ffffff;
 }
 
 .hr-shipping {
@@ -315,6 +331,7 @@
 .shipping-p {
     width: 45%;
     margin-left: 35px;
+    color: #ffffff;
 }
 
 .shipping-p p {
@@ -334,7 +351,7 @@
 
 .accordion {
     background-color: transparent;
-    color: #000000;
+    color: #ffffff;
     cursor: pointer;
     padding: 18px;
     border: none;

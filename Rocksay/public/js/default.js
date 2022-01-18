@@ -17,7 +17,7 @@ const scrollToTop = () => {
   
   if (c > 0) {
     window.requestAnimationFrame(scrollToTop);
-    window.scrollTo(0, c - c / 10);
+    window.scrollTo(0, c - c / 2);
   }
 };
 
@@ -37,7 +37,7 @@ $('.menu').on('click', function(){
   
   $('.show-menu-options').each(function(){
     if(!$(this).hasClass('.menu-ul')){
-      $(this).toggle("fast")
+      $(this).toggle("linear")
     }
   })
 })
