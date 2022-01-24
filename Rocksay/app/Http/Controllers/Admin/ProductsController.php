@@ -125,7 +125,7 @@ class ProductsController extends Controller
             return back();
         }
 
-        $item->out_stock = !$item->out_stock;
+        $item->units = 0;
         $item->save();
 
         toast('Estoque do Produto alterado!', 'success');

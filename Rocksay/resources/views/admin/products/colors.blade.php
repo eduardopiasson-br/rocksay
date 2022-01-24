@@ -11,7 +11,7 @@
                         <div class="col-12 card-body">
                             @if(!empty($color))
                                 <h3 class="mt-0 top-title"> 
-                                    <a href="{{ route('produtos') }}" title="Voltar para Produtos" class="btn btn-ces"><i class="fas fa-undo"></i></a>
+                                    <a href="{{ route('produtos') }}#listagem" title="Voltar para Produtos" class="btn btn-ces"><i class="fas fa-undo"></i></a>
                                     <i class="fas fa-palette"></i> Editar Cor 
                                     <a href="{{ route('produtos.cores', $product_id) }}" title="Voltar para cadastros" class="btn btn-ces"><i class="fas fa-undo"></i></a>
                                 </h3>

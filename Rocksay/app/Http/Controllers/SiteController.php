@@ -26,9 +26,9 @@ class SiteController extends Controller
      */
     public function index()
     {
-        $site_title = 'Cutie And Sweet (C&S) - Moda Fashion';
+        $site_title = 'Rocksay Store';
         $site_keys = ', Roupas e Acessórios Online, Loja Online de Roupas Segura, Novidades da moda moderna';
-        $site_description = 'Venha conhecer a nossa loja online! Aqui você fica por dentro de tudo sobre a loja: nossos produtos, formas de pagamento, entregas, acompanha as novidades no blog da C&S, encontra todos os nossos contatos e localização e muito mais';
+        $site_description = 'Venha conhecer a nossa loja online! Aqui você fica por dentro de tudo sobre a loja: nossos produtos, formas de pagamento, entregas, acompanha as novidades no blog da Rocksay, encontra todos os nossos contatos e localização e muito mais';
         $config = DefaultConfiguration::find(1);
         $about = About::count();
         $feedback = Feedbacks::where('status', 1)->count();
@@ -47,7 +47,7 @@ class SiteController extends Controller
      */
     public function about()
     {
-        $site_title = 'Sobe a Cutie And Sweet (C&S)';
+        $site_title = 'Sobre a Rocksay Store';
         $site_keys = ', Roupas e Acessórios Online, Loja Online de Roupas Segura, Novidades da moda moderna';
         $site_description = 'Conheça um pouco de nossa tragetória, as coisas que nos motivam, os objetivos que temos com nosso atendimento e onde pretendemos chegar!';
         $config = DefaultConfiguration::find(1);
@@ -67,7 +67,7 @@ class SiteController extends Controller
      */
     public function error_404()
     {
-        $site_title = 'Sobe a Cutie And Sweet (C&S)';
+        $site_title = 'Rocksay Store';
         $site_keys = ', Roupas e Acessórios Online, Loja Online de Roupas Segura, Novidades da moda moderna';
         $site_description = 'Conheça um pouco de nossa tragetória, as coisas que nos motivam, os objetivos que temos com nosso atendimento e onde pretendemos chegar!';
         $config = DefaultConfiguration::find(1);
@@ -86,7 +86,7 @@ class SiteController extends Controller
      */
     public function products()
     {
-        $site_title = 'Nossos Produtos Cutie And Sweet (C&S)';
+        $site_title = 'Nossos Produtos Rocksay';
         $site_keys = ', Roupas e Acessórios Online, Loja Online de Roupas Segura, Novidades da moda moderna, Comprar Roupas Online, Novidades Cutie And Sweet, Roupas Cutie And Sweet';
         $site_description = 'Conheça os produtos disponíveis na loja! Tem algo que gostaria? Conta pra gente que vamos dar um jeitinho pra você!';
 
@@ -140,7 +140,7 @@ class SiteController extends Controller
         $payments = Payments::orderBy('position', 'asc')->where('status', 1)->get();
         $deliverys = Deliverys::orderBy('position', 'asc')->where('status', 1)->get();
 
-        $site_title = $product_selected->title . ' Cutie And Sweet (C&S)';
+        $site_title = $product_selected->title . ' | Rocksay Store';
         $site_keys = ', Roupas e Acessórios Online, Loja Online de Roupas Segura, Novidades da moda moderna, ' . $product_selected->title;
         $site_description = $product_selected->abstract ? $product_selected->abstract : '';
 
@@ -155,7 +155,7 @@ class SiteController extends Controller
      */
     public function blog()
     {
-        $site_title = 'Blog C&S - Cutie And Sweet';
+        $site_title = 'Blog Rocksay | Rocksay Store';
         $site_keys = ', Roupas e Acessórios Online, Loja Online de Roupas Segura, Novidades da moda moderna, Comprar Roupas Online, Novidades Cutie And Sweet, Roupas Cutie And Sweet';
         $site_description = 'Fique por dentro das novidades da moda e dos produtos que vão chegando na loja através do blog da Cutie and Sweet, vem conhecer!';
 
@@ -197,7 +197,7 @@ class SiteController extends Controller
         $products = Products::where('status', 1)->count();
         $banners = Banners::orderBy('position', 'asc')->where('status', 1)->get();
 
-        $site_title = $post_selected->title . ' Cutie And Sweet (C&S)';
+        $site_title = $post_selected->title . ' | Rocksay Store';
         $site_keys = ', Roupas e Acessórios Online, Loja Online de Roupas Segura, Novidades da moda moderna, ' . $post_selected->title;
         $site_description = 'Conheça as novidades da moda moderna e saiba mais sobre ' . $post_selected->title;
 

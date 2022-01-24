@@ -1,4 +1,4 @@
-@extends('layouts/app', ['activePage' => 'sobre', 'title' => 'Sobre a C&S - Cutie & Sweet'])
+@extends('layouts/app', ['activePage' => 'sobre', 'title' => 'Sobre a Rocksay Store'])
 
 @section('content')
     <section class="about">

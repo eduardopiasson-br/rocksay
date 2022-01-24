@@ -8,4 +8,4 @@
 <meta property="og:url" content="{{ \URL::current() }}" />
 <meta property="og:image" content="{{ url($config->image) }}" />
 <meta property="og:description" content="{{ $site_description ?? $config->footer_text }}" />
-<meta property="og:site_name" content="Cutie and Sweet (C&S) - Moda Fashion" />
+<meta property="og:site_name" content="Rocksay Store | Vista o Diferente!" />

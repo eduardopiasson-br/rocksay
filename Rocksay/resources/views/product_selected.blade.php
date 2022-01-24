@@ -38,7 +38,7 @@
             </a>
         </div>
 
-        @if($product_selected->out_stock == 1)
+        @if($product_selected->units == 0)
             <div class="danger">
                 <h2 class="danger-message-h2"><i class="far fa-frown"></i> PRODUTO INDISPONÍVEL NO MOMENTO...</h2>
                 <p class="danger-message">

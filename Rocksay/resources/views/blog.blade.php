@@ -1,4 +1,4 @@
-@extends('layouts/app', ['activePage' => 'blog', 'title' => 'Blog C&S - Cutie & Sweet'])
+@extends('layouts/app', ['activePage' => 'blog', 'title' => 'Blog Rocksay'])
 
 @section('content')
     <section class="blog-section">

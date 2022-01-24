@@ -25,7 +25,7 @@
             @foreach($products as $product)
                 <a class="a-product todos @foreach ($product->categories as $cat) {{ Str::of($cat->name)->slug('-') }} @endforeach" href="{{ url('produto', ['product_id' => $product->id, 'product_name' => Str::of($product->title)->slug('-')]) }}" title="Clique para ver detalhes do produto!">
                     <img class="img-product" src="{{ url('images/products/product/'. $product->image) }}" alt="{{ $product->title }}">
-                    @if ($product->out_stock == 1)
+                    @if ($product->units == 0)
                         <p class="indisponivel">Indisponível</p>
                     @elseif(!empty($product->price_promo))
                         <p class="price-discount">De {{ $product->price }} por <span class="discount">{{ $product->price_promo }}</span></p>

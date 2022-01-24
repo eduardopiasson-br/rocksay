@@ -29,16 +29,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Rotas publicas
 Route::get('/', [SiteController::class, 'index']);
 Route::get('/sobre-a-loja', [SiteController::class, 'about']);
 Route::get('/produtos', [SiteController::class, 'products']);
 Route::get('/produto/{product_id}/{product_name}', [SiteController::class, 'product_selected']);
 Route::get('/post/{post_id}/{post_name}', [SiteController::class, 'post_selected']);
-Route::get('/blog-c&s', [SiteController::class, 'blog']);
+Route::get('/blog-rocksay', [SiteController::class, 'blog']);
 Route::get('/feedback', [SiteController::class, 'feedback']);
 Route::get('/contatos', [SiteController::class, 'contact']);
 Route::get('/404', [SiteController::class, 'error_404']);
 
+// Rotas protegidas - administrativo
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     // Rotas iniciais

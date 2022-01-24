@@ -11,13 +11,13 @@
                         <div class="col-12 card-body">
                             @if(!empty($image))
                                 <h3 class="mt-0 top-title"> 
-                                    <a href="{{ route('blog') }}" title="Voltar para Blog (Posts)" class="btn btn-ces"><i class="fas fa-undo"></i></a>
+                                    <a href="{{ route('blog') }}#listagem" title="Voltar para Blog (Posts)" class="btn btn-ces"><i class="fas fa-undo"></i></a>
                                     <i class="far fa-images"></i> Editar Imagem 
                                     <a href="{{ route('blog.galeria', $blog_id) }}" title="Voltar para cadastros" class="btn btn-ces"><i class="fas fa-undo"></i></a>
                                 </h3>
                             @else
                                 <h3 class="mt-0 top-title">
-                                    <a href="{{ route('blog') }}" title="Voltar para Blog (Posts)" class="btn btn-ces"><i class="fas fa-undo"></i></a>
+                                    <a href="{{ route('blog') }}#listagem" title="Voltar para Blog (Posts)" class="btn btn-ces"><i class="fas fa-undo"></i></a>
                                     <i class="far fa-images"></i> Cadastrar Imagens
                                 </h3>
                             @endif

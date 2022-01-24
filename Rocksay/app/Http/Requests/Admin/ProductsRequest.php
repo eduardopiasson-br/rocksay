@@ -32,7 +32,6 @@ class ProductsRequest extends FormRequest
             'sizes' => [''],
             'image' => [''],
             'units' => [''],
-            'out_stock' => [''],
             'photo_name' => ['max:150'],
             'status' => [''],
             'user_id' => ['required'],

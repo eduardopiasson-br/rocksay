@@ -86,9 +86,9 @@
                         <table class="table table-hover table-stripeds">
                             <thead>
                                 <tr class="col-md-12">
-                                    <td class="col-md-4"><b>Nome</b></td>
+                                    <td class="col-md-5"><b>Nome</b></td>
                                     <td class="col-md-4"><b>Imagem</b></td>
-                                    <td style="display: block">
+                                    <td class="col-md-3">
                                     </td>
                                 </tr>
                             </thead>

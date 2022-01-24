@@ -166,7 +166,7 @@
     text-shadow: 2px 2px #600416;
 }
 
-.product-info-p p {
+.product-info-p {
     color: #000000;
     font-size: 19px;
 }
@@ -527,7 +527,7 @@
     text-align: center;
     padding: 10px 50px 1px;
     margin: 30px 100px 0px;
-    background-color: rgba(255, 0, 0, 0.521);
+    background-color: rgba(255, 72, 0, 0.644);
     border-radius: 4px;
 }
 
@@ -566,7 +566,7 @@
     .product-price-div {
         margin-top: 0px;
     }
-    .product-info-p p {
+    .product-info-p {
         font-size: 15px;
         margin-bottom: 5px!important;
     }

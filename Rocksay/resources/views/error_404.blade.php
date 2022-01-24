@@ -1,4 +1,4 @@
-@extends('layouts/app', ['activePage' => 'sobre', 'title' => 'Sobre a C&S - Cutie & Sweet'])
+@extends('layouts/app', ['activePage' => 'sobre', 'title' => 'Rocksay Store'])
 
 @section('content')
     <div class="div-error">

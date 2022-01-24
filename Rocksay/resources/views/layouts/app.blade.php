@@ -97,7 +97,7 @@
                             title="Veja o feedback de nossos clientes">FEEDBACK</a></li>
                     @endif
                     @if(!empty($blog_general))
-                    <li class="li-menu"><a class="link-menu @if($activePage == 'blog') active @endif" href="{{ url('/blog-c&s') }}"
+                    <li class="li-menu"><a class="link-menu @if($activePage == 'blog') active @endif" href="{{ url('/blog-rocksay') }}"
                             title="Saiba mais sobre a moda do momento!">BLOG</a></li>
                     @endif
                     @if(!empty($products))
@@ -127,7 +127,7 @@
                     <a href="{{ url('/produtos') }}"><li class="menu-li">PRODUTOS</li></a>
                 @endif
                 @if(!empty($blog_general))
-                    <a href="{{ url('/blog-c&s') }}"><li class="menu-li">BLOG</li></a>
+                    <a href="{{ url('/blog-rocksay') }}"><li class="menu-li">BLOG</li></a>
                 @endif
                 @if(!empty($feedback))
                     <a href="{{ url('/feedback') }}"><li class="menu-li">FEEDBACK</li></a>

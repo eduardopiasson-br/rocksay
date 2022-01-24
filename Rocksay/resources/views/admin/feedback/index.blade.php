@@ -85,15 +85,14 @@
                         </div>
                     </div>
                     
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8 card-body table-full-width table-responsive table-ces">
+                    <div class="col-md-12 card-body table-full-width table-responsive table-ces">
                         @if(!empty($feedback[0]))
                             <table class="table table-hover table-stripeds">
                                 <thead>
                                     <tr class="col-md-12">
                                         <td class="col-md-3"><b>Nome</b></td>
-                                        <td class="col-md-6 table-center"><b>Texto/Imagem</b></td>
-                                        <td style="display: block">
+                                        <td class="col-md-7 table-center"><b>Texto/Imagem</b></td>
+                                        <td class="col-md-2">
                                         </td>
                                     </tr>
                                 </thead>
@@ -131,7 +130,6 @@
                             </div>
                         @endif
                     </div>
-                    <div class="col-md-2"></div>
                 </div>
             </div>
         </div>

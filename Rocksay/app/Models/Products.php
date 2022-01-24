@@ -18,7 +18,6 @@ class Products extends Model
         'sizes',
         'image',
         'units',
-        'out_stock',
         'photo_name',
         'user_id'
     ];

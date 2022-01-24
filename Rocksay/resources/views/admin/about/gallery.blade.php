@@ -45,11 +45,11 @@
                                 <label class="form-control-label" for="input-name">
                                     {{ __('Nome para a Imagem') }} <i class="text-danger">*</i>
                                 </label>
-                                <input type="text" name="name" id="input-name" class="form-control" value="{{ $image->name ?? old('name') }}"  placeholder="Ex: Começo dos Negócios, Primeira Confraternização da C&S...">
+                                <input type="text" name="name" id="input-name" class="form-control" value="{{ $image->name ?? old('name') }}"  placeholder="Ex: Começo dos Negócios, Primeira Confraternização da Rocksay...">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Imagem <i class="text-danger">*</i> :</label>
-                                <input type="file" id="image" name="image" class="form-control" placeholder="Imagem Inauguraçao C&S">
+                                <input type="file" id="image" name="image" class="form-control" placeholder="Imagem Inauguraçao Rocksay">
                             </div>
                         </div>
                         @if(!empty($image))
