@@ -5,7 +5,7 @@
 
         <div class="feedback-title">
             <h2> Feedback </h2>
-            <p>Aqui você pode acompanhar o feedback de nossas queridas clientes!</p>
+            <p>Aqui você pode acompanhar o feedback de alguns de nossos clientes!</p>
         </div>
 
         <div class="feedbacks-div">

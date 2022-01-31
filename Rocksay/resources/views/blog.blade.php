@@ -33,7 +33,6 @@
                     {{ $blog_general->links() }}
                 </div>
             </div>
-            <hr class="hr-new">
             
             @include('layouts.banners.right')
         </div>

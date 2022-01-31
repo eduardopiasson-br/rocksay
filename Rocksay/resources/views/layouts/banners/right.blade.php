@@ -1,8 +1,8 @@
 <div class="banner-lateral">
     @if($banners->count() > 1)
-        <i class="far fa-heart banner-lateral-i"></i>
+        <i class="fas fa-hands-helping banner-lateral-i"></i>
         <h4>Conheça nossos<br><span>PARCEIROS</span></h4>
-        <i class="far fa-heart banner-lateral-i"></i>
+        <i class="fas fa-hands-helping banner-lateral-i fa-flip-horizontal"></i>
         @foreach($banners as $k => $banner)
             @if ($k % 2 == 0)
             @else

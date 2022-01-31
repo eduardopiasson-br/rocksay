@@ -37,7 +37,7 @@ $('.menu').on('click', function(){
   
   $('.show-menu-options').each(function(){
     if(!$(this).hasClass('.menu-ul')){
-      $(this).toggle("linear")
+      $(this).slideToggle("")
     }
   })
 })

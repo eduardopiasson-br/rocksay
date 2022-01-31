@@ -189,7 +189,7 @@
         font-size: 22px!important;
     }
     .new-title-p-p {
-        margin: -31px 5px 6px;
+        margin: -18px 5px 15px;
         font-size: 18px;
     }
 }
@@ -207,12 +207,15 @@
     }
 
     .hr-new {
-        margin: 30px 0px;
+        height: 2px;
+        width: 80%;
+        margin: 0px;
+        background-color: #000000;
     }
 
     .new-title-p h3 {
         font-size: 25px;
-        margin-top: 30px;        
+        margin-top: 10px;        
     }
 
     .new-title-p p {
@@ -229,7 +232,7 @@
 
     /* Glide Config */
     .glide__arrow {
-        margin: -20px -42px 0px!important;
+        margin: -45px -42px 0px!important;
         color: #000000!important;
         background-color: #600416;
         border: 1px solid #000000!important;

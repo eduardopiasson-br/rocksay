@@ -75,23 +75,25 @@
 .category-title {
     height: 45px;
     margin: 0 auto;
+    color: #ffffff;
 }
 
 .category-p {
     height: 50px;
     margin: 0 auto;
+    color: #ffffff;
     white-space: break-spaces;
 }
 
 .category-title-2 {
     height: 45px;
-    color: #646464;
+    color: #ffffff;
     margin: 0 auto;
 }
 
 .category-p-2 {
     height: 50px;
-    color: #646464;
+    color: #ffffff;
     margin: 0 auto;
     white-space: break-spaces;
 }
@@ -101,9 +103,9 @@
     font-size: 17px;
     border-radius: 2px;
     padding: 5px 20px;
-    color: #000000;
+    color: #ffffff;
     background-color: #600416;
-    border: 1px solid #000000;
+    border: 1px solid #ffffff;
     transition: transform .3s;
     margin: 0 auto;
     height: 35px;
@@ -122,9 +124,9 @@
     font-size: 17px;
     border-radius: 2px;
     padding: 7px 20px;
-    color: #646464;
+    color: #ffffff;
     background-color: #000000;
-    border: 1px solid #646464;
+    border: 1px solid #ffffff;
     transition: transform .2s;
     margin: 0 auto;
     height: 35px;

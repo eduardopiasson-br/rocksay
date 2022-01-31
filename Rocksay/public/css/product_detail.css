@@ -10,7 +10,7 @@
 }
 
 .hr-wide:before {
-    margin: 2px 0 0 -10px!important;
+    margin: 2px 0 0 -13px!important;
 }
 
 .product {
@@ -389,6 +389,7 @@
 }
 
 .more-h2 {
+    color: #000000;
     font-size: 40px;
     text-align: center;
     text-shadow: 2px 2px #600416;
@@ -427,7 +428,7 @@
     align-items: center;
     align-content: stretch;
     text-align: center;
-    color: #000000;
+    color: #ffffff;
     background-color: #000000;
     max-width: 40%;
     margin: -17px auto 0px;
@@ -441,7 +442,7 @@
     align-items: center;
     align-content: stretch;
     text-align: center;
-    color: #000000;
+    color: #ffffff;
     background-color: #000000;
     max-width: 80%;
     margin: -18px auto 0px;
@@ -457,7 +458,7 @@
 
 .h2-product {
     text-align: center;
-    color: #000000;
+    color: #ffffff;
     margin: 20px 0px;
     transition: all 0.3s;
     height: 115px;
@@ -475,7 +476,7 @@
 
 .button-product {
     background-color: #000000;
-    color: #000000;
+    color: #ffffff;
     border-radius: 3px;
     display: block;
     text-align: center;
@@ -489,7 +490,7 @@
     font-size: 17px;
     color: #000000;
     transform: scale(1);
-    background-color: #00000083;
+    background-color: #ffffff;
 }
 
 .button-slide-left {
@@ -527,7 +528,7 @@
     text-align: center;
     padding: 10px 50px 1px;
     margin: 30px 100px 0px;
-    background-color: rgba(255, 72, 0, 0.644);
+    background-color: #600416;
     border-radius: 4px;
 }
 

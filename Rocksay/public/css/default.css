@@ -396,7 +396,7 @@ i {
     position: absolute;
     top: -13px;
     left: 50%;
-    margin: 0 0 0 -14px;
+    margin: 0 0 0 -15px;
     transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
@@ -703,7 +703,7 @@ i {
         display: flex;
         font-size: 25px;
         font-weight: 600;
-        color: #000000;
+        color: #ffffff;
         padding: 3px 3px;
         border: 1px solid;
         border-radius: 2px;
@@ -724,10 +724,10 @@ i {
         list-style: none;
         display: flex;
         flex-wrap: wrap;
-        margin: -10px auto 0px;
+        margin: 0px auto;
         justify-content: center;
         background-color: #600416;
-        padding: 17px 0px 17px;
+        padding: 8px 0px 17px;
         width: 95%;
         border-radius: 2px;
     }
@@ -735,7 +735,7 @@ i {
         padding: 5px;
         margin: 0px 5px;
         text-align: center;
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid #fff;
         background: #600416;
     }
     .menu-ul a {
@@ -743,7 +743,7 @@ i {
         font-size: 22px;
         font-weight: 600;
         padding: 2px;
-        color: #000000;
+        color: #ffffff;
         text-align: center;
         text-decoration: none;
         transition: all .2s;

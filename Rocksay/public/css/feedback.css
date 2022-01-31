@@ -21,6 +21,7 @@
 }
 
 .feedback-title p {
+    color: #000000;
     font-size: 19px;
     margin-bottom: 25px;
 }
@@ -117,5 +118,23 @@
     }
     .feedback-conteudo p {
         padding: 0px 15px!important;
+    }
+    .feedback-section {
+        margin: 30px 50px 0px;
+    }
+    .hr-wide::before {
+        content: "";
+        width: 30px;
+        height: 30px;
+        background: #ffffff;
+        display: inline-block;
+        border: 2px solid #600416;
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        margin: 0 0 0 -13px;
+        transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
     }
 }

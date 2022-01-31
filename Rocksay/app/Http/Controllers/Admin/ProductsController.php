@@ -35,10 +35,9 @@ class ProductsController extends Controller
     public function store(ProductsRequest $request)
     {
         if($product = Products::create($request->validated())){
-            // return dd($request->input('categories'));
             $product->categories()->sync($request->input('categories'));
             toast('Produto cadastrado com sucesso!', 'success');
-            return back();
+            return redirect()->route('produtos.edicao', $product->id);
         }
         toast('Produto não pode ser cadastrado!', 'error');
         return back();

@@ -126,6 +126,13 @@ Produtos da Loja', 'activeButton' => 'laravel'])
                                                 <input type="file" data-id="{{ $item->id }}" id="productimage"
                                                     name="productimage" class="form-control">
                                             </div>
+                                        @else 
+                                            <div class="col-md-6">
+                                                <td class="table-center" title="{{ $item->title }}">
+                                                    Imagem : <input type="file" data-id="{{ $item->id }}"
+                                                        id="productimage" name="productimage" class="form-control">
+                                                </td>
+                                            </div>
                                         @endif
                                     @endif
                                 </div>
@@ -189,10 +196,9 @@ Produtos da Loja', 'activeButton' => 'laravel'])
                                             <td class="table-center" title="{{ $product->title }}">
                                                 Imagem : <input type="file" data-id="{{ $product->id }}"
                                                     id="productimage" name="productimage" class="form-control">
-                                                @php $product = $product->id @endphp
                                             </td>
                                         @else
-                                            <td style="text-align: center" title="{{ $product->name }}"><img
+                                            <td style="text-align: center" title="{{ $product->title }}"><img
                                                     src="/images/products/product/{{ $product->image }}" width="80px">
                                             </td>
                                         @endif
@@ -203,7 +209,7 @@ Produtos da Loja', 'activeButton' => 'laravel'])
                                                     class="btn btn-sm button-admin-toggle-success"><i
                                                         class="fas fa-user-check"></i></a>
                                             @else
-                                                <a href="{{ route('produtos.alternar', $product->id) }}"
+                                                <a @if(!empty($product->image)) href="{{ route('produtos.alternar', $product->id) }}" @else href="" @endif
                                                     title="Ativar Produto" class="btn btn-sm button-admin-toggle-danger"><i
                                                         class="fas fa-user-times"></i></a>
                                             @endif
@@ -252,8 +258,6 @@ Produtos da Loja', 'activeButton' => 'laravel'])
 @push('js')
     @if (!empty($item->title))
         <script type="text/javascript">
-            console.log('teste1');
-
             $('#div-form').show();
         </script>
     @else
@@ -274,6 +278,7 @@ Produtos da Loja', 'activeButton' => 'laravel'])
     <script type="text/javascript">
         // Crop image desktop
         $('#productimage').ijaboCropTool({
+            item_id : 2,
             preview: '.image-previewer',
             setRatio: 1400 / 1400,
             allowedExtensions: ['jpg', 'jpeg', 'png'],

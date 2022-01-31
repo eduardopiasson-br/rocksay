@@ -50,13 +50,14 @@
     align-items: center;
     align-content: stretch;
     text-align: center;
-    color: #000000;
+    color: #ffffff;
     background-color: #000000;
     max-width: 40%;
     margin: -17px auto 0px;
     border-radius: 3px;
     font-size: 22px;
     padding: 2px;
+    text-shadow: 1px 0px 12px #fff;
 }
 
 .price-discount {
@@ -64,7 +65,7 @@
     align-items: center;
     align-content: stretch;
     text-align: center;
-    color: #600416;
+    color: #ffffff;
     background-color: #000000;
     max-width: 80%;
     margin: -18px auto 0px;
@@ -78,11 +79,12 @@
     align-content: stretch;
     text-align: center;
     color: #000000;
-    background-color: #610707;
+    background-color: #600416;
     max-width: 80%;
     margin: -18px auto 0px;
     border-radius: 3px;
     font-size: 19px;
+    text-shadow: 1px 0px 12px #fff;
 }
 
 .discount {
@@ -93,7 +95,7 @@
 
 .h2-product {
     text-align: center;
-    color: #000000;
+    color: #ffffff;
     margin: 20px 0px;
     height: 115px;
     transition: all 0.3s;
@@ -111,7 +113,7 @@
 
 .button-product {
     background-color: #000000;
-    color: #600416;
+    color: #ffffff;
     border-radius: 3px;
     display: block;
     text-align: center;
@@ -125,7 +127,7 @@
     font-size: 17px;
     color: #000000;
     transform: scale(1);
-    background-color: #00000083;
+    background-color: #ffffff;
 }
 
 /* Envios e Formas de Pagamentos */
@@ -343,9 +345,10 @@
 
     .h2-product {
         height: 64px;
-        font-size: 20px;
-        margin: 4px 0px 15px;
-        text-shadow: 1px 1px #000000;
+        font-size: 18px;
+        margin: 2px 0px 15px;
+        padding: 2px;
+        font-weight: 600;
     }
 
     .top-product p {

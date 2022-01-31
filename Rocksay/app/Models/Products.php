@@ -18,6 +18,7 @@ class Products extends Model
         'sizes',
         'image',
         'units',
+        'status',
         'photo_name',
         'user_id'
     ];
