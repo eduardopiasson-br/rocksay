@@ -116,7 +116,7 @@
 
 .product-discount {
     font-size: 45px;
-    color: orangered;
+    color: #b30000;
     margin-bottom: 0px;
     width: 25%;
 }
@@ -134,7 +134,7 @@
     width: 50%;
     margin-bottom: 0px;
     font-size: 45px;
-    color: orangered;
+    color: #b30000;
 }
 
 .product-price-prazo {
@@ -172,6 +172,7 @@
 }
 
 .product-info-size {
+    color: #646464;
     width: 50%;
     margin-bottom: 10px;
 }
@@ -453,7 +454,7 @@
 .discount {
     font-weight: 600;
     font-size: 25px;
-    color: orangered;
+    color: #b30000;
 }
 
 .h2-product {

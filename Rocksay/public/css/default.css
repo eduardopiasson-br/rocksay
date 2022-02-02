@@ -650,7 +650,7 @@ i {
 
     .footer-category {
         height: 210px;
-        position: relative;
+        position: sticky;
         margin: 120px 0px 0px;
     }
 

@@ -67,11 +67,11 @@
                             <p class="product-price-p-2">{{ $product_selected->price }}</p>
                         @endif
                         @if(!empty($product_selected->prazo))
-                            <p class="product-price-prazo">Ou 3x de R$29,90 no cartão</p>
+                            <p class="product-price-prazo">{{ $product_selected->prazo }}</p>
                         @endif
                     </div>
                     <div class="product-div-request">
-                        @if(!empty($product_selected->units))<p class="product-request">Estoque: {{ $product_selected->units }}</p>@endif
+                        @if(!empty($product_selected->units))<p class="product-request"></p>@endif
                     </div>
                 </div>
                 @if(!empty($product_selected->abstract))

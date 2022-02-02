@@ -261,7 +261,7 @@
         </section>
     
         <div class="copyright-div">
-            <p>Copyright © 2021 - Rocksay Store</p>
+            <p>Copyright © @php echo date('Y') @endphp - Rocksay Store</p>
             @if(!empty($config->cnpj))<p>Cnpj: {{ $config->cnpj }}</p>@endif
             @if(!empty($config->owner))<p>Proprietária: {{ $config->owner }}</p>@endif
         </div>
