@@ -244,4 +244,11 @@ class SiteController extends Controller
 
         return view('contact', ['site_title' => $site_title, 'site_keys' => $site_keys, 'site_description' => $site_description, 'config' => $config, 'about' => $about, 'feedback' => $feedback, 'blog_general' => $blog_general, 'products' => $products, 'contact_css' => 1]);
     }
+
+    public function login() {
+        return view('auth/login');
+    }
+    public function erro() {
+        return view('errors/404');
+    }
 }

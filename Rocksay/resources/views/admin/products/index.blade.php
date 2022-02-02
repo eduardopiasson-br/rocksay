@@ -193,9 +193,8 @@ Produtos da Loja', 'activeButton' => 'laravel'])
                                         <td>{{ $product->title }}</td>
                                         <td class="text-center">{{ $product->units }}</td>
                                         @if (!$product->image)
-                                            <td class="table-center" title="{{ $product->title }}">
-                                                Imagem : <input type="file" data-id="{{ $product->id }}"
-                                                    id="productimage" name="productimage" class="form-control">
+                                            <td class="table-center text-danger" title="{{ $product->title }}">
+                                                Cadastre a Imagem do Produto
                                             </td>
                                         @else
                                             <td style="text-align: center" title="{{ $product->title }}"><img
@@ -210,6 +209,7 @@ Produtos da Loja', 'activeButton' => 'laravel'])
                                                         class="fas fa-user-check"></i></a>
                                             @else
                                                 <a @if(!empty($product->image)) href="{{ route('produtos.alternar', $product->id) }}" @else href="" @endif
+                                                    @if (!$product->image) disabled @endif
                                                     title="Ativar Produto" class="btn btn-sm button-admin-toggle-danger"><i
                                                         class="fas fa-user-times"></i></a>
                                             @endif

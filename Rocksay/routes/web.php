@@ -39,6 +39,9 @@ Route::get('/blog-rocksay', [SiteController::class, 'blog']);
 Route::get('/feedback', [SiteController::class, 'feedback']);
 Route::get('/contatos', [SiteController::class, 'contact']);
 Route::get('/404', [SiteController::class, 'error_404']);
+Route::get('/login0809180722', [SiteController::class, 'login']);
+Route::get('/login', [SiteController::class, 'erro']);
+Auth::routes(['register' => false]);
 
 // Rotas protegidas - administrativo
 Auth::routes();

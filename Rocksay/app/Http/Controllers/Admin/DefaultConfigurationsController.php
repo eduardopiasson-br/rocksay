@@ -80,7 +80,7 @@ class DefaultConfigurationsController extends Controller
             if(!empty($config_image)) {
                 unlink($config_image);
             }
-            DefaultConfiguration::find(1)->update(['image' => "/$name_image"]);
+            DefaultConfiguration::find(1)->update(['image' => "$name_image"]);
             return response()->json(['status' => 1, 'msg' => 'Imagem cadastrada com sucesso!!!']);
         }
     }

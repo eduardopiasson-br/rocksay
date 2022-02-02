@@ -111,7 +111,7 @@
                                         {{ session('message_image') }}
                                     </div>
                                 @endif
-                                @if(!empty($config))<br><img style="max-width: 100%;" src="{{ $config->image }}" width="400px">@endif
+                                @if(!empty($config))<br><img style="max-width: 100%;" src="{{ '/' . $config->image }}" width="400px">@endif
                             </div>
                         </div>
                         @endif
