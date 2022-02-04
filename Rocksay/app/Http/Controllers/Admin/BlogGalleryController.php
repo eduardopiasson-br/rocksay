@@ -113,7 +113,7 @@ class BlogGalleryController extends Controller
             unlink($destinationPath . $img->image);
             $outro = $request->input('name') ? Str::of($request->input('name'))->slug('-') : Str::of($blog->title)->slug('-');
             $name = $outro . '-' . date('YmdHis') . "-" .  $image->getClientOriginalName();
-            $image->move($destinationPath, $name);
+            $this->compressImage($image, $destinationPath . $name, 80);
             $input['image'] = "$name";
         }else{
             unset($input['image']);
@@ -192,5 +192,19 @@ class BlogGalleryController extends Controller
 
         toast('Imagem deletada com sucesso!', 'success');
         return redirect()->route('blog.galeria', $blog_id);
+    }
+
+    function compressImage($source_path, $destination_path, $quality) {
+        $info = getimagesize($source_path);
+    
+        if ($info['mime'] == 'image/jpeg') {
+            $image = imagecreatefromjpeg($source_path);
+        } elseif ($info['mime'] == 'image/png') {
+            $image = imagecreatefrompng($source_path);
+        }
+    
+        imagejpeg($image, $destination_path, $quality);
+    
+        return $destination_path;
     }
 }

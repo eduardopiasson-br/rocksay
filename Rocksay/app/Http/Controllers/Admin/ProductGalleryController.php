@@ -47,14 +47,14 @@ class ProductGalleryController extends Controller
         
                             $outro = $request->input('name') ? Str::of($request->input('name'))->slug('-') : Str::of($product->title)->slug('-');
                             $name = $outro . '-' . date('YmdHis') . "-" .  $file->getClientOriginalName();
-                            $file->move('images/products/gallery/', $name);
+                            // $file->move('images/products/gallery/', $name);
+                            $this->compressImage($file, 'images/products/gallery/' . $name, 80);
     
                             $insert[$x]['image'] = $name;
                             $insert[$x]['name'] = $request->input('name') ? $request->input('name') : NULL;
                             $insert[$x]['product_id'] = $product_id;
                             $insert[$x]['user_id'] = auth()->user()->id;
                             $insert[$x]['position'] = $max_position + ($x + 1);
-    
                         }
                 }
      
@@ -138,5 +138,19 @@ class ProductGalleryController extends Controller
         }
         toast('Imagem deletada com sucesso!', 'success');
         return redirect()->route('produtos.galeria', $product_id);
+    }
+
+    function compressImage($source_path, $destination_path, $quality) {
+        $info = getimagesize($source_path);
+    
+        if ($info['mime'] == 'image/jpeg') {
+            $image = imagecreatefromjpeg($source_path);
+        } elseif ($info['mime'] == 'image/png') {
+            $image = imagecreatefrompng($source_path);
+        }
+    
+        imagejpeg($image, $destination_path, $quality);
+    
+        return $destination_path;
     }
 }

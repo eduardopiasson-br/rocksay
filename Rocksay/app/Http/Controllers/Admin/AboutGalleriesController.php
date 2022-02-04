@@ -82,7 +82,7 @@ class AboutGalleriesController extends Controller
             $destinationPath = 'images/about/';
             unlink($destinationPath . $img->image);
             $profileImage = Str::of($request->input('name'))->slug('-') . '-' .date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
+            $this->compressImage($image, $destinationPath . $profileImage, 80);
             $input['image'] = "$profileImage";
         }else{
             unset($input['image']);
@@ -162,5 +162,19 @@ class AboutGalleriesController extends Controller
 
         toast('Imagem deletada com sucesso!', 'success');
         return redirect()->route('sobre.galeria');
+    }
+
+    function compressImage($source_path, $destination_path, $quality) {
+        $info = getimagesize($source_path);
+    
+        if ($info['mime'] == 'image/jpeg') {
+            $image = imagecreatefromjpeg($source_path);
+        } elseif ($info['mime'] == 'image/png') {
+            $image = imagecreatefrompng($source_path);
+        }
+    
+        imagejpeg($image, $destination_path, $quality);
+    
+        return $destination_path;
     }
 }

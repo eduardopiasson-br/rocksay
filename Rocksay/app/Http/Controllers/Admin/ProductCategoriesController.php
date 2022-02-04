@@ -162,8 +162,7 @@ class ProductCategoriesController extends Controller
             return response()->json(['status' => 0, 'msg' => 'Imagem não enviada!']); 
         }
         $name_image = Str::of($config->name)->slug('-') . '-' . date('YmdHis') . "-" .  $file->getClientOriginalName();;
-        $move = $file->move(public_path($destination), $name_image);
-        if(!$move) {
+        if(!$move = $this->compressImage($file, $destination . $name_image, 80)) {
             return response()->json(['status' => 0, 'msg' => 'Imagem não pode ser enviada!']); 
         }
         if($move) {
@@ -175,5 +174,20 @@ class ProductCategoriesController extends Controller
             return response()->json(['status' => 1, 'msg' => 'Imagem cadastrada com sucesso!!!']);
         }
         return response()->json(['status' => 0, 'msg' => 'Erro!!!']);
+    }
+
+
+    function compressImage($source_path, $destination_path, $quality) {
+        $info = getimagesize($source_path);
+    
+        if ($info['mime'] == 'image/jpeg') {
+            $image = imagecreatefromjpeg($source_path);
+        } elseif ($info['mime'] == 'image/png') {
+            $image = imagecreatefrompng($source_path);
+        }
+    
+        imagejpeg($image, $destination_path, $quality);
+    
+        return $destination_path;
     }
 }
