@@ -1,2 +1,10 @@
 User-agent: *
-Disallow:
+Disallow: /login
+Disallow: /login0809180722
+Disallow: /gerenciar
+
+User-agent: *
+Allow: /
+Allow: 
+
+Sitemap: http://www.example.com/sitemap.xml

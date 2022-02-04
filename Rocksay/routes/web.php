@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\ProductGalleryController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\SitemapXmlController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,7 +42,12 @@ Route::get('/contatos', [SiteController::class, 'contact']);
 Route::get('/404', [SiteController::class, 'error_404']);
 Route::get('/login0809180722', [SiteController::class, 'login']);
 Route::get('/login', [SiteController::class, 'erro']);
-Auth::routes(['register' => false]);
+Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+]);
 
 // Rotas protegidas - administrativo
 Auth::routes();
