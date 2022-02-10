@@ -6,7 +6,7 @@
                 <script>
                     document.write(new Date().getFullYear())
                 </script>
-                <a disabled >{{ __('Cutie & Sweet - Moda Fashion') }}</a>
+                <a disabled >{{ __('Rocksay Store') }}</a>
             </p>
         </nav>
     </div>

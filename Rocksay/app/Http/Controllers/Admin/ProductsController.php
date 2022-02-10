@@ -24,6 +24,7 @@ class ProductsController extends Controller
         $item_id = 1;
         $itens = $model->orderBy('title', 'asc')->get();
         $categories = ProductCategories::orderBy('position', 'asc')->where('status', 1)->get();
+
         return view('admin.products.index', ['itens' => $itens, 'item_id' => $item_id, 'categories' => $categories]);
     }
 

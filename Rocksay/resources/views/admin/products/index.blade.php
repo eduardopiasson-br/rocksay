@@ -331,7 +331,7 @@ Produtos da Loja', 'activeButton' => 'laravel'])
             allowedExtensions: ['jpg', 'jpeg', 'png'],
             buttonsText: ['CORTAR E SALVAR', 'SAIR/CANCELAR'],
             buttonsColor: ['#30bf7d', '#ee5155', -15],
-            processUrl: "{{ route('produtos.medidas', $item_id) }}",
+            processUrl: "{{ url('gerenciar/produtos/medidas', $item_id) }}",
             withCSRF: ['_token', '{{ csrf_token() }}'],
             onSuccess: function(message, element, status) {
                 if (Toast.fire({

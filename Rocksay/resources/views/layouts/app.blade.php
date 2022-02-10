@@ -98,7 +98,7 @@
                     @endif
                     @if(!empty($blog_general))
                     <li class="li-menu"><a class="link-menu @if($activePage == 'blog') active @endif" href="{{ url('/blog-rocksay') }}"
-                            title="Saiba mais sobre a moda do momento!">BLOG</a></li>
+                            title="Saiba mais sobre os nossos conteudos!">BLOG</a></li>
                     @endif
                     @if(!empty($products))
                     <li class="li-menu"><a class="link-menu @if($activePage == 'produtos') active @endif" href="{{ url('/produtos') }}"

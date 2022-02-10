@@ -1,4 +1,4 @@
-@extends('layouts/app', ['activePage' => 'feedback', 'title' => 'Feedback de Clientes - Cutie & Sweet'])
+@extends('layouts/app', ['activePage' => 'feedback', 'title' => 'Feedback de Clientes - Rocksay'])
 
 @section('content')
     <section class="feedback-section">

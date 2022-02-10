@@ -1,4 +1,4 @@
-@extends('layouts/app', ['activePage' => 'contatos', 'title' => 'Contatos - Cutie & Sweet'])
+@extends('layouts/app', ['activePage' => 'contatos', 'title' => 'Contatos - Rocksay'])
 
 @section('content')
     <section class="contact">
@@ -124,11 +124,10 @@
             @if(!empty($config->link_address))
             <div class="contact-principal-title">
                 <h2 class="h2-2">NOSSA LOCALIZAÇÃO</h2>
-                <p>Não somos uma loja fisica, mas estamos sempre disponíveis caso queira conferir ou buscar os produtos
-                    pessoalmente...</p>
+                <p>Não somos uma loja fisica, mas estamos sempre disponíveis online para atender os seus pedidos...</p>
             </div>
 
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7217.625760540926!2d-53.9866812!3d-25.2432267!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x239208d5dd7b691!2sCutie%20and%20Sweet%20(C%26S)!5e0!3m2!1spt-PT!2sbr!4v1627582488969!5m2!1spt-PT!2sbr" class="iframe-maps" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7432471.978817971!2d-55.816375603025236!3d-24.549937469674937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94db0b9430b8629d%3A0xe893fd5063cef061!2zUGFyYW7DoQ!5e0!3m2!1spt-PT!2sbr!4v1644521836497!5m2!1spt-PT!2sbr" class="iframe-maps" loading="lazy"></iframe>
             @endif
 
         </div>

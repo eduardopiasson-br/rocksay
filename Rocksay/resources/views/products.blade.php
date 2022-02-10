@@ -1,4 +1,4 @@
-@extends('layouts/app', ['activePage' => 'produtos', 'title' => 'Nossos Produtos - Cutie & Sweet'])
+@extends('layouts/app', ['activePage' => 'produtos', 'title' => 'Nossos Produtos - Rocksay Store'])
 @section('content')
 <section class="products">
     <div class="top-product">
