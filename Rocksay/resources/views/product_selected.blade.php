@@ -71,7 +71,7 @@
                     <div class="product-div-request">
                         @if(!empty($product_selected->measurements))
                             <div class="container">
-                                <div class="gallery" id="gallery2">
+                                <div class="gallery medidas" id="gallery2">
                                     <a href="{{ url('images/products/measurements/'. $product_selected->measurements) }}" class="big"><img src="{{ url('images/products/measurements/'. $product_selected->measurements) }}" alt="tabela de medidas"
                                         title="Tabela de Medidas"/></a>
                                     <div class="clear"></div>

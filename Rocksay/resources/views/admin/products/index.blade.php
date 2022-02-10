@@ -139,7 +139,7 @@ Produtos da Loja', 'activeButton' => 'laravel'])
                                         @if (!empty($item->measurements))
                                             <div class="col-md-6 form-group">
                                                 <label class="form-control-label" for="input-start_date">
-                                                    {{ __('Imagem:') }} <i class="text-danger">*</i>
+                                                    {{ __('Medidas:') }} <i class="text-danger"></i>
                                                 </label><br>
                                                 <img src="/images/products/measurements/{{ $item->measurements }}"
                                                     style="max-width: 100%">
@@ -150,7 +150,7 @@ Produtos da Loja', 'activeButton' => 'laravel'])
                                         @else 
                                             <div class="col-md-6">
                                                 <td class="table-center" title="{{ $item->title }}">
-                                                    Imagem : <input type="file" data-id="{{ $item->id }}"
+                                                    Medidas : <input type="file" data-id="{{ $item->id }}"
                                                         id="measurements" name="measurements" class="form-control">
                                                 </td>
                                             </div>

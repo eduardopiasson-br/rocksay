@@ -9,6 +9,7 @@ use App\Models\ProductColor;
 use App\Models\ProductGalleries;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductsController extends Controller
 {
@@ -229,7 +230,7 @@ class ProductsController extends Controller
         if(!$file = $request->file('measurements')){
             return response()->json(['status' => 0, 'msg' => 'Imagem não enviada!']); 
         }
-        $name_image = 'Produto' . uniqid() . $file->getClientOriginalExtension();
+        $name_image = 'Produto' . uniqid() . Str::of($file->getClientOriginalName())->slug('-') . '.jpg';
         if(!$move = $this->compressImage($file, $destination . $name_image, 80)) {
             return response()->json(['status' => 0, 'msg' => 'Imagem das medidas não pode ser enviada!']); 
         }

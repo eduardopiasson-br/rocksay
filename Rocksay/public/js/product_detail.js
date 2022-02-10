@@ -36,8 +36,10 @@ $('a[href*="#"]')
 });
 
 // Função para a galeria
+
 (function() {
   var $gallery = new SimpleLightbox('#gallery1 a', {});
+  var $gallery = new SimpleLightbox('#gallery2 a', {});
 })();
 
 // faq de pagamento
