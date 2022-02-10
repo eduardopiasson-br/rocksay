@@ -26,7 +26,8 @@
 }
 
 .text-about {
-    color: #646464;
+    color: #000000;
+    padding: 0px 100px;
 }
 
 .text-about p {
@@ -128,7 +129,7 @@
 }
 
 .pilares-text p {
-    color: #646464;
+    color: #000000;
     font-size: 19px;
 }
 
@@ -156,6 +157,9 @@
         margin-bottom: 50px;
     }
 
+    .text-about {
+        padding: 0px;
+    }
     .container {
         text-align: center;
     }

@@ -135,6 +135,27 @@ Produtos da Loja', 'activeButton' => 'laravel'])
                                             </div>
                                         @endif
                                     @endif
+                                    @if (!empty($item->title))
+                                        @if (!empty($item->measurements))
+                                            <div class="col-md-6 form-group">
+                                                <label class="form-control-label" for="input-start_date">
+                                                    {{ __('Imagem:') }} <i class="text-danger">*</i>
+                                                </label><br>
+                                                <img src="/images/products/measurements/{{ $item->measurements }}"
+                                                    style="max-width: 100%">
+                                                <br><br>
+                                                <input type="file" data-id="{{ $item->id }}" id="measurements"
+                                                    name="measurements" class="form-control">
+                                            </div>
+                                        @else 
+                                            <div class="col-md-6">
+                                                <td class="table-center" title="{{ $item->title }}">
+                                                    Imagem : <input type="file" data-id="{{ $item->id }}"
+                                                        id="measurements" name="measurements" class="form-control">
+                                                </td>
+                                            </div>
+                                        @endif
+                                    @endif
                                 </div>
                                 {{-- Categorias --}}
                                 @if ($categories->count() > 0)
@@ -180,8 +201,9 @@ Produtos da Loja', 'activeButton' => 'laravel'])
                                 <tr class="col-md-12">
                                     <td class="col-md-1 text-center"><b>#</b></td>
                                     <td class="col-md-5"><b>Título</b></td>
-                                    <td class="col-md-2 text-center"><b>Estoque</b></td>
-                                    <td class="col-md-2 text-center"><b>Imagem</b></td>
+                                    <td class="col-md-1 text-center"><b>Preço</b></td>
+                                    <td class="col-md-1 text-center"><b>Estoque</b></td>
+                                    <td class="col-md-1 text-center"><b>Imagem</b></td>
                                     <td class="col-md-2">
                                     </td>
                                 </tr>
@@ -191,6 +213,7 @@ Produtos da Loja', 'activeButton' => 'laravel'])
                                     <tr class="row1" data-id="{{ $product->id }}">
                                         <td class="text-center">{{ $index }}</td>
                                         <td>{{ $product->title }}</td>
+                                        <td class="text-center">{{ !empty($product->price_promo) ? trim($product->price_promo) : $product->price }}</td>
                                         <td class="text-center">{{ $product->units }}</td>
                                         @if (!$product->image)
                                             <td class="table-center text-danger" title="{{ $product->title }}">
@@ -285,6 +308,30 @@ Produtos da Loja', 'activeButton' => 'laravel'])
             buttonsText: ['CORTAR E SALVAR', 'SAIR/CANCELAR'],
             buttonsColor: ['#30bf7d', '#ee5155', -15],
             processUrl: "{{ route('produtos.cortar', $item_id) }}",
+            withCSRF: ['_token', '{{ csrf_token() }}'],
+            onSuccess: function(message, element, status) {
+                if (Toast.fire({
+                        icon: 'success',
+                        title: message
+                    })) {
+                    window.location.reload();
+                }
+            },
+            onError: function(message, element, status) {
+                if (Toast.fire({
+                        icon: 'danger',
+                        title: message
+                    })) {}
+            }
+        });
+        $('#measurements').ijaboCropTool({
+            item_id : 2,
+            preview: '.image-previewer',
+            setRatio: 1000 / 1000,
+            allowedExtensions: ['jpg', 'jpeg', 'png'],
+            buttonsText: ['CORTAR E SALVAR', 'SAIR/CANCELAR'],
+            buttonsColor: ['#30bf7d', '#ee5155', -15],
+            processUrl: "{{ route('produtos.medidas', $item_id) }}",
             withCSRF: ['_token', '{{ csrf_token() }}'],
             onSuccess: function(message, element, status) {
                 if (Toast.fire({

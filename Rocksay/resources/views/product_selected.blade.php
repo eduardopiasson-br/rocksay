@@ -42,9 +42,7 @@
             <div class="danger">
                 <h2 class="danger-message-h2"><i class="far fa-frown"></i> PRODUTO INDISPONÍVEL NO MOMENTO...</h2>
                 <p class="danger-message">
-                    Trabalhamos com produtos mais variados e bastante novidades então os produtos não ficam 
-                    disponíveis muito tempo. Mas você pode fazer seu pedido conosco, escolhemos de acordo com 
-                    seu tamanho e cor, do jeitinho que preferir!
+                    Trabalhamos com uma maior variedade de produtos, muitas novidades e quantidade de estoque reduzida, portanto os produtos não ficam disponíveis por muito tempo. Mas, você pode fazer seu pedido diretamente conosco!
                     <a  title="Fazer pedido pelo WhatsApp agora!" href="https://api.whatsapp.com/send?phone=55{{ Str::of($config->whatsapp)->replaceMatches('/[^A-Za-z0-9]++/', '') }}&text=Olá, gostaria de fazer um pedido do produto: *{{ $product_selected->title }}*!">
                     <i class="fab fa-whatsapp"></i> Fazer Pedido</a>
                 </p>
@@ -71,7 +69,15 @@
                         @endif
                     </div>
                     <div class="product-div-request">
-                        @if(!empty($product_selected->units))<p class="product-request"></p>@endif
+                        @if(!empty($product_selected->measurements))
+                            <div class="container">
+                                <div class="gallery" id="gallery2">
+                                    <a href="{{ url('images/products/measurements/'. $product_selected->measurements) }}" class="big"><img src="{{ url('images/products/measurements/'. $product_selected->measurements) }}" alt="tabela de medidas"
+                                        title="Tabela de Medidas"/></a>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 @if(!empty($product_selected->abstract))
@@ -126,7 +132,7 @@
 
         @if($product_selected->gallery->count() > 0)
             <div class="container">
-                <div class="gallery" id="gallery">
+                <div class="gallery" id="gallery1">
                     <h3 class="gallery-info">Confira mais fotos do produto <i class="fas fa-level-down-alt"></i></h3>
                     @foreach($product_selected->gallery as $image)
                         <a href="{{ url('images/products/gallery/'. $image->image) }}" class="big"><img src="{{ url('images/products/gallery/'. $image->image) }}" alt="{{ $image->name ?? $product_selected->title }}"

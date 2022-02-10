@@ -135,7 +135,7 @@ class SiteController extends Controller
         $about = About::count();
         $feedback = Feedbacks::where('status', 1)->count();
         $blog_general = Blogs::where('status', 1)->count();
-        $products = Products::inRandomOrder()->limit(10)->where('status', 1)->where('id', '!=', $product_id)->get();
+        $products = Products::inRandomOrder()->limit(10)->where('status', 1)->where('id', '!=', $product_id)->where('units', '!=', 0)->get();
         $categories = ProductCategories::orderBy('position', 'asc')->where('status', 1)->get();
         $payments = Payments::orderBy('position', 'asc')->where('status', 1)->get();
         $deliverys = Deliverys::orderBy('position', 'asc')->where('status', 1)->get();

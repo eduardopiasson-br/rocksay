@@ -216,4 +216,32 @@ class ProductsController extends Controller
     
         return $destination_path;
     }
+
+    /**
+     * Crop and save measurements image
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function measurements(Request $request, $id)
+    {
+        $destination = 'images/products/measurements/';
+        if(!$file = $request->file('measurements')){
+            return response()->json(['status' => 0, 'msg' => 'Imagem não enviada!']); 
+        }
+        $name_image = 'Produto' . uniqid() . $file->getClientOriginalExtension();
+        if(!$move = $this->compressImage($file, $destination . $name_image, 80)) {
+            return response()->json(['status' => 0, 'msg' => 'Imagem das medidas não pode ser enviada!']); 
+        }
+        if($move) {
+            $config = Products::find($id);
+            // $config_image = $config->measurements;
+            if($config->measurements) {
+                unlink($destination . $config->measurements);
+            }
+            Products::find($id)->update(['measurements' => $name_image]);
+            return response()->json(['status' => 1, 'msg' => 'Imagem das medidas cadastrada com sucesso!!!']);
+        }
+        return response()->json(['status' => 0, 'msg' => 'Erro!!!']);
+    }
 }

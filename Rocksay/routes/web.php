@@ -149,6 +149,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('gerenciar/produtos/alternar/{id}', [ProductsController::class, 'toggle'])->name('produtos.alternar');
     Route::get('gerenciar/produtos/estoque/{id}', [ProductsController::class, 'stock'])->name('produtos.estoque');
     Route::post('gerenciar/produtos/cortar/{id}', [ProductsController::class, 'crop'])->name('produtos.cortar');
+    Route::post('gerenciar/produtos/medidas/{id}', [ProductsController::class, 'measurements'])->name('produtos.medidas');
     Route::get('gerenciar/produtos/deletar/{id}', [ProductsController::class, 'destroy'])->name('produtos.deletar');
 
     // Rotas de Galeria de Produtos

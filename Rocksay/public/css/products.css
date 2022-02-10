@@ -322,12 +322,18 @@
 
     .discount {
         font-size: 20px;
+        margin-left: 5px;
     }
 
     .price-discount {
+        font-size: 13px;
         display: grid;
         max-width: 100%;
-        margin-top: -65px;
+        margin-top: -5px;
+        display: flex;
+        text-align: center;
+        padding-top: 1px;
+        justify-content: center;
     }
 
     .indisponivel {

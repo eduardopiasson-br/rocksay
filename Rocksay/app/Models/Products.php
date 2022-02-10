@@ -20,7 +20,8 @@ class Products extends Model
         'units',
         'status',
         'photo_name',
-        'user_id'
+        'user_id',
+        'measurements'
     ];
 
     /**

@@ -37,7 +37,7 @@ $('a[href*="#"]')
 
 // Função para a galeria
 (function() {
-  var $gallery = new SimpleLightbox('.gallery a', {});
+  var $gallery = new SimpleLightbox('#gallery1 a', {});
 })();
 
 // faq de pagamento
