@@ -7,6 +7,7 @@ TECNOLOGIAS:
 - CSS/Bootstrap;
 - JS/Jquery e;
 - MySQL.
+
 Além de algumas bibliotecas auxiliares para tratamento de imagens e tabelas visuais.
 
 PADRÃO DE DEV:
